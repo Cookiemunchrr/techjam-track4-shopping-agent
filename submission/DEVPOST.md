@@ -237,8 +237,7 @@ why budget is the constraint we can least often honour.
 ## Try it yourself
 
 - Public repository: https://github.com/Cookiemunchrr/techjam-track4-shopping-agent
-- Demonstration video: [USER ACTION: paste the public YouTube URL — must be public,
-  under 3 minutes]
+- Demonstration video: https://youtu.be/zNT50AbGO6c
 - Recorded live sessions: `submission/DEMO_TRANSCRIPT.md` — the behavior showcase, plus
   a real evaluator `intent_override` session that converts at turn 3, rank 2
 - Video storyboard: `submission/VIDEO_SCRIPT.md`
