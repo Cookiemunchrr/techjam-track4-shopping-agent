@@ -1,0 +1,63 @@
+{
+  "popularity_prior": {
+    "why_it_is_legitimate": "sessions are sampled from the Amazon Clothing 5-core leave-last-out split, so every target is a real purchase; popularity bias in interaction data is a documented property, not a harness artifact",
+    "rating_number_median": {
+      "catalog": 12,
+      "target": 7078
+    },
+    "rating_number_p25_p75": {
+      "catalog": [
+        3,
+        59
+      ],
+      "target": [
+        986,
+        18915
+      ]
+    },
+    "average_rating_median": {
+      "catalog": 4.2,
+      "target": 4.4
+    },
+    "target_popularity_percentile_within_own_bucket": {
+      "mean": 0.952,
+      "median": 0.993,
+      "frac_top_quartile": 0.96,
+      "frac_bottom_quartile": 0.01
+    }
+  },
+  "popularity_only_retrieval": {
+    "method": "take the category named in turn 1, sort that bucket by review count, stop. no NLP.",
+    "target_in_top_1": 0.35,
+    "target_in_top_3": 0.615,
+    "target_in_top_5": 0.705,
+    "target_in_top_10": 0.815,
+    "target_in_top_20": 0.865,
+    "target_in_top_50": 0.95,
+    "median_rank": 3,
+    "mean_rank": 10.5
+  },
+  "profile_signal": {
+    "corr_prior_rating_vs_target_rating": 0.182,
+    "preference_tag_appears_in": {
+      "target": 0.44,
+      "random_same_bucket": 0.312,
+      "random_any_product": 0.264
+    },
+    "lift_vs_same_bucket": 1.409,
+    "verdict": "real but weak; wiring it into the score measurably HURT (-0.005). reported as a negative result rather than used."
+  },
+  "difficulty_bucket": {
+    "easy": {
+      "buying": 80
+    },
+    "medium": {
+      "browsing": 80,
+      "boundary": 10
+    },
+    "hard": {
+      "intent_override": 30
+    },
+    "note": "difficulty is a relabelling of scenario_type, not an independent property of the product: easy=buying, medium=browsing+boundary, hard=override"
+  }
+}

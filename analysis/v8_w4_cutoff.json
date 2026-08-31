@@ -1,0 +1,26 @@
+{
+  "schema": "techjam-v8-w4-cutoff-v1",
+  "plan": "IMPROVEMENT_PLAN_V8.txt W4",
+  "what_changed": [
+    "src/routing.py: estimated_pool_size() mirrors route_detail's bucket selection (same resolve, exact truncation, browsing neighbours) from bucket sizes alone, without materializing a product id.",
+    "src/policy.py: CommitPolicy.pre_cutoff(estimated_size, has_constraints) fires when the predicted pool exceeds the overload threshold AND no discriminating constraint has been filed. CommitPolicy.cutoff() stays as the post-retrieval confirmation; one predicts, one confirms.",
+    "src/agent.py: when the prediction fires, the full scoring pass is skipped -- the shelf transform and the global fuse are skipped with it -- and a bounded, boost-faithful sample is scored instead (the primary shelf's most popular members first, then the rest by popularity; cap PRE_CUTOFF_SAMPLE = 240, twice the elicitation window, declared not fitted)."
+  ],
+  "firing_rate": {
+    "public_set": "58 turns across 42 of 200 sessions (21%)",
+    "estimated_pool_sizes_when_fired": "2222-3183 candidates reduced to a 240-item sample"
+  },
+  "score": {
+    "before": {"full": 0.916125, "transcript_sha256": "7c30023e3b8f951d35f8a449a066cfff45f8995d8d9994142e0e5929f8958d04"},
+    "after": {"full": 0.916125, "transcript_sha256": "7c30023e3b8f951d35f8a449a066cfff45f8995d8d9994142e0e5929f8958d04"},
+    "delta": "exactly zero; transcript byte-identical"
+  },
+  "how_it_got_to_zero_cost": "The first sampling (raw popularity over the whole predicted pool) measured -0.0044 (0.911725): in multi-shelf hedged pools it dropped items the primary-shelf boost would have surfaced. Boost-faithful sampling (primary shelf's popularity leaders first) restored the frozen transcript exactly. Both measurements are recorded so the ordering is not re-litigated.",
+  "latency": {
+    "instrument": "tools/resource_probe.py, fresh processes, 299 serial turns per budgeted workload, WSL reference copy",
+    "before": {"exact_p99_ms": 10.757, "exact_max_ms": 14.091, "hedged_p99_ms": 48.921, "hedged_max_ms": 52.279},
+    "after": {"exact_p99_ms": 9.318, "exact_max_ms": 12.704, "hedged_p99_ms": 48.507, "hedged_max_ms": 50.995},
+    "note": "modest but real on both routes. The probe's fixed messages exercise the firing path only partially; the structural saving is the 58 turns that each skip scoring ~2,200-3,200 candidates down to 240. This machine runs ~1.7x slower than the reference host (registered in the V6 protocol), so the hedged max sits near the 50 ms canary on both runs; the canary's registered zero-exceedance measurements were taken on the quieter reference host."
+  },
+  "verdict": "shipped as default behaviour: the mechanism Pillar II names is real (predicted breadth, pre-scoring, constraint-gated), measured at zero cost to score and transcript, with a latency improvement beside it"
+}

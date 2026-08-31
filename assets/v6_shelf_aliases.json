@@ -1,0 +1,1258 @@
+{
+  "build_config": {
+    "allowed_classes": [
+      "synonym",
+      "regional_variant",
+      "common_usage_variant",
+      "one_level_hypernym"
+    ],
+    "max_alias_tokens": 3,
+    "max_aliases_per_head": 4
+  },
+  "builder_source_sha256": "f0cfe8b995492dbddf43f7185ce75059cbebb042c2a8bb7fc71e924dca5d2f42",
+  "candidate_name": "aliases",
+  "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+  "generator": {
+    "date": "2026-08-30",
+    "identity": "opencode subagent, aiand glm model family",
+    "prompt_sha256": "fda47f50a7839cbd952902601decb1eefce64e1d8ff5a310562fd99dda3725e9",
+    "raw_output_sha256": "5973afd621b3e0344b2972223e7973f754f9f178ad6cc777cfd57f9acedb0ac6"
+  },
+  "input_sha256": "3174e3fcd3014c2ddfe200bcd4e12e786bf99332c23e6aa6e4436403b5cc07c7",
+  "mapping": {
+    "accoutrements": [
+      "accessories"
+    ],
+    "alice bands": [
+      "headbands"
+    ],
+    "amulets": [
+      "charms"
+    ],
+    "ankle boots": [
+      "bootie"
+    ],
+    "ankle bracelets": [
+      "anklets"
+    ],
+    "ankle chains": [
+      "anklets"
+    ],
+    "anoraks": [
+      "parkas"
+    ],
+    "appliques": [
+      "patches"
+    ],
+    "armour": [
+      "armor"
+    ],
+    "army boots": [
+      "combat"
+    ],
+    "athleisure": [
+      "active"
+    ],
+    "attache cases": [
+      "briefcases"
+    ],
+    "attire": [
+      "apparel"
+    ],
+    "baby grows": [
+      "footies"
+    ],
+    "back packs": [
+      "backpacks"
+    ],
+    "backless shoes": [
+      "mules"
+    ],
+    "baggage": [
+      "luggage"
+    ],
+    "ball caps": [
+      "caps"
+    ],
+    "ballerinas": [
+      "flats"
+    ],
+    "ballet flats": [
+      "flats"
+    ],
+    "ballet pumps": [
+      "flats"
+    ],
+    "bandannas": [
+      "bandanas"
+    ],
+    "bangle cuffs": [
+      "cuff"
+    ],
+    "bangles": [
+      "bangle"
+    ],
+    "base layers": [
+      "layers"
+    ],
+    "baseball hats": [
+      "caps"
+    ],
+    "bathers": [
+      "swimwear"
+    ],
+    "bathing suits": [
+      "swimwear"
+    ],
+    "bathrobes": [
+      "robes"
+    ],
+    "beads": [
+      "bead"
+    ],
+    "bedroom slippers": [
+      "slippers"
+    ],
+    "belt bags": [
+      "packs"
+    ],
+    "belt clasps": [
+      "buckles"
+    ],
+    "bermudas": [
+      "shorts"
+    ],
+    "bib overalls": [
+      "overalls"
+    ],
+    "bicycling": [
+      "cycling"
+    ],
+    "biking": [
+      "cycling"
+    ],
+    "bikini briefs": [
+      "bikinis"
+    ],
+    "bill clips": [
+      "clips"
+    ],
+    "billfolds": [
+      "wallets"
+    ],
+    "black tie": [
+      "formal"
+    ],
+    "body armor": [
+      "armor"
+    ],
+    "body suits": [
+      "bodysuits"
+    ],
+    "boilersuits": [
+      "coveralls"
+    ],
+    "boleros": [
+      "shrugs"
+    ],
+    "bolos": [
+      "ties"
+    ],
+    "boot trees": [
+      "trees"
+    ],
+    "booties": [
+      "bootie"
+    ],
+    "bootlaces": [
+      "shoelaces"
+    ],
+    "bowties": [
+      "ties"
+    ],
+    "boxer shorts": [
+      "boxers"
+    ],
+    "bracelet charms": [
+      "charm"
+    ],
+    "braces": [
+      "suspenders"
+    ],
+    "bralettes": [
+      "bras"
+    ],
+    "brassiere": [
+      "bras"
+    ],
+    "brassieres": [
+      "bras"
+    ],
+    "brogues": [
+      "oxfords"
+    ],
+    "brollies": [
+      "umbrellas"
+    ],
+    "brooches": [
+      "pins"
+    ],
+    "buffs": [
+      "gaiters"
+    ],
+    "bum bags": [
+      "packs"
+    ],
+    "bumbershoots": [
+      "umbrellas"
+    ],
+    "button downs": [
+      "shirts"
+    ],
+    "button ups": [
+      "shirts"
+    ],
+    "cami tops": [
+      "camis"
+    ],
+    "camisoles": [
+      "camis"
+    ],
+    "capri pants": [
+      "capris"
+    ],
+    "card holders": [
+      "wallets"
+    ],
+    "cardies": [
+      "cardigans"
+    ],
+    "cargo shorts": [
+      "cargo"
+    ],
+    "carryalls": [
+      "bags",
+      "totes"
+    ],
+    "chain link bracelets": [
+      "link"
+    ],
+    "chain necklaces": [
+      "chains"
+    ],
+    "change purses": [
+      "pouches"
+    ],
+    "checkbook holders": [
+      "covers"
+    ],
+    "chelsea boots": [
+      "chelsea"
+    ],
+    "choker necklaces": [
+      "chokers"
+    ],
+    "chukka boots": [
+      "chukka"
+    ],
+    "clothes": [
+      "apparel"
+    ],
+    "clothing": [
+      "apparel"
+    ],
+    "clutch bags": [
+      "clutches"
+    ],
+    "clutch purses": [
+      "clutches"
+    ],
+    "coats jackets": [
+      "outerwear"
+    ],
+    "cocktail dresses": [
+      "cocktail"
+    ],
+    "coin purses": [
+      "pouches"
+    ],
+    "collar necklaces": [
+      "chokers",
+      "collars"
+    ],
+    "combat boots": [
+      "combat"
+    ],
+    "corselettes": [
+      "corsets"
+    ],
+    "court shoes": [
+      "pumps"
+    ],
+    "cover alls": [
+      "coveralls"
+    ],
+    "cowboy boots": [
+      "western"
+    ],
+    "cowgirl boots": [
+      "western"
+    ],
+    "cravats": [
+      "neckties"
+    ],
+    "crew necks": [
+      "sweatshirts"
+    ],
+    "crewnecks": [
+      "sweatshirts"
+    ],
+    "crop pants": [
+      "capris"
+    ],
+    "cropped cardigans": [
+      "shrugs"
+    ],
+    "cropped pants": [
+      "capris"
+    ],
+    "cuff bracelets": [
+      "cuff"
+    ],
+    "cufflinks": [
+      "links"
+    ],
+    "cuffs": [
+      "cuff"
+    ],
+    "dancing": [
+      "dance"
+    ],
+    "dangles": [
+      "dangle"
+    ],
+    "dangly earrings": [
+      "dangle"
+    ],
+    "day bags": [
+      "daypacks"
+    ],
+    "day packs": [
+      "daypacks"
+    ],
+    "daypack": [
+      "daypacks"
+    ],
+    "dealer boots": [
+      "chelsea"
+    ],
+    "denims": [
+      "jeans"
+    ],
+    "desert boots": [
+      "chukka"
+    ],
+    "document bags": [
+      "briefcases"
+    ],
+    "dress up outfits": [
+      "costumes"
+    ],
+    "dressing gowns": [
+      "robes"
+    ],
+    "drop earrings": [
+      "dangle"
+    ],
+    "duffle bags": [
+      "duffels"
+    ],
+    "dungarees": [
+      "jeans",
+      "overalls"
+    ],
+    "ear covers": [
+      "earmuffs"
+    ],
+    "ear hoops": [
+      "hoop"
+    ],
+    "ear muffs": [
+      "earmuffs"
+    ],
+    "ear plugs": [
+      "plugs"
+    ],
+    "ear rings": [
+      "earrings"
+    ],
+    "ear studs": [
+      "stud"
+    ],
+    "ear warmers": [
+      "earmuffs"
+    ],
+    "ensembles": [
+      "sets"
+    ],
+    "evening clutches": [
+      "clutches"
+    ],
+    "evening wear": [
+      "formal"
+    ],
+    "eyeglass frames": [
+      "frames"
+    ],
+    "face masks": [
+      "masks"
+    ],
+    "fancy dress": [
+      "costumes"
+    ],
+    "fanny packs": [
+      "packs"
+    ],
+    "fascinator hats": [
+      "fascinators"
+    ],
+    "fedora hats": [
+      "fedoras"
+    ],
+    "finger rings": [
+      "rings"
+    ],
+    "flat shoes": [
+      "flats"
+    ],
+    "fleece jackets": [
+      "fleece"
+    ],
+    "fleeces": [
+      "fleece"
+    ],
+    "flip flops": [
+      "flops"
+    ],
+    "footed pajamas": [
+      "footies"
+    ],
+    "formal wear": [
+      "formal"
+    ],
+    "formalwear": [
+      "formal"
+    ],
+    "frocks": [
+      "dresses"
+    ],
+    "futbol": [
+      "soccer"
+    ],
+    "galluses": [
+      "suspenders"
+    ],
+    "garments": [
+      "apparel"
+    ],
+    "gauges": [
+      "plugs"
+    ],
+    "gem stones": [
+      "gemstones"
+    ],
+    "gems": [
+      "gemstones"
+    ],
+    "gents": [
+      "men"
+    ],
+    "gilets": [
+      "vests"
+    ],
+    "glasses frames": [
+      "frames"
+    ],
+    "golf shirts": [
+      "polos"
+    ],
+    "gowns": [
+      "dresses"
+    ],
+    "greatcoats": [
+      "coats"
+    ],
+    "gridiron": [
+      "football"
+    ],
+    "gym clothes": [
+      "active"
+    ],
+    "gym duffels": [
+      "duffels"
+    ],
+    "gym shoes": [
+      "sneakers"
+    ],
+    "hair bands": [
+      "headbands"
+    ],
+    "hair fascinators": [
+      "fascinators"
+    ],
+    "hair pieces": [
+      "wigs"
+    ],
+    "hairpieces": [
+      "wigs"
+    ],
+    "handbags": [
+      "bags"
+    ],
+    "hankies": [
+      "handkerchiefs"
+    ],
+    "head bands": [
+      "headbands"
+    ],
+    "headgear": [
+      "hats",
+      "headwear"
+    ],
+    "headpieces": [
+      "fascinators"
+    ],
+    "henley shirts": [
+      "henleys"
+    ],
+    "henley tees": [
+      "henleys"
+    ],
+    "hillwalking": [
+      "trekking"
+    ],
+    "hip huggers": [
+      "hipsters"
+    ],
+    "hipster panties": [
+      "hipsters"
+    ],
+    "holdalls": [
+      "duffels"
+    ],
+    "hooded tops": [
+      "hoodies"
+    ],
+    "hoodys": [
+      "hoodies"
+    ],
+    "hoop earrings": [
+      "hoop"
+    ],
+    "hoops": [
+      "basketball",
+      "hoop"
+    ],
+    "hose": [
+      "tights"
+    ],
+    "house shoes": [
+      "slippers"
+    ],
+    "housecoats": [
+      "robes"
+    ],
+    "id bracelets": [
+      "identification"
+    ],
+    "infant": [
+      "baby"
+    ],
+    "infants": [
+      "baby"
+    ],
+    "jammies": [
+      "pajamas"
+    ],
+    "jandals": [
+      "flops"
+    ],
+    "jean pants": [
+      "jeans"
+    ],
+    "jewellery": [
+      "jewelry"
+    ],
+    "jewelry cabinets": [
+      "armoires"
+    ],
+    "jewelry cases": [
+      "boxes"
+    ],
+    "jewelry chests": [
+      "armoires"
+    ],
+    "jewels": [
+      "jewelry"
+    ],
+    "joggers": [
+      "sweatpants"
+    ],
+    "jogging": [
+      "running"
+    ],
+    "jogging suits": [
+      "tracksuits"
+    ],
+    "jump suits": [
+      "jumpsuits"
+    ],
+    "jumpers": [
+      "pullovers",
+      "sweaters"
+    ],
+    "kerchiefs": [
+      "bandanas"
+    ],
+    "key chains": [
+      "keychains"
+    ],
+    "key fobs": [
+      "keychains"
+    ],
+    "key rings": [
+      "keychains"
+    ],
+    "keyrings": [
+      "keychains"
+    ],
+    "kicks": [
+      "shoes"
+    ],
+    "knapsacks": [
+      "backpacks"
+    ],
+    "knickers": [
+      "panties"
+    ],
+    "knit caps": [
+      "beanies"
+    ],
+    "knits": [
+      "sweaters"
+    ],
+    "knitwear": [
+      "sweaters"
+    ],
+    "laces": [
+      "shoelaces"
+    ],
+    "ladies": [
+      "women"
+    ],
+    "lads": [
+      "boys"
+    ],
+    "lapel pins": [
+      "pins"
+    ],
+    "leggins": [
+      "leggings"
+    ],
+    "legwarmers": [
+      "warmers"
+    ],
+    "leotards": [
+      "bodysuits"
+    ],
+    "line bracelets": [
+      "tennis"
+    ],
+    "link bracelets": [
+      "link"
+    ],
+    "loafer shoes": [
+      "loafers"
+    ],
+    "locket necklaces": [
+      "lockets"
+    ],
+    "locket pendants": [
+      "lockets"
+    ],
+    "longline tops": [
+      "tunics"
+    ],
+    "lounge pants": [
+      "sweatpants"
+    ],
+    "mackintoshes": [
+      "raincoats"
+    ],
+    "macs": [
+      "raincoats"
+    ],
+    "mary jane shoes": [
+      "jane"
+    ],
+    "mary janes": [
+      "jane"
+    ],
+    "masquerade masks": [
+      "masks"
+    ],
+    "matching sets": [
+      "sets"
+    ],
+    "medallions": [
+      "pendants"
+    ],
+    "mens": [
+      "men"
+    ],
+    "menswear": [
+      "men"
+    ],
+    "military boots": [
+      "combat"
+    ],
+    "minimizer bras": [
+      "minimizers"
+    ],
+    "mitten gloves": [
+      "mittens"
+    ],
+    "mitts": [
+      "mittens"
+    ],
+    "moto": [
+      "motorcycle"
+    ],
+    "mufflers": [
+      "scarves"
+    ],
+    "mule shoes": [
+      "mules"
+    ],
+    "neck chains": [
+      "chains"
+    ],
+    "neck gaiter": [
+      "gaiters"
+    ],
+    "neck ties": [
+      "neckties"
+    ],
+    "neck tubes": [
+      "gaiters"
+    ],
+    "neck warmers": [
+      "gaiters"
+    ],
+    "neckerchiefs": [
+      "scarves"
+    ],
+    "neckwear": [
+      "neckties"
+    ],
+    "newborn": [
+      "baby"
+    ],
+    "night gowns": [
+      "nightgowns"
+    ],
+    "night shirts": [
+      "sleepshirts"
+    ],
+    "nightdresses": [
+      "chemises",
+      "nightgowns"
+    ],
+    "nighties": [
+      "chemises"
+    ],
+    "nylons": [
+      "hosiery"
+    ],
+    "onesies": [
+      "bodysuits"
+    ],
+    "open sweaters": [
+      "cardigans"
+    ],
+    "organisers": [
+      "organizers"
+    ],
+    "outfits": [
+      "sets"
+    ],
+    "overcoats": [
+      "coats"
+    ],
+    "oxford shoes": [
+      "oxfords"
+    ],
+    "pantyhose": [
+      "hosiery",
+      "tights"
+    ],
+    "parasols": [
+      "umbrellas"
+    ],
+    "parka coats": [
+      "parkas"
+    ],
+    "party dresses": [
+      "cocktail"
+    ],
+    "pashmina scarves": [
+      "pashminas"
+    ],
+    "pashmina shawls": [
+      "pashminas"
+    ],
+    "pashmina wraps": [
+      "pashminas"
+    ],
+    "passport holders": [
+      "covers"
+    ],
+    "pedal pushers": [
+      "capris"
+    ],
+    "pendant charms": [
+      "charms"
+    ],
+    "pendant necklaces": [
+      "pendants"
+    ],
+    "penny loafers": [
+      "loafers"
+    ],
+    "petticoats": [
+      "slips"
+    ],
+    "pinafores": [
+      "aprons"
+    ],
+    "pjs": [
+      "pajamas"
+    ],
+    "playsuits": [
+      "jumpsuits",
+      "rompers"
+    ],
+    "pocket squares": [
+      "handkerchiefs"
+    ],
+    "polo shirts": [
+      "polos"
+    ],
+    "polo tees": [
+      "polos"
+    ],
+    "precious stones": [
+      "gemstones"
+    ],
+    "pull over sweaters": [
+      "pullovers"
+    ],
+    "pump shoes": [
+      "pumps"
+    ],
+    "purses": [
+      "bags"
+    ],
+    "pyjamas": [
+      "pajamas"
+    ],
+    "rain jackets": [
+      "raincoats"
+    ],
+    "rolling luggage": [
+      "suitcases"
+    ],
+    "romper suits": [
+      "rompers"
+    ],
+    "rucksacks": [
+      "backpacks"
+    ],
+    "runners": [
+      "sneakers"
+    ],
+    "sabots": [
+      "clogs"
+    ],
+    "sashes": [
+      "belts"
+    ],
+    "satchel bags": [
+      "satchels"
+    ],
+    "scarfs": [
+      "scarves"
+    ],
+    "shades": [
+      "sunglasses"
+    ],
+    "shawls": [
+      "wraps"
+    ],
+    "shoe laces": [
+      "shoelaces"
+    ],
+    "shoe strings": [
+      "shoelaces"
+    ],
+    "shoe trees": [
+      "trees"
+    ],
+    "short pants": [
+      "shorts"
+    ],
+    "short trousers": [
+      "shorts"
+    ],
+    "shrug sweaters": [
+      "shrugs"
+    ],
+    "singlets": [
+      "tanks"
+    ],
+    "skate": [
+      "skateboarding"
+    ],
+    "ski masks": [
+      "balaclavas"
+    ],
+    "skirt": [
+      "skirts"
+    ],
+    "skirt shorts": [
+      "skorts"
+    ],
+    "skivvies": [
+      "underwear"
+    ],
+    "skull caps": [
+      "beanies"
+    ],
+    "slacks": [
+      "bottoms",
+      "pants"
+    ],
+    "sleep shirts": [
+      "sleepshirts"
+    ],
+    "sleepsuits": [
+      "footies"
+    ],
+    "slickers": [
+      "raincoats"
+    ],
+    "slide sandals": [
+      "slides"
+    ],
+    "sliders": [
+      "slides"
+    ],
+    "slip sandals": [
+      "slides"
+    ],
+    "slip shoes": [
+      "loafers"
+    ],
+    "slipovers": [
+      "pullovers"
+    ],
+    "snapbacks": [
+      "caps"
+    ],
+    "sneaks": [
+      "sneakers"
+    ],
+    "sox": [
+      "socks"
+    ],
+    "sport jackets": [
+      "blazers"
+    ],
+    "sport jerseys": [
+      "jerseys"
+    ],
+    "sport shoes": [
+      "athletic"
+    ],
+    "sportswear": [
+      "active"
+    ],
+    "stackable rings": [
+      "stacking"
+    ],
+    "stacker rings": [
+      "stacking"
+    ],
+    "stickpins": [
+      "pins"
+    ],
+    "stockings": [
+      "hosiery"
+    ],
+    "stoles": [
+      "wraps"
+    ],
+    "stones": [
+      "gemstones"
+    ],
+    "strand bracelets": [
+      "strand"
+    ],
+    "strand necklaces": [
+      "strands"
+    ],
+    "strap": [
+      "straps"
+    ],
+    "stretch bracelets": [
+      "stretch"
+    ],
+    "stretchy bracelets": [
+      "stretch"
+    ],
+    "stud earrings": [
+      "stud"
+    ],
+    "suit cases": [
+      "suitcases"
+    ],
+    "sun glasses": [
+      "sunglasses"
+    ],
+    "sun visors": [
+      "visors"
+    ],
+    "sunnies": [
+      "sunglasses"
+    ],
+    "sweat pants": [
+      "sweatpants"
+    ],
+    "sweat shirts": [
+      "sweatshirts"
+    ],
+    "sweat suits": [
+      "sweatsuits"
+    ],
+    "swim jammers": [
+      "jammers"
+    ],
+    "swim shorts": [
+      "trunks"
+    ],
+    "swim wear": [
+      "swimwear"
+    ],
+    "swimming trunks": [
+      "trunks"
+    ],
+    "tank shirts": [
+      "tanks"
+    ],
+    "team shirts": [
+      "jerseys"
+    ],
+    "tee shirts": [
+      "tees"
+    ],
+    "tennis bracelets": [
+      "tennis"
+    ],
+    "tennis shoes": [
+      "sneakers"
+    ],
+    "thermal layers": [
+      "layers"
+    ],
+    "thermals": [
+      "layers"
+    ],
+    "tie bars": [
+      "clips"
+    ],
+    "timepieces": [
+      "watches"
+    ],
+    "toboggans": [
+      "beanies"
+    ],
+    "top": [
+      "tops"
+    ],
+    "topcoats": [
+      "coats"
+    ],
+    "tote bags": [
+      "totes"
+    ],
+    "track pants": [
+      "sweatpants"
+    ],
+    "track suits": [
+      "sweatsuits"
+    ],
+    "travel bags": [
+      "luggage"
+    ],
+    "travel cases": [
+      "suitcases"
+    ],
+    "trilbies": [
+      "fedoras"
+    ],
+    "trilby hats": [
+      "fedoras"
+    ],
+    "trinket boxes": [
+      "boxes"
+    ],
+    "trinkets": [
+      "charms"
+    ],
+    "trousers": [
+      "bottoms",
+      "pants"
+    ],
+    "tshirts": [
+      "tees"
+    ],
+    "tunic tops": [
+      "tunics"
+    ],
+    "two piece": [
+      "bikinis"
+    ],
+    "under shirts": [
+      "undershirts"
+    ],
+    "underclothes": [
+      "underwear"
+    ],
+    "undergarments": [
+      "underwear"
+    ],
+    "underpants": [
+      "briefs"
+    ],
+    "underskirts": [
+      "slips"
+    ],
+    "underthings": [
+      "panties"
+    ],
+    "undies": [
+      "briefs"
+    ],
+    "vest tops": [
+      "tanks"
+    ],
+    "visor caps": [
+      "visors"
+    ],
+    "waist bags": [
+      "packs"
+    ],
+    "waist belts": [
+      "belts"
+    ],
+    "waist shapers": [
+      "cinchers"
+    ],
+    "waist trainers": [
+      "cinchers"
+    ],
+    "waistcoats": [
+      "vests"
+    ],
+    "warm up suits": [
+      "tracksuits"
+    ],
+    "waspies": [
+      "cinchers"
+    ],
+    "watch caps": [
+      "beanies"
+    ],
+    "watch straps": [
+      "bands"
+    ],
+    "wedge heels": [
+      "wedges"
+    ],
+    "wedge sandals": [
+      "wedges"
+    ],
+    "wedge shoes": [
+      "wedges"
+    ],
+    "wind jackets": [
+      "windbreakers"
+    ],
+    "windcheaters": [
+      "windbreakers"
+    ],
+    "womens": [
+      "women"
+    ],
+    "womenswear": [
+      "women"
+    ],
+    "workout clothes": [
+      "active"
+    ],
+    "workout shoes": [
+      "athletic"
+    ],
+    "wrap bracelets": [
+      "wrap"
+    ],
+    "wraparound bracelets": [
+      "wrap"
+    ],
+    "wrist bags": [
+      "wristlets"
+    ],
+    "wrist wallets": [
+      "wristlets"
+    ],
+    "wristbands": [
+      "bands",
+      "bracelets"
+    ],
+    "wristlet purses": [
+      "wristlets"
+    ],
+    "wristwatches": [
+      "watches"
+    ],
+    "yoga pants": [
+      "leggings"
+    ]
+  },
+  "payload_sha256": "be16b78f7c9a057ed0969e0ca0062b2b5a34135d0554cd028f9c21eba92e4bf6",
+  "schema_version": "techjam-v6-shelf-transform-v1",
+  "support": {
+    "aliases_in": 419,
+    "dropped": {
+      "audit_removal": 5,
+      "canonical_identical": 0,
+      "cap_per_head": 0,
+      "collision_multi_head": 0,
+      "collision_other_head": 0,
+      "empty_after_normalization": 0,
+      "too_long": 0,
+      "unknown_head": 0
+    },
+    "retained": 414
+  }
+}

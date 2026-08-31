@@ -1,0 +1,94 @@
+[
+  {
+    "split": "dev",
+    "turn_cost_in_mrr": 0.0667,
+    "attributes": [
+      {
+        "attribute": "brand",
+        "observations": 190,
+        "gain_median": 0.00265,
+        "gain_p90": 0.02598,
+        "gain_max": 0.06245,
+        "reduction_median": 0.9782,
+        "answerability_at_the_end": 0.167,
+        "share_paying_for_the_turn": 0.0
+      },
+      {
+        "attribute": "budget",
+        "observations": 94,
+        "gain_median": 0.00613,
+        "gain_p90": 0.02702,
+        "gain_max": 0.05112,
+        "reduction_median": 0.185,
+        "answerability_at_the_end": 0.5,
+        "share_paying_for_the_turn": 0.0
+      },
+      {
+        "attribute": "color",
+        "observations": 114,
+        "gain_median": 0.00071,
+        "gain_p90": 0.00625,
+        "gain_max": 0.03172,
+        "reduction_median": 0.2724,
+        "answerability_at_the_end": 0.333,
+        "share_paying_for_the_turn": 0.0
+      },
+      {
+        "attribute": "material",
+        "observations": 167,
+        "gain_median": 0.00566,
+        "gain_p90": 0.01671,
+        "gain_max": 0.0426,
+        "reduction_median": 0.3889,
+        "answerability_at_the_end": 0.833,
+        "share_paying_for_the_turn": 0.0
+      }
+    ]
+  },
+  {
+    "split": "holdout",
+    "turn_cost_in_mrr": 0.0667,
+    "attributes": [
+      {
+        "attribute": "brand",
+        "observations": 171,
+        "gain_median": 0.00199,
+        "gain_p90": 0.02182,
+        "gain_max": 0.05075,
+        "reduction_median": 0.9749,
+        "answerability_at_the_end": 0.143,
+        "share_paying_for_the_turn": 0.0
+      },
+      {
+        "attribute": "budget",
+        "observations": 93,
+        "gain_median": 0.00527,
+        "gain_p90": 0.02451,
+        "gain_max": 0.04605,
+        "reduction_median": 0.1939,
+        "answerability_at_the_end": 0.333,
+        "share_paying_for_the_turn": 0.0
+      },
+      {
+        "attribute": "color",
+        "observations": 115,
+        "gain_median": 0.00097,
+        "gain_p90": 0.00773,
+        "gain_max": 0.04573,
+        "reduction_median": 0.2943,
+        "answerability_at_the_end": 0.571,
+        "share_paying_for_the_turn": 0.0
+      },
+      {
+        "attribute": "material",
+        "observations": 143,
+        "gain_median": 0.00592,
+        "gain_p90": 0.01585,
+        "gain_max": 0.04505,
+        "reduction_median": 0.4229,
+        "answerability_at_the_end": 0.8,
+        "share_paying_for_the_turn": 0.0
+      }
+    ]
+  }
+]

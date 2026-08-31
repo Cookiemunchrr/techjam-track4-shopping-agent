@@ -1,0 +1,10 @@
+{
+  "clean": {
+    "sample_count": 200,
+    "retrieval_hit_rate_at_10": 1.0,
+    "retrieval_mrr": 0.674254,
+    "retrieval_mttc": 1.305,
+    "efficiency": 0.9695,
+    "shadow_score": 0.896176
+  }
+}

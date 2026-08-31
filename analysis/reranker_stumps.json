@@ -1,0 +1,363 @@
+{
+  "question": "More training data buys nothing (reranker_experiment.json). A batch of six new features buys nothing (reranker_features.json). Is the third lever -- the model class -- where the remaining ordering headroom is? A linear model cannot say 'popularity counts for less once the shopper has named a material', however its weights are set.",
+  "verdict": "No. Declined. Boosted trees fit dev harder than the linear model and generalise worse, and nothing they do is significant on holdout at any blend. The one significant result on the table is a dev-only gain, which is the overfitting showing up as an apparent win.",
+  "model": "Boosted depth-1 or depth-2 regression trees under the same pairwise logistic objective the linear model uses -- RankNet with trees. Each round fits one tree by least squares to the per-candidate gradient of the pairwise loss and adds it at a learning rate. Pure stdlib; inference is a handful of comparisons per candidate, so serving cost was never the objection.",
+  "the_bar": "GATES-R with (a) strengthened, as the plan specified: a tree model must beat the LINEAR model on holdout snapshot MRR with an interval excluding zero. Not the weighted sum, and not on dev.",
+  "linear_baseline": {
+    "cv_pairwise_accuracy": 0.92225,
+    "dev_pairwise_accuracy": 0.92893,
+    "holdout_pairwise_accuracy": 0.90325,
+    "dev_minus_holdout": 0.0257
+  },
+  "runs": [
+    {
+      "run": "depth 1, 400 rounds offered",
+      "depth": 1,
+      "learning_rate": 0.1,
+      "rounds_offered": 400,
+      "rounds_chosen_by_grouped_cv": 390,
+      "cv_pairwise_accuracy": 0.87626,
+      "dev_pairwise_accuracy": 0.92497,
+      "holdout_pairwise_accuracy": 0.87957,
+      "dev_minus_holdout": 0.0454,
+      "blend_sweep": [
+        {
+          "blend": 0.001,
+          "dev": [
+            -0.01894,
+            -0.04397,
+            0.00361,
+            "within noise"
+          ],
+          "holdout": [
+            -0.02935,
+            -0.05521,
+            -0.00873,
+            "significant"
+          ]
+        },
+        {
+          "blend": 0.002,
+          "dev": [
+            -0.01392,
+            -0.03815,
+            0.00667,
+            "within noise"
+          ],
+          "holdout": [
+            -0.02795,
+            -0.05305,
+            -0.0077,
+            "significant"
+          ]
+        },
+        {
+          "blend": 0.005,
+          "dev": [
+            -0.01301,
+            -0.03675,
+            0.0077,
+            "within noise"
+          ],
+          "holdout": [
+            -0.02433,
+            -0.04927,
+            -0.00522,
+            "significant"
+          ]
+        },
+        {
+          "blend": 0.01,
+          "dev": [
+            -0.01841,
+            -0.04028,
+            -0.0005,
+            "significant"
+          ],
+          "holdout": [
+            -0.02409,
+            -0.0488,
+            -0.00504,
+            "significant"
+          ]
+        },
+        {
+          "blend": 0.02,
+          "dev": [
+            -0.02011,
+            -0.04083,
+            -0.00584,
+            "significant"
+          ],
+          "holdout": [
+            -0.00893,
+            -0.02851,
+            0.00917,
+            "within noise"
+          ]
+        },
+        {
+          "blend": 0.05,
+          "dev": [
+            -0.00643,
+            -0.02138,
+            0.0059,
+            "within noise"
+          ],
+          "holdout": [
+            -0.00417,
+            -0.0201,
+            0.01187,
+            "within noise"
+          ]
+        },
+        {
+          "blend": 0.1,
+          "dev": [
+            0.00102,
+            -0.01641,
+            0.0163,
+            "within noise"
+          ],
+          "holdout": [
+            0.00702,
+            -0.00864,
+            0.02412,
+            "within noise"
+          ]
+        },
+        {
+          "blend": 0.2,
+          "dev": [
+            0.00308,
+            -0.01634,
+            0.0223,
+            "within noise"
+          ],
+          "holdout": [
+            0.00184,
+            -0.0196,
+            0.02454,
+            "within noise"
+          ]
+        },
+        {
+          "blend": 0.5,
+          "dev": [
+            -0.0235,
+            -0.05506,
+            0.00403,
+            "within noise"
+          ],
+          "holdout": [
+            -0.00835,
+            -0.03432,
+            0.02013,
+            "within noise"
+          ]
+        }
+      ]
+    },
+    {
+      "run": "depth 1, 1500 rounds offered",
+      "depth": 1,
+      "learning_rate": 0.1,
+      "rounds_offered": 1500,
+      "rounds_chosen_by_grouped_cv": 460,
+      "cv_pairwise_accuracy": 0.87862,
+      "dev_pairwise_accuracy": 0.92677,
+      "holdout_pairwise_accuracy": 0.88104,
+      "dev_minus_holdout": 0.0457,
+      "blend_sweep": [
+        {
+          "blend": 0.02,
+          "dev": [
+            -0.02011,
+            -0.04083,
+            -0.00584,
+            "significant"
+          ],
+          "holdout": [
+            -0.00885,
+            -0.02837,
+            0.00924,
+            "within noise"
+          ]
+        },
+        {
+          "blend": 0.05,
+          "dev": [
+            -0.00553,
+            -0.02052,
+            0.00676,
+            "within noise"
+          ],
+          "holdout": [
+            -0.00432,
+            -0.02039,
+            0.01155,
+            "within noise"
+          ]
+        },
+        {
+          "blend": 0.1,
+          "dev": [
+            0.00104,
+            -0.01637,
+            0.01631,
+            "within noise"
+          ],
+          "holdout": [
+            0.00636,
+            -0.00918,
+            0.0233,
+            "within noise"
+          ]
+        },
+        {
+          "blend": 0.2,
+          "dev": [
+            0.00464,
+            -0.01553,
+            0.02505,
+            "within noise"
+          ],
+          "holdout": [
+            0.00187,
+            -0.01956,
+            0.02456,
+            "within noise"
+          ]
+        },
+        {
+          "blend": 0.5,
+          "dev": [
+            -0.02058,
+            -0.05327,
+            0.00778,
+            "within noise"
+          ],
+          "holdout": [
+            -0.0091,
+            -0.03478,
+            0.01973,
+            "within noise"
+          ]
+        }
+      ]
+    },
+    {
+      "run": "depth 2, 400 rounds offered",
+      "depth": 2,
+      "learning_rate": 0.1,
+      "rounds_offered": 400,
+      "rounds_chosen_by_grouped_cv": 300,
+      "cv_pairwise_accuracy": 0.89208,
+      "dev_pairwise_accuracy": 0.96168,
+      "holdout_pairwise_accuracy": 0.88948,
+      "dev_minus_holdout": 0.0722,
+      "blend_sweep": [
+        {
+          "blend": 0.01,
+          "dev": [
+            -0.00874,
+            -0.03165,
+            0.01362,
+            "within noise"
+          ],
+          "holdout": [
+            -0.02501,
+            -0.04956,
+            -0.00589,
+            "significant"
+          ]
+        },
+        {
+          "blend": 0.02,
+          "dev": [
+            0.00233,
+            -0.01523,
+            0.02198,
+            "within noise"
+          ],
+          "holdout": [
+            -0.01482,
+            -0.03619,
+            0.00054,
+            "within noise"
+          ]
+        },
+        {
+          "blend": 0.05,
+          "dev": [
+            0.01322,
+            -0.00412,
+            0.03174,
+            "within noise"
+          ],
+          "holdout": [
+            -0.0021,
+            -0.02197,
+            0.01627,
+            "within noise"
+          ]
+        },
+        {
+          "blend": 0.1,
+          "dev": [
+            0.02009,
+            -0.00122,
+            0.04414,
+            "within noise"
+          ],
+          "holdout": [
+            0.00786,
+            -0.01189,
+            0.02962,
+            "within noise"
+          ]
+        },
+        {
+          "blend": 0.2,
+          "dev": [
+            0.03386,
+            0.00795,
+            0.06297,
+            "significant"
+          ],
+          "holdout": [
+            0.00423,
+            -0.02197,
+            0.03275,
+            "within noise"
+          ]
+        },
+        {
+          "blend": 0.5,
+          "dev": [
+            0.02955,
+            -0.00067,
+            0.06142,
+            "within noise"
+          ],
+          "holdout": [
+            -0.01198,
+            -0.03822,
+            0.01765,
+            "within noise"
+          ]
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "Depth 1 is not undertrained. Offered 1500 rounds, grouped CV picked 460 and the curve plateaued at 0.8786 pairwise accuracy -- below the linear model's 0.9223. Boosted stumps converge to a worse ranker on this data, they do not merely run out of budget.",
+    "Depth 2 shows the overfit directly. It reaches 0.9617 pairwise accuracy on dev, well above the linear model's 0.9289, and 0.8895 on holdout, below the linear model's 0.9032. The dev-to-holdout gap is 0.0722 for the trees against 0.0257 for the linear model.",
+    "That gap is exactly what shows up in the snapshot MRR sweep. Depth 2 at blend 0.2 gains +0.0339 [+0.0080, +0.0630] on dev -- significant, and the only significant positive on the whole table -- while holdout gives +0.0042 [-0.0220, +0.0328]. A blend chosen on dev, as the shipped procedure requires, would pick exactly that blend and buy nothing.",
+    "Several blends are significantly NEGATIVE on holdout (depth 1 at 0.001-0.01, depth 2 at 0.01), which is what a model that has memorised its training split does when it is allowed to argue quietly with a better one.",
+    "148 snapshots and 5,558 comparisons is thin for trees and this is what thin looks like. It is not a reason to get more data: the ceiling probe already showed that fitting on the evaluation sessions themselves buys nothing for the linear model, so the sessions are not the missing ingredient for it either."
+  ],
+  "decision": "Declined; nothing shipped, and src/ is untouched. The linear model stays: it is simpler, its fifteen weights are readable, its asset is fifteen numbers, and explainability is a judged criterion rather than a preference. tools/rerank_stumps.py stays so the result is reproducible and so the next person does not have to rediscover it.",
+  "what_this_establishes": "All three levers on this reranker are now measured and closed -- not the data, not the obvious next features, not an interaction-capable model class. The remaining official headroom on this harness is not in ordering, whatever the arithmetic of MRR 0.773 suggests. That is a result about this evaluation set as much as about this model: the targets are real 5-core purchases sitting at the 99.3rd popularity percentile of their own shelves, and a ranker that knows the shelf and the prior is already close to what the data can distinguish.",
+  "reproduce": "python3 -m tools.rerank_stumps --depth 2 --rounds 400"
+}

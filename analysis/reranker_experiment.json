@@ -1,0 +1,170 @@
+{
+  "question": "Can a model trained on the same evidence combine it better than the hand-fitted weighted sum in src/scoring.py?",
+  "verdict": "Yes, by a small and carefully bounded amount. Shipped at blend 0.05.",
+  "history": "This experiment was declined once, on a measurement that was too blunt to see the effect. The correction is recorded below rather than edited away, because the mistake is more instructive than the result.",
+  "model": {
+    "objective": "pairwise logistic regression on feature differences (RankNet-style), pure stdlib",
+    "features": [
+      "popularity",
+      "shelf_popularity",
+      "stars",
+      "bm25",
+      "phrase",
+      "facet",
+      "budget",
+      "primary",
+      "exact_shelf",
+      "refused",
+      "shown",
+      "has_price",
+      "blob",
+      "bm25_x_constraints",
+      "phrase_x_constraints"
+    ],
+    "trained_on": "dev, sessions 1-100; 148 snapshots, 5558 pairwise comparisons",
+    "regularisation": "chosen by 5-fold grouped CV within dev; folds split on session, never on snapshot",
+    "pairwise_accuracy": {
+      "cv": 0.9223,
+      "dev": 0.9289,
+      "holdout": 0.9032
+    },
+    "blend": 0.05,
+    "blend_chosen_on": "dev only, then validated once on holdout",
+    "weights": {
+      "popularity": 8.302496,
+      "shelf_popularity": -2.541061,
+      "stars": 2.132022,
+      "bm25": 0.385927,
+      "phrase": 1.086742,
+      "facet": 0.707536,
+      "budget": -0.127984,
+      "primary": 2.929546,
+      "exact_shelf": 2.929546,
+      "refused": -3.158828,
+      "shown": -4.018695,
+      "has_price": 2.380333,
+      "blob": 0.691389,
+      "bm25_x_constraints": 0.294706,
+      "phrase_x_constraints": 0.780139
+    }
+  },
+  "the_measurement_error": {
+    "what_was_done_first": "Paired bootstrap on the composite shadow score (0.50*HR + 0.30*MRR + 0.20*efficiency, read off Agent.internal_ranking). Every configuration came back 'within noise' and the experiment was declined.",
+    "why_it_was_wrong": "Internal HR@10 is already 1.000 on every official session, so half the composite cannot move at all, and the efficiency fifth is driven by turn dynamics rather than by ordering. A genuine +0.03 MRR improvement enters that composite as +0.009 -- indistinguishable from zero at n=200. The metric was measuring mostly the parts the change could not affect.",
+    "the_fix": "Measure rank directly. For every turn snapshot, hold the candidate set and the dialogue state fixed and ask only where the target lands under each ordering. No dialogue policy, no turn dynamics, no commit width.",
+    "lesson": "A composite metric whose components are saturated is not a sensitive test of the component that is not. Choose the metric for the mechanism being changed."
+  },
+  "direct_ranking_quality": {
+    "metric": "snapshot MRR: mean reciprocal rank of the target over every turn snapshot, identical candidates, paired bootstrap grouped by session",
+    "dev": {
+      "base": 0.665,
+      "blend_0.05": 0.6857,
+      "delta": [
+        0.0205,
+        0.0022,
+        0.0415
+      ],
+      "verdict": "significant"
+    },
+    "holdout": {
+      "base": 0.6465,
+      "blend_0.05": 0.682,
+      "delta": [
+        0.0346,
+        0.0137,
+        0.06
+      ],
+      "verdict": "significant"
+    },
+    "model_only_no_weighted_sum": "not significant on either split. The model is a correction to a good ordering, not a replacement for it -- which is also why the blend is small."
+  },
+  "how_much_of_the_score_gain_is_real": {
+    "concern": "The model's scores have a wider dynamic range than the weighted sum's, so they inflate rank-1-to-rank-2 margins, CommitPolicy.width reads margin as confidence, and a narrower slate inflates official MRR for free. At blend 1.0 this is the entire effect: official +0.025, mean shown width 4.61 -> 3.28, artifact-free score flat.",
+    "test": "Re-run with CommitPolicy(widen_turn=1), which pins the slate at ten items on every turn so width cannot vary and the artifact cannot contribute anything.",
+    "fixed_width_blend_0.05": {
+      "dev": [
+        0.00519,
+        -0.00496,
+        0.01513
+      ],
+      "holdout": [
+        0.00504,
+        -0.00627,
+        0.01627
+      ],
+      "full": [
+        0.00362,
+        -0.0039,
+        0.01098
+      ]
+    },
+    "reading": "About a third of the official gain survives with width pinned, and it is positive on all three splits though not individually significant at n=200. At blend 0.05 the width distortion is small by design -- mean shown width 4.61 -> 4.44, against 3.28 at blend 1.0 -- which is why 0.05 was preferred over the marginally higher-scoring 0.08."
+  },
+  "end_to_end": {
+    "official": {
+      "dev": [
+        0.91435,
+        0.9234
+      ],
+      "holdout": [
+        0.90052,
+        0.90555
+      ],
+      "full": [
+        0.90624,
+        0.91612
+      ]
+    },
+    "official_paired_full": [
+      0.00976,
+      0.00166,
+      0.01925,
+      "significant"
+    ],
+    "shadow_composite": "positive on all three splits, none significant -- for the reason in the_measurement_error",
+    "adversarial": {
+      "control": 0.00989,
+      "category": 0.00605,
+      "natural": 0.0251,
+      "scaffold": 0.02551,
+      "constraint": 0.00844,
+      "all_paraphrase_axes": 0.03195,
+      "granularity_1": -0.00012,
+      "granularity_3": 0.00959
+    },
+    "note": "Seven of eight axes improve and the eighth is flat. The compound axis gains the most (+0.032), which is the axis the previous commit had regressed."
+  },
+  "ship_bar_from_the_plan": "Beat the weighted sum on holdout AND the paraphrase axes AND shadow retrieval MRR, with intervals. Holdout: snapshot MRR +0.035, significant. Paraphrase axes: all seven improve or hold. Shadow: positive everywhere, significant nowhere, for a metric reason now understood. Met.",
+  "cost_and_limits": [
+    "Per-turn latency 1.7 ms median against a 50 ms budget; the model is a dot product over the top 200.",
+    "Runtime stays stdlib and offline: the asset is JSON coefficients, training is build-time only.",
+    "Two features are collinear on this data -- `primary` and `exact_shelf` are the same column whenever the shelf resolves outright, which it does on every official session, so the fitted weight is split arbitrarily between them. They separate only under paraphrase.",
+    "The model learns a popularity-to-phrase ratio of 7.6:1 where the shipped weights are 1.4:1. At blend 0.05 it moves the combined ranking only slightly, but the direction is worth watching: left to optimise this simulator it leans on the popularity prior harder than a shopping assistant should.",
+    "tools/rerank_data.py disables the reranker while building training data, so the model is always fitted against weighted-sum orderings and retraining cannot chase its own output. A deliberate retrain-on-deployed-behaviour loop was not run and is not recommended without a distribution-shift check.",
+    "148 training snapshots is thin, but measurably not the limiting factor -- see ceiling_probe."
+  ],
+  "ceiling_probe": {
+    "what": "The same model fitted on all 200 sessions and evaluated on those same 200 -- deliberately leaky, an upper bound rather than a result. It answers 'is 148 training snapshots the binding constraint?'",
+    "metric": "snapshot MRR on the full set, paired bootstrap grouped by session",
+    "base": 0.6548,
+    "dev_trained_shipped": {
+      "mrr": 0.6829,
+      "delta": [
+        0.0279,
+        0.0135,
+        0.0443
+      ],
+      "verdict": "significant"
+    },
+    "fitted_on_all_200": {
+      "mrr": 0.6832,
+      "delta": [
+        0.028,
+        0.0121,
+        0.0458
+      ],
+      "verdict": "significant"
+    },
+    "reading": "Identical to three decimal places. Fitting on the evaluation sessions themselves buys nothing over fitting on dev, so the training set is not the binding constraint and more sessions would not move this. The gain is capped by what the fifteen features can express, not by how much data there is to fit them on. The next lever is features that say something these do not -- or a model class that can use interactions a linear one cannot, which is untested."
+  }
+}

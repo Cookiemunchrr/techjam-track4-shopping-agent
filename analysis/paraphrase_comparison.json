@@ -1,0 +1,63 @@
+{
+  "honest_src_agent": [
+    {
+      "paraphrase_level": 0,
+      "technical_score": 0.91597,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.83556,
+      "mttc": 2.485
+    },
+    {
+      "paraphrase_level": 1,
+      "technical_score": 0.9099,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.82667,
+      "mttc": 2.655
+    },
+    {
+      "paraphrase_level": 2,
+      "technical_score": 0.9065,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.81865,
+      "mttc": 2.705
+    },
+    {
+      "paraphrase_level": 3,
+      "technical_score": 0.90837,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.8269,
+      "mttc": 2.735
+    }
+  ],
+  "exploit_probe_agent": [
+    {
+      "level": 0,
+      "technical_score": 0.882978,
+      "hit_rate_at_10": 0.93,
+      "mrr": 0.905595,
+      "mttc": 3.685
+    },
+    {
+      "level": 1,
+      "technical_score": 0.064314,
+      "hit_rate_at_10": 0.07,
+      "mrr": 0.062381,
+      "mttc": 10.47
+    },
+    {
+      "level": 2,
+      "technical_score": 0.04095,
+      "hit_rate_at_10": 0.045,
+      "mrr": 0.0425,
+      "mttc": 10.715
+    },
+    {
+      "level": 3,
+      "technical_score": 0.02695,
+      "hit_rate_at_10": 0.03,
+      "mrr": 0.025833,
+      "mttc": 10.79
+    }
+  ],
+  "note": "Identical harness, identical sessions. Only the words reaching the agent change."
+}

@@ -1,0 +1,84 @@
+{
+  "question": "Can the primary shelf be re-elected from accumulated constraint evidence?",
+  "bench": "tools/shelfbench.py, 240 sessions over 170 near-duplicate shelf pairs, at the revision that opened with the shelves' shared *stems*. A later fix opens with their shared surface words instead (a stemmer artifact is not an utterance), which raises every absolute number here by roughly 0.07 hit rate. The comparisons between variants are unaffected -- all three were measured against the same bench on the same day -- and the conclusion is unchanged: see analysis/shelfbench_ablate.json and _realistic.json for the corrected figures on the shipped agent.",
+  "variants": {
+    "incumbent_static_boost": {
+      "description": "PRIMARY_BOOST * UNSURE_BOOST_SCALE (0.6) on the retrieval-rank-0 shelf, 0 elsewhere",
+      "shelfbench": {
+        "hit_rate_at_10": 0.558,
+        "mrr": 0.3434,
+        "mttc": 6.4
+      },
+      "adversarial": {
+        "control": 0.89648,
+        "category": 0.74494,
+        "scaffold": 0.81038,
+        "all_axes": 0.6401
+      }
+    },
+    "argmax_election_margin_scaled": {
+      "description": "elect the argmax shelf by top-25 evidence mass, boost scaled by relative margin",
+      "shelfbench": {
+        "hit_rate_at_10": 0.525,
+        "mrr": 0.3251,
+        "mttc": 6.64
+      },
+      "shelf_top1_accuracy": 0.205,
+      "verdict": "rejected: improved the proxy, lost the item"
+    },
+    "shelf_posterior": {
+      "description": "softmax over z-scored evidence against a 1/(4+rank) retrieval prior; PRIMARY_BOOST split by posterior",
+      "shelfbench": {
+        "hit_rate_at_10": 0.558,
+        "mrr": 0.3408,
+        "mttc": 6.4
+      },
+      "shelf_top1_accuracy": 0.2542,
+      "adversarial": {
+        "control": 0.89648,
+        "category": 0.73598,
+        "scaffold": 0.80241,
+        "all_axes": 0.59791
+      },
+      "verdict": "rejected: a wash on the bench, -0.009 category / -0.042 all-axes"
+    }
+  },
+  "diagnostics": {
+    "public_sessions_taking_the_hedged_path": "0 / 200",
+    "target_shelf_present_in_hedge": 0.753,
+    "target_in_turn1_pool": 0.787,
+    "retrieval_rank0_shelf_correct": 0.176,
+    "oracle_shelf_known": {
+      "hit_rate_at_10": 0.771,
+      "mrr": 0.3841
+    },
+    "posterior_top1_by_turn": {
+      "1": 0.231,
+      "2": 0.169,
+      "3": 0.213,
+      "4": 0.149,
+      "5": 0.118
+    },
+    "posterior_max_probability_median_by_turn": {
+      "1": 0.346,
+      "2": 0.325,
+      "3": 0.345,
+      "4": 0.332,
+      "5": 0.321
+    },
+    "target_within_own_shelf_rank_le10_by_turn": {
+      "1": 0.308,
+      "2": 0.231,
+      "3": 0.626,
+      "4": 0.503,
+      "5": 0.493
+    },
+    "evidence_monotonicity_turn1_to_turn2": {
+      "better": 0,
+      "same": 112,
+      "worse": 8,
+      "note": "all 8 regressions are one-rank drifts from slot decay with identical slot sets, not new evidence scoring against the target"
+    }
+  },
+  "conclusion": "Near-duplicate shelves hold genuinely similar products, so product evidence cannot separate them. The posterior does not sharpen across five turns of accumulating constraints (max P stays ~0.33, top-1 stays ~0.15-0.23). Shelf identity is worth +0.217 hit rate when known, and it is not inferable. The information is in the user, not in the catalog."
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "techjam-v8-w2-llm-stage-v1",
+  "plan": "IMPROVEMENT_PLAN_V8.txt W2",
+  "what_exists_now": "src/llm_rank.py -- a runtime LLM semantic ranking stage, off by default. Activation requires BOTH TECHJAM_LLM_RERANK=1 and AIAND_API_KEY; absent either, agent.py never imports the module (guarded at the call site) and the module itself imports os and nothing else, so the operational AST scan over src/ sees no network surface. The HTTP client and ballot parsing are shared with the D11 probe in tools/llm_client.py (extracted, not copied; the probe's tests stay green).",
+  "behaviour_when_active": "top-20 window of the post-linear-reranker list, position-credit blend at 0.05 (the D11 sweep's least-bad weight, declared not tunable), turns 1-4 only (late turns decide and are not risked), per-call timeout 30 s, and a TOTAL fallback: missing key, network error, timeout, malformed reply or empty content each return the incoming linear order unchanged.",
+  "why_off_by_default": "docs/submission_rules.md obliges disclosure, not offline-ness. The disclosure this ships is the strongest available: the LLM stage exists and runs, the stdlib linear reranker is the declared offline fallback, and the fallback is the default because the ordering was measured and lost (D11: best blend +0.0025 dev / -0.0061 holdout; raw -0.172 / -0.249).",
+  "default_path_proof": "public score 0.916125 and transcript 7c30023e3b8f951d35f8a449a066cfff45f8995d8d9994142e0e5929f8958d04 re-derived with AIAND_API_KEY present in the environment and TECHJAM_LLM_RERANK unset: the two-variable guard holds and the scored path is untouched BY CONSTRUCTION (the harness sets neither variable).",
+  "fallback_matrix": "tests/test_llm_stage.py: (a) default construction imports neither the stage nor the client, across four env shapes including key-present-flag-absent; (b) flags + stubbed transport: the stage calls the model with the session's candidates at temperature 0, and a within-blend pair is genuinely reordered; (c) network error, timeout, malformed reply and empty content each return the exact linear order; (d) the timeout is set on every call and late turns never call.",
+  "live_demo_run": {
+    "date": "2026-08-30",
+    "scope": "first 5 dev sessions, flag ON, real calls (moonshotai/kimi-k3 via AI&)",
+    "llm_calls": 10,
+    "answered": 10,
+    "fallbacks": 0,
+    "prompt_tokens": 8128,
+    "completion_tokens": 17848,
+    "score_with_stage": 0.886,
+    "score_without_stage_same_sessions": 0.886,
+    "note": "the stage executed end to end and changed nothing measurable on the demo window -- the D11 finding again. Tokens are BUILD/DEMO tokens and are never folded into the 0 prompt / 0 completion scoring claim."
+  },
+  "verdict": "shipped: Pillar I's named stage is real code that runs, opt-in, with a total tested fallback and a measured reason (D11) for not being the default"
+}

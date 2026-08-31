@@ -1,0 +1,48 @@
+MIT License
+
+Copyright (c) 2026 the authors of this TikTok TechJam 2026 Track 4 submission
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+SCOPE OF THIS LICENSE
+
+This license covers only the code, tests, tooling, and documentation authored
+by this submission's team.
+
+It does NOT cover, and no rights are granted here to:
+
+  * The competition catalog (`catalog.jsonl.gz`, `data/catalog.jsonl`) and any
+    product text, metadata, or identifiers derived from it. That data is
+    derived from Amazon Reviews 2023 (McAuley Lab, UCSD) and is redistributed
+    by the competition organizer under the source dataset's terms. See
+    DATA_ATTRIBUTION.md. Obtain it from the organizer's participant-kit
+    release, not from this repository.
+
+  * Organizer-authored material retained here for reproducibility, including
+    `docs/competition_specification.md`, `docs/submission_rules.md`,
+    `docs/agent_api_contract.json`, `docs/evaluation_config.json`,
+    `evaluator/`, and `starter/agent_baseline.py`. Those remain the property
+    of the competition organizer and are included unmodified.
+
+  * Generated assets under `assets/` and `analysis/` to the extent they encode
+    catalog content. They are mined from the organizer's catalog and inherit
+    its terms; each carries a provenance manifest and is regenerable from the
+    frozen catalog with one command.

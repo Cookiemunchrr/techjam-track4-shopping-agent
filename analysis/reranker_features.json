@@ -1,0 +1,677 @@
+{
+  "question": "The data ceiling is established (analysis/reranker_experiment.json, ceiling_probe): more training sessions buy nothing, so the fifteen features bind. Do six new features -- including one expressing evidence AGAINST a candidate, which no reweighting of the fifteen can fake -- move the ordering?",
+  "verdict": "No. Declined in full. Nothing clears the ship bar on any gate, and the compound paraphrase axis -- the private-set exposure -- moves the wrong way. The feature ceiling now sits one level above the data ceiling.",
+  "what_was_built": {
+    "facet_disagreement_material / facet_disagreement_color": "1.0 when the product's STRICT facet set for the attribute is non-empty and disjoint from the requested value set. Strict, so prose that mentions leather is not a leather claim; non-empty, so a listing that says nothing is uncertain rather than contradicting. This is the one proposal the weighted sum cannot imitate: scoring zero for 'says nothing' and zero for 'says the opposite' is the same zero.",
+    "constraint_coverage": "Share of the shopper's active positive constraints for which every content word appears in the product's text. Asks how many of the things you said it satisfies, where bm25 asks how much lexical mass matched.",
+    "shelf_lexical_rank": "Fraction of its own shelf-mates in the pool the candidate beats on BM25. A rank, not a score: raw BM25 is confounded across shelves by text length and shelf size. Ties share a value so a turn with nothing said contributes a constant rather than alphabetical noise.",
+    "phrase_in_title": "The phrase term computed against the product title alone. The shipped phrase term is field-blind, so a quote landing in marketing prose scores as much as one in the name.",
+    "price_percentile_in_shelf": "Percentile among PRICED shelf-mates, 0.5 when unpriced -- neutral, the same choice Scorer._budget makes for the same reason."
+  },
+  "method": "Rebuilt the training set through src/features.py (the same function the server calls; tests/test_features.py pinned training-serving parity on real snapshots), retrained on dev with grouped 5-fold CV for lambda, and scored every subset by snapshot MRR against THE SHIPPED MODEL rather than against the weighted sum. Add-one asks whether a feature carries anything; drop-one asks whether it carries anything the others do not.",
+  "control": "The fifteen shipped features, retrained here, reproduce the committed asset exactly: delta +0.0000 with a zero-width interval on both splits. Every other row on the table is measured against a pipeline that has been shown to be the shipped one.",
+  "ablation": [
+    {
+      "config": "shipped 15 (control)",
+      "cv_pairwise_accuracy": 0.92225,
+      "dev_snapshot_mrr": 0.68569,
+      "dev_delta_vs_shipped": 0.0,
+      "dev_ci95": [
+        0.0,
+        0.0
+      ],
+      "holdout_snapshot_mrr": 0.68006,
+      "holdout_delta_vs_shipped": 0.0,
+      "holdout_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "config": "all appended",
+      "cv_pairwise_accuracy": 0.9242,
+      "dev_snapshot_mrr": 0.6986,
+      "dev_delta_vs_shipped": 0.0123,
+      "dev_ci95": [
+        -0.00197,
+        0.03218
+      ],
+      "holdout_snapshot_mrr": 0.6804,
+      "holdout_delta_vs_shipped": -0.00039,
+      "holdout_ci95": [
+        -0.01857,
+        0.02023
+      ]
+    },
+    {
+      "config": "+ facet_disagreement_material",
+      "cv_pairwise_accuracy": 0.92262,
+      "dev_snapshot_mrr": 0.68569,
+      "dev_delta_vs_shipped": 0.0,
+      "dev_ci95": [
+        0.0,
+        0.0
+      ],
+      "holdout_snapshot_mrr": 0.68006,
+      "holdout_delta_vs_shipped": 0.0,
+      "holdout_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "config": "+ facet_disagreement_color",
+      "cv_pairwise_accuracy": 0.92225,
+      "dev_snapshot_mrr": 0.68569,
+      "dev_delta_vs_shipped": 0.0,
+      "dev_ci95": [
+        0.0,
+        0.0
+      ],
+      "holdout_snapshot_mrr": 0.68006,
+      "holdout_delta_vs_shipped": 0.0,
+      "holdout_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "config": "+ constraint_coverage",
+      "cv_pairwise_accuracy": 0.92542,
+      "dev_snapshot_mrr": 0.69883,
+      "dev_delta_vs_shipped": 0.01236,
+      "dev_ci95": [
+        -0.00098,
+        0.03216
+      ],
+      "holdout_snapshot_mrr": 0.6834,
+      "holdout_delta_vs_shipped": 0.00265,
+      "holdout_ci95": [
+        -0.01406,
+        0.02304
+      ]
+    },
+    {
+      "config": "+ shelf_lexical_rank",
+      "cv_pairwise_accuracy": 0.91883,
+      "dev_snapshot_mrr": 0.6908,
+      "dev_delta_vs_shipped": 0.00445,
+      "dev_ci95": [
+        -0.00437,
+        0.0174
+      ],
+      "holdout_snapshot_mrr": 0.67885,
+      "holdout_delta_vs_shipped": -0.00079,
+      "holdout_ci95": [
+        -0.01442,
+        0.00894
+      ]
+    },
+    {
+      "config": "+ phrase_in_title",
+      "cv_pairwise_accuracy": 0.91916,
+      "dev_snapshot_mrr": 0.68568,
+      "dev_delta_vs_shipped": -2e-05,
+      "dev_ci95": [
+        -5e-05,
+        0.0
+      ],
+      "holdout_snapshot_mrr": 0.67628,
+      "holdout_delta_vs_shipped": -0.00374,
+      "holdout_ci95": [
+        -0.01051,
+        3e-05
+      ]
+    },
+    {
+      "config": "+ price_percentile_in_shelf",
+      "cv_pairwise_accuracy": 0.91504,
+      "dev_snapshot_mrr": 0.68613,
+      "dev_delta_vs_shipped": 0.00029,
+      "dev_ci95": [
+        -0.0017,
+        0.00371
+      ],
+      "holdout_snapshot_mrr": 0.67956,
+      "holdout_delta_vs_shipped": -0.0004,
+      "holdout_ci95": [
+        -0.00272,
+        0.00125
+      ]
+    },
+    {
+      "config": "all appended - facet_disagreement_material",
+      "cv_pairwise_accuracy": 0.9242,
+      "dev_snapshot_mrr": 0.69861,
+      "dev_delta_vs_shipped": 0.0123,
+      "dev_ci95": [
+        -0.00197,
+        0.03219
+      ],
+      "holdout_snapshot_mrr": 0.6804,
+      "holdout_delta_vs_shipped": -0.00039,
+      "holdout_ci95": [
+        -0.01857,
+        0.02023
+      ]
+    },
+    {
+      "config": "all appended - facet_disagreement_color",
+      "cv_pairwise_accuracy": 0.9242,
+      "dev_snapshot_mrr": 0.6986,
+      "dev_delta_vs_shipped": 0.0123,
+      "dev_ci95": [
+        -0.00197,
+        0.03218
+      ],
+      "holdout_snapshot_mrr": 0.6804,
+      "holdout_delta_vs_shipped": -0.00039,
+      "holdout_ci95": [
+        -0.01857,
+        0.02023
+      ]
+    },
+    {
+      "config": "all appended - constraint_coverage",
+      "cv_pairwise_accuracy": 0.91627,
+      "dev_snapshot_mrr": 0.69128,
+      "dev_delta_vs_shipped": 0.00503,
+      "dev_ci95": [
+        -0.00449,
+        0.01842
+      ],
+      "holdout_snapshot_mrr": 0.67433,
+      "holdout_delta_vs_shipped": -0.0053,
+      "holdout_ci95": [
+        -0.02144,
+        0.00617
+      ]
+    },
+    {
+      "config": "all appended - shelf_lexical_rank",
+      "cv_pairwise_accuracy": 0.92484,
+      "dev_snapshot_mrr": 0.70008,
+      "dev_delta_vs_shipped": 0.01362,
+      "dev_ci95": [
+        -0.00016,
+        0.03343
+      ],
+      "holdout_snapshot_mrr": 0.67894,
+      "holdout_delta_vs_shipped": -0.00177,
+      "holdout_ci95": [
+        -0.0202,
+        0.01873
+      ]
+    },
+    {
+      "config": "all appended - phrase_in_title",
+      "cv_pairwise_accuracy": 0.9249,
+      "dev_snapshot_mrr": 0.69857,
+      "dev_delta_vs_shipped": 0.01228,
+      "dev_ci95": [
+        -0.00206,
+        0.03212
+      ],
+      "holdout_snapshot_mrr": 0.68252,
+      "holdout_delta_vs_shipped": 0.00135,
+      "holdout_ci95": [
+        -0.01444,
+        0.02134
+      ]
+    },
+    {
+      "config": "all appended - price_percentile_in_shelf",
+      "cv_pairwise_accuracy": 0.92278,
+      "dev_snapshot_mrr": 0.69824,
+      "dev_delta_vs_shipped": 0.01183,
+      "dev_ci95": [
+        -0.00177,
+        0.03177
+      ],
+      "holdout_snapshot_mrr": 0.68065,
+      "holdout_delta_vs_shipped": -9e-05,
+      "holdout_ci95": [
+        -0.01858,
+        0.02029
+      ]
+    }
+  ],
+  "reading_of_the_ablation": [
+    "Only constraint_coverage carries anything: it is the only feature whose add-one row is positive on both splits, and the only one whose removal collapses the batch (drop-one dev +0.0050, holdout -0.0053).",
+    "facet_disagreement_material and facet_disagreement_color change the ordering by EXACTLY nothing -- a zero-width interval on both splits. The material feature fires on 2.0% of dev rows and 3.3% of holdout rows and never on a target; the colour feature fires on 0.0% and 0.2%. On a simulator that discloses constraints the target satisfies, contradictions in the head are rare by construction.",
+    "shelf_lexical_rank, phrase_in_title and price_percentile_in_shelf all LOWER grouped-CV accuracy below the fifteen-feature control (0.9188, 0.9192, 0.9150 against 0.9223), and all three are negative on holdout. Removing shelf_lexical_rank improves dev; removing phrase_in_title improves holdout.",
+    "Not one row on the table is significant."
+  ],
+  "the_mechanism_gate_facet_disagreement_failed": "The plan required facet_disagreement to reduce the rate at which the agent shows a product contradicting a stated constraint, measured on the adversarial constraint axis (tools/violations.py). Shipped model: 81 of 623 shown items contradict, 0.1300. With constraint_coverage alone: 81 of 614, 0.1319. With both disagreement features added: 79 of 614, 0.1287. Two items out of six hundred is not a mechanism working. The arithmetic says why: the fitted weight is -0.555 and the blend is 0.05, so the feature moves a score by 0.028 against a weighted-sum spread near 1.0. A feature that fires on 2% of rows and moves them by 3% of a rank gap cannot be measured on 200 sessions, and should not be shipped on the hope that it would matter on 800.",
+  "blend_is_not_the_constraint": {
+    "what": "If the blend were suppressing the new features, a larger one would let them through. Swept on dev only, constraint_coverage model against the shipped model.",
+    "sweep": [
+      {
+        "blend": 0.02,
+        "snapshot_mrr": 0.67771,
+        "delta": -0.00769,
+        "ci95": [
+          -0.02716,
+          0.00857
+        ]
+      },
+      {
+        "blend": 0.05,
+        "snapshot_mrr": 0.69883,
+        "delta": 0.01236,
+        "ci95": [
+          -0.00098,
+          0.03216
+        ]
+      },
+      {
+        "blend": 0.08,
+        "snapshot_mrr": 0.69663,
+        "delta": 0.01039,
+        "ci95": [
+          -0.00332,
+          0.02938
+        ]
+      },
+      {
+        "blend": 0.1,
+        "snapshot_mrr": 0.69074,
+        "delta": 0.00568,
+        "ci95": [
+          -0.01985,
+          0.02688
+        ]
+      },
+      {
+        "blend": 0.15,
+        "snapshot_mrr": 0.69011,
+        "delta": 0.00487,
+        "ci95": [
+          -0.0202,
+          0.02795
+        ]
+      },
+      {
+        "blend": 0.2,
+        "snapshot_mrr": 0.69062,
+        "delta": 0.0055,
+        "ci95": [
+          -0.02041,
+          0.02886
+        ]
+      },
+      {
+        "blend": 0.3,
+        "snapshot_mrr": 0.69188,
+        "delta": 0.00687,
+        "ci95": [
+          -0.02226,
+          0.0323
+        ]
+      },
+      {
+        "blend": 0.5,
+        "snapshot_mrr": 0.68602,
+        "delta": 0.00096,
+        "ci95": [
+          -0.03165,
+          0.02857
+        ]
+      },
+      {
+        "blend": 1.0,
+        "snapshot_mrr": 0.68863,
+        "delta": 0.00381,
+        "ci95": [
+          -0.03192,
+          0.03508
+        ]
+      }
+    ],
+    "reading": "0.05 is the argmax and nothing is significant at any blend. Larger blends are worse, not better. The feature is not being held back; it is not there."
+  },
+  "official_end_to_end": {
+    "model": "fifteen shipped features + constraint_coverage, blend 0.05",
+    "paired_vs_shipped": {
+      "dev": {
+        "score": 0.92258,
+        "median": -0.00082,
+        "ci95": [
+          -0.00785,
+          0.0062
+        ],
+        "sessions": 100,
+        "verdict": "within noise"
+      },
+      "holdout": {
+        "score": 0.90635,
+        "median": 0.0006,
+        "ci95": [
+          -0.00595,
+          0.00755
+        ],
+        "sessions": 100,
+        "verdict": "within noise"
+      },
+      "full": {
+        "score": 0.91546,
+        "median": -0.00065,
+        "ci95": [
+          -0.00526,
+          0.00384
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      }
+    },
+    "reading": "Flat, and negative on two of three splits. dev -0.00082, holdout +0.00060, full -0.00065, every interval straddling zero."
+  },
+  "adversarial": {
+    "paired_vs_shipped": {
+      "control": {
+        "median": -0.00065,
+        "ci95": [
+          -0.00526,
+          0.00384
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      },
+      "category": {
+        "median": 0.00368,
+        "ci95": [
+          -0.00106,
+          0.0092
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      },
+      "natural": {
+        "median": -0.0063,
+        "ci95": [
+          -0.01677,
+          0.00169
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      },
+      "scaffold": {
+        "median": -0.00369,
+        "ci95": [
+          -0.00819,
+          0.00073
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      },
+      "constraint": {
+        "median": -0.00226,
+        "ci95": [
+          -0.00722,
+          0.00298
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      },
+      "all paraphrase axes": {
+        "median": -0.00887,
+        "ci95": [
+          -0.02316,
+          0.00256
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      },
+      "granularity=1": {
+        "median": 0.00709,
+        "ci95": [
+          0.00133,
+          0.0154
+        ],
+        "sessions": 200,
+        "verdict": "significant"
+      },
+      "granularity=3": {
+        "median": -0.00041,
+        "ci95": [
+          -0.00506,
+          0.00409
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      }
+    },
+    "reading": "Five of eight axes move the wrong way. The compound paraphrase axis -- the one that stands in for the private set, and the one the shipped reranker gained most on -- is the worst at -0.00887. The two positive axes are category (+0.00368, within noise) and granularity=1 (+0.00709, significant), and one significant axis out of eight tested is what eight tests produce."
+  },
+  "decision": "Declined, and the feature definitions removed from src/. The decision rule was written down before the official battery was run: ship only if official dev, holdout and full were all non-negative, no adversarial axis regressed with an interval excluding zero, and the long-tail slice held. Two of three official splits came back negative and the rule fired. The six definitions are in the commit that carried this experiment; the numbers are here.",
+  "what_this_establishes": "The ceiling probe showed the training data is not the binding constraint. This shows the obvious next batch of features is not either -- including the one designed specifically to say something the fifteen structurally cannot. Two of the three levers on ranking quality are now measured and closed. The third, a model class that can use interactions a linear one cannot, is the only one left, and it remains open.",
+  "cost": "Zero at runtime: nothing shipped. The tools built for it stayed -- tools/snapshot_mrr.py (the metric the shipped reranker was judged by, which had never been committed), tools/rerank_ablate.py, tools/violations.py, and --model on tools/bench.py -- because the next retrain needs all four.",
+  "recheck_after_challenge": {
+    "why": "The decline was challenged, and the challenge found a real defect in the implementation rather than in the verdict. constraint_coverage -- the only one of the six that carried any signal -- counted every clause equally. src/state.weighted_phrases hands over superseded constraints at weight 0.08 and decays older ones, because erasure in this repository is a dial and not a switch. Counting them equally means a constraint the shopper had just RETRACTED counted as much as the one they had just stated, on exactly the 15% of sessions that are intent overrides, which is where the feature should have been sharpest. Two clauses, one live and one superseded, and the unweighted feature scores a leather belt and a suede belt identically at 0.5 where the weighted one separates them 0.93 to 0.07.",
+    "what_was_tested": "Three readings of coverage on the same data, head to head: the original unweighted all-or-nothing one, one weighted by the clause weight the scorer already uses, and one giving part credit for a partial clause match. Same bar as before, written down again before the battery was run.",
+    "ablation": [
+      {
+        "config": "shipped 15 (control)",
+        "cv_pairwise_accuracy": 0.92225,
+        "dev_delta_vs_shipped": 0.0,
+        "dev_ci95": [
+          0.0,
+          0.0
+        ],
+        "holdout_delta_vs_shipped": 0.0,
+        "holdout_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "config": "all appended",
+        "cv_pairwise_accuracy": 0.92638,
+        "dev_delta_vs_shipped": 0.01296,
+        "dev_ci95": [
+          -0.00029,
+          0.0329
+        ],
+        "holdout_delta_vs_shipped": 0.0061,
+        "holdout_ci95": [
+          -0.00982,
+          0.02604
+        ]
+      },
+      {
+        "config": "+ constraint_coverage",
+        "cv_pairwise_accuracy": 0.92542,
+        "dev_delta_vs_shipped": 0.01236,
+        "dev_ci95": [
+          -0.00098,
+          0.03216
+        ],
+        "holdout_delta_vs_shipped": 0.00265,
+        "holdout_ci95": [
+          -0.01406,
+          0.02304
+        ]
+      },
+      {
+        "config": "+ constraint_coverage_weighted",
+        "cv_pairwise_accuracy": 0.92542,
+        "dev_delta_vs_shipped": 0.01236,
+        "dev_ci95": [
+          -0.00098,
+          0.03216
+        ],
+        "holdout_delta_vs_shipped": 0.00265,
+        "holdout_ci95": [
+          -0.01406,
+          0.02304
+        ]
+      },
+      {
+        "config": "+ constraint_coverage_partial",
+        "cv_pairwise_accuracy": 0.92506,
+        "dev_delta_vs_shipped": 0.01241,
+        "dev_ci95": [
+          -0.00093,
+          0.03216
+        ],
+        "holdout_delta_vs_shipped": 0.00306,
+        "holdout_ci95": [
+          -0.01333,
+          0.0234
+        ]
+      },
+      {
+        "config": "all appended - constraint_coverage",
+        "cv_pairwise_accuracy": 0.9259,
+        "dev_delta_vs_shipped": 0.01269,
+        "dev_ci95": [
+          -0.00055,
+          0.03249
+        ],
+        "holdout_delta_vs_shipped": 0.00576,
+        "holdout_ci95": [
+          -0.01024,
+          0.02549
+        ]
+      },
+      {
+        "config": "all appended - constraint_coverage_weighted",
+        "cv_pairwise_accuracy": 0.9259,
+        "dev_delta_vs_shipped": 0.01269,
+        "dev_ci95": [
+          -0.00055,
+          0.03249
+        ],
+        "holdout_delta_vs_shipped": 0.00576,
+        "holdout_ci95": [
+          -0.01024,
+          0.02549
+        ]
+      },
+      {
+        "config": "all appended - constraint_coverage_partial",
+        "cv_pairwise_accuracy": 0.9259,
+        "dev_delta_vs_shipped": 0.01254,
+        "dev_ci95": [
+          -0.0007,
+          0.03246
+        ],
+        "holdout_delta_vs_shipped": 0.00574,
+        "holdout_ci95": [
+          -0.01024,
+          0.02552
+        ]
+      }
+    ],
+    "the_measurement_that_explains_it": "The weighted feature differs numerically from the unweighted one on 4.43% of dev rows and 5.90% of holdout rows -- but on only 13 of 148 and 13 of 144 SNAPSHOTS. The metric is session-weighted over 100 sessions, so a correction that touches thirteen snapshots cannot move it, and the two come back identical to four decimal places. The defect is real and its exposure on this evaluation set is not.",
+    "collinearity": "Fitted together, the three variants take weights of 2.031, 2.023 and 2.184. A model splitting one signal almost evenly across three columns is telling you it has one feature, not three.",
+    "official_paired_vs_shipped": {
+      "dev": {
+        "score": 0.92168,
+        "median": -0.0018,
+        "ci95": [
+          -0.00973,
+          0.0058
+        ],
+        "sessions": 100,
+        "verdict": "within noise"
+      },
+      "holdout": {
+        "score": 0.90628,
+        "median": 0.00055,
+        "ci95": [
+          -0.00605,
+          0.00703
+        ],
+        "sessions": 100,
+        "verdict": "within noise"
+      },
+      "full": {
+        "score": 0.9165,
+        "median": 0.00034,
+        "ci95": [
+          -0.00484,
+          0.00583
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      }
+    },
+    "adversarial_paired_vs_shipped": {
+      "control": {
+        "median": 0.00034,
+        "ci95": [
+          -0.00484,
+          0.00583
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      },
+      "category": {
+        "median": 0.00278,
+        "ci95": [
+          -0.00315,
+          0.00903
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      },
+      "natural": {
+        "median": -0.00404,
+        "ci95": [
+          -0.01434,
+          0.00418
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      },
+      "scaffold": {
+        "median": -0.00577,
+        "ci95": [
+          -0.01763,
+          0.00696
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      },
+      "constraint": {
+        "median": -0.00139,
+        "ci95": [
+          -0.00786,
+          0.00477
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      },
+      "all paraphrase axes": {
+        "median": -0.00996,
+        "ci95": [
+          -0.02405,
+          0.00138
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      },
+      "granularity=1": {
+        "median": 0.00141,
+        "ci95": [
+          -0.00511,
+          0.00819
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      },
+      "granularity=3": {
+        "median": 0.00065,
+        "ci95": [
+          -0.00467,
+          0.0061
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      }
+    },
+    "verdict": "The decline stands, on the same pre-registered bar and for the same reasons. Best config (all three variants) is official dev -0.00180, which fails the rule, and the compound paraphrase axis -- the private-set proxy, and the strongest evidence against the batch the first time -- is -0.00996, the same direction and size as the -0.00887 recorded above. Snapshot MRR remains insignificant on both splits at every configuration. What changed is the quality of the reason: the first decline was correct on evidence that had a bug in it, and this one is correct on evidence that does not.",
+    "honest_note": "Three variants of one feature were tested against one bar. That inflates the chance of a false positive, so a marginal pass here would have deserved suspicion rather than a ship. None of them passed, which makes the point moot, but the multiplicity is recorded because it would not have been if the answer had gone the other way."
+  }
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "split": "dev",
+    "against": "none",
+    "model": "analysis/reranker.json",
+    "blend": 0.05,
+    "snapshots": 148,
+    "sessions": 100,
+    "before": 0.66502,
+    "after": 0.68569,
+    "delta": 0.02015,
+    "ci95": [
+      0.00238,
+      0.04196
+    ],
+    "verdict": "significant"
+  },
+  {
+    "split": "holdout",
+    "against": "none",
+    "model": "analysis/reranker.json",
+    "blend": 0.05,
+    "snapshots": 144,
+    "sessions": 100,
+    "before": 0.64461,
+    "after": 0.68006,
+    "delta": 0.03471,
+    "ci95": [
+      0.01444,
+      0.06086
+    ],
+    "verdict": "significant"
+  }
+]

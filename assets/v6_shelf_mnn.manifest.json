@@ -1,0 +1,51 @@
+{
+  "b1_exclusion_counts": {
+    "banner_only": 17,
+    "considered": 428,
+    "empty_after_normalization": 0,
+    "junk_token": 16,
+    "product_floor": 118,
+    "retained": 274,
+    "uppercase_fragment": 3
+  },
+  "candidate_name": "mnn",
+  "derivation": "catalog-only algorithmic derivation",
+  "generator": null,
+  "hashes": {
+    "asset_sha256": "4a29b7c1cd3a4912128cfbe43a3f30cc3db379031478545e8f5502c41dd73679",
+    "builder_source_sha256": "ed18c971b2322cb6eef7f902a508263b4e14441036ec330a65ad4b79c51b48f2",
+    "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+    "input_sha256": "f88f10223686ab83da1d1558f7383569dca4e31ca9d8b65cf2ca092ce46e48b0",
+    "payload_sha256": "e0905c5bdfb44d876c2648de2134681ac1b21abb237051b6cb7ebe45146e3c7c"
+  },
+  "mapping_size": 441,
+  "schema": "techjam-v6-shelf-mnn-manifest-v1",
+  "shelf_size_exclusion_count": 588,
+  "shelves": {
+    "excluded_min_size": 588,
+    "retained": 527,
+    "total": 1115
+  },
+  "support": {
+    "candidate_terms": 13539,
+    "canonical_head_terms": 211,
+    "drop_alias_cap": 280,
+    "drop_cosine": 12392,
+    "drop_document_frequency": 69117,
+    "drop_multi_head": 0,
+    "drop_no_head_neighbour": 0,
+    "drop_reciprocity": 428,
+    "drop_shelf_spread": 1062,
+    "emitted_pairs": 446,
+    "multi_head_terms": 5,
+    "shelves_excluded_min_size": 588,
+    "shelves_retained": 527,
+    "shelves_total": 1115,
+    "terms_considered": 83929,
+    "terms_retained": 441
+  },
+  "terms": {
+    "considered": 83929,
+    "retained": 441
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "question": "The global product-level lexical route was declined as specified: no official recall failure to fix, and 205-288 ms per turn against a 50 ms budget. The decline named its own reopening condition -- 'revisit only with an inverted index' -- and a second thing has changed since: the reranker that did not exist when the widened pool was judged unusable. Does the route pay now?",
+  "verdict": "Yes, and only where it was ever supposed to. Shipped, on by default. The official score moves by exactly zero -- a zero-width interval on all three splits -- and the category-paraphrase axis gains +0.043 with an interval excluding zero, the largest single adversarial gain in this repository.",
+  "what_changed_since_the_decline": [
+    "Catalog.index_postings builds a term -> products index once at Agent construction: +0.3 s of build and +30 MB of RSS. A query then touches only the products containing a query term instead of all fifty thousand, which is what made the route unaffordable.",
+    "The learned reranker exists. D6's reason for declining a wider pool was that 'the candidate the pool gains is not a candidate the ranking can find'. That sentence predates the reranker, and it is now false: the pool this route adds converts into hits at essentially the same rate as the rest (rank-given-pool 0.989 -> 0.990)."
+  ],
+  "when_it_fires": "Only when the shelf did NOT resolve outright -- when route_detail returns a non-empty hedge. That is the only case where the pool can be wrong about which shelf the shopper meant. On the public set the opening message is coarse_category(target.categories) verbatim and always resolves, so the route is unreachable there by construction, which is what the +0.00000 control column reports rather than assumes. A test asserts pool equality on a real official session.",
+  "how_it_fires": "Appended, never merged. Nothing already in the pool moves or is lost, so the fusion can only add candidates; whether any of them belongs near the top is the ranking's decision. Recall-only widening, asserted in tests.",
+  "recall_on_the_category_axis": {
+    "before": {
+      "pool_recall_turn1": 0.885,
+      "pool_recall_ever": 0.91,
+      "hit_rate_at_10": 0.9,
+      "lost_to_recall": 0.09,
+      "rank_given_pool": 0.989
+    },
+    "after": {
+      "pool_recall_turn1": 0.885,
+      "pool_recall_ever": 0.965,
+      "hit_rate_at_10": 0.955,
+      "lost_to_recall": 0.035,
+      "rank_given_pool": 0.9896
+    },
+    "reading": "Sessions lost to retrieval fall from 9.0% to 3.5%. Turn-1 recall is unchanged at 0.885 and should be: turn one of a paraphrased session states no constraints, so there is nothing to search the catalog with, and the route correctly does nothing. The recovery happens on turn two, when the shopper says something."
+  },
+  "official": {
+    "dev": {
+      "score": 0.9234,
+      "median": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "sessions": 100,
+      "verdict": "within noise"
+    },
+    "holdout": {
+      "score": 0.90555,
+      "median": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "sessions": 100,
+      "verdict": "within noise"
+    },
+    "full": {
+      "score": 0.91612,
+      "median": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "sessions": 200,
+      "verdict": "within noise"
+    }
+  },
+  "adversarial": {
+    "control": {
+      "score": 0.91612,
+      "median": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "sessions": 200,
+      "verdict": "within noise"
+    },
+    "category": {
+      "score": 0.83774,
+      "median": 0.04298,
+      "ci95": [
+        0.01911,
+        0.07209
+      ],
+      "sessions": 200,
+      "verdict": "significant"
+    },
+    "natural": {
+      "score": 0.91144,
+      "median": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "sessions": 200,
+      "verdict": "within noise"
+    },
+    "scaffold": {
+      "score": 0.83431,
+      "median": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "sessions": 200,
+      "verdict": "within noise"
+    },
+    "constraint": {
+      "score": 0.8733,
+      "median": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "sessions": 200,
+      "verdict": "within noise"
+    },
+    "all paraphrase axes": {
+      "score": 0.6933,
+      "median": 0.02297,
+      "ci95": [
+        -0.00813,
+        0.05794
+      ],
+      "sessions": 200,
+      "verdict": "within noise"
+    },
+    "granularity=1": {
+      "score": 0.89039,
+      "median": 0.02297,
+      "ci95": [
+        0.00641,
+        0.04472
+      ],
+      "sessions": 200,
+      "verdict": "significant"
+    },
+    "granularity=3": {
+      "score": 0.91548,
+      "median": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "sessions": 200,
+      "verdict": "within noise"
+    }
+  },
+  "adversarial_reading": "Category +0.04298 [+0.01911, +0.07209], significant. granularity=1 +0.02297 [+0.00641, +0.04472], significant -- simulator drift breaks shelf resolution the same way a synonym does. The compound axis is +0.02297 and does not regress, which is the specific gate D6 failed. Every axis that does not break shelf resolution moves by exactly zero, because the route never runs on those.",
+  "the_postings_budget": {
+    "what": "How many postings one turn may walk. Terms are visited rarest first, so the budget is spent on discriminative words and runs out on the ones matching half the catalog.",
+    "chosen": 4000,
+    "chosen_on": "latency, not score",
+    "sweep_category_axis_score": {
+      "4000": 0.83774,
+      "8000": 0.83628,
+      "12000": 0.83605,
+      "20000": 0.84296
+    },
+    "sweep_p99_turn_millis": {
+      "4000": 41.3,
+      "8000": 44.9,
+      "12000": 45.0,
+      "20000": 51.6
+    },
+    "reading": "The spread in score across the whole sweep is 0.007 on 200 sessions, which is noise. The spread in latency crosses the 50 ms budget. The largest budget is the only one that breaks the budget and it buys a difference that cannot be measured."
+  },
+  "cost": {
+    "build_seconds": {
+      "before": 14.4,
+      "after": 14.7,
+      "budget": 25.0
+    },
+    "peak_rss_mb": {
+      "before": 743,
+      "after": 773,
+      "budget": 1200
+    },
+    "official_turn_latency": "unchanged -- the route does not run on any official session",
+    "hedged_turn_latency": "median 7.4 ms, p95 28.3 ms, p99 41.3 ms on the category axis, against a 50 ms budget. Asserted by a test, because the shipped latency test uses an exactly-resolving message and cannot see this path.",
+    "pre_existing_outlier_now_disclosed": "One turn in 548 on the category axis takes ~347 ms, with the route on OR off. It is the fallback pool: when nothing resolves at all, route_detail returns the whole catalog and the scorer ranks fifty thousand products. That is not caused by this change and it is not fixed by it, but it was found while measuring this and it is the one place the agent can exceed its per-turn budget."
+  },
+  "why_this_is_worth_shipping_for_zero_public_score": "The public set has no retrieval failure to fix -- recall is 1.000 -- so by construction this cannot raise the leaderboard number. The private set is 800 sessions of unknown paraphrase level, and the category axis is where this agent is most exposed: 25.5% of its failures there land on a near-duplicate of the right shelf and 11.5% of targets never enter the pool at all. Insurance against the one measured retrieval break, at a cost of zero on the score, 0.3 s of build and 30 MB."
+}

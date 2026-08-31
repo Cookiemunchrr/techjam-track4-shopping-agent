@@ -1,0 +1,33 @@
+{
+  "base_misses": 6,
+  "counts": {
+    "wrong_or_missing_shelf_resolution": 6,
+    "no_usable_category_language": 0,
+    "later_state_failure": 0,
+    "other": 0
+  },
+  "by_scenario": {
+    "wrong_or_missing_shelf_resolution": {
+      "intent_override": 1,
+      "buying": 3,
+      "browsing": 2
+    }
+  },
+  "by_component": {
+    "wrong_or_missing_shelf_resolution": {
+      "both": 5,
+      "modifier_only": 1
+    }
+  },
+  "stop3": {
+    "shelf_resolution_misses": 6,
+    "head_attributable": 5,
+    "threshold": 3,
+    "proportion_wilson95": [
+      0.4365,
+      0.9699
+    ],
+    "decision": "proceed",
+    "limitation": "the base is six misses; the check cannot distinguish a mechanism that addresses half the loss from one that addresses a quarter (addendum B4)"
+  }
+}

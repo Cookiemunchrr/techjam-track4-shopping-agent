@@ -1,0 +1,422 @@
+{
+  "summary": {
+    "sessions": 10,
+    "mrr": 0.6708,
+    "mttc": 2.5,
+    "turn_outcomes": {
+      "hit": 10,
+      "width": 6,
+      "ordering": 9
+    },
+    "sessions_whose_first_question_was_declined": 5,
+    "if_width_had_been_pinned_at_ten": {
+      "mrr": 0.5379,
+      "mttc": 1.9
+    },
+    "mean_width_before_the_hit": 3.067,
+    "answerability_when_finished": {
+      "brand": {
+        "asked": 6,
+        "answered": 0,
+        "p_answerable": 0.125
+      },
+      "color": {
+        "asked": 2,
+        "answered": 2,
+        "p_answerable": 0.75
+      },
+      "feature": {
+        "asked": 37,
+        "answered": 32,
+        "p_answerable": 0.8462
+      },
+      "material": {
+        "asked": 15,
+        "answered": 14,
+        "p_answerable": 0.8824
+      },
+      "size": {
+        "asked": 3,
+        "answered": 0,
+        "p_answerable": 0.2
+      },
+      "style": {
+        "asked": 3,
+        "answered": 0,
+        "p_answerable": 0.2
+      },
+      "use_case": {
+        "asked": 6,
+        "answered": 1,
+        "p_answerable": 0.25
+      }
+    }
+  },
+  "sessions": [
+    {
+      "sample_id": "public_0035",
+      "target": "B0BN6CCHB7",
+      "first_hit_turn": 1,
+      "best_rank": 2,
+      "reciprocal_rank": 0.5,
+      "turns": [
+        {
+          "turn": 1,
+          "said_to_agent": "I'm looking for Athletic Walking, but I'm still exploring.",
+          "asked": "feature",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": 2,
+          "shown_rank": 2,
+          "slots": 0,
+          "lost_to": "hit"
+        }
+      ]
+    },
+    {
+      "sample_id": "public_0041",
+      "target": "B09MSY8926",
+      "first_hit_turn": 3,
+      "best_rank": 3,
+      "reciprocal_rank": 0.3333,
+      "turns": [
+        {
+          "turn": 1,
+          "said_to_agent": "I'm looking for Tees & Blouses Tunics, but I'm still exploring.",
+          "asked": "feature",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": 9,
+          "shown_rank": null,
+          "slots": 0,
+          "lost_to": "width"
+        },
+        {
+          "turn": 2,
+          "said_to_agent": "I don't have a preference for feature; please use your judgment.",
+          "asked": "material",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": 7,
+          "shown_rank": null,
+          "slots": 0,
+          "lost_to": "width"
+        },
+        {
+          "turn": 3,
+          "said_to_agent": "For that, what matters is: polyester.",
+          "asked": "brand",
+          "width": 8,
+          "in_pool": true,
+          "internal_rank": 3,
+          "shown_rank": 3,
+          "slots": 1,
+          "lost_to": "hit"
+        }
+      ]
+    },
+    {
+      "sample_id": "public_0050",
+      "target": "B07BYR6T7W",
+      "first_hit_turn": 1,
+      "best_rank": 1,
+      "reciprocal_rank": 1.0,
+      "turns": [
+        {
+          "turn": 1,
+          "said_to_agent": "I'm looking for Work & Utility Industrial & Construction Boots, but I'm still exploring.",
+          "asked": "feature",
+          "width": 6,
+          "in_pool": true,
+          "internal_rank": 1,
+          "shown_rank": 1,
+          "slots": 0,
+          "lost_to": "hit"
+        }
+      ]
+    },
+    {
+      "sample_id": "public_0104",
+      "target": "B00QSAICLU",
+      "first_hit_turn": 1,
+      "best_rank": 1,
+      "reciprocal_rank": 1.0,
+      "turns": [
+        {
+          "turn": 1,
+          "said_to_agent": "I'm looking for Hats & Caps Headbands, but I'm still exploring.",
+          "asked": "feature",
+          "width": 6,
+          "in_pool": true,
+          "internal_rank": 1,
+          "shown_rank": 1,
+          "slots": 0,
+          "lost_to": "hit"
+        }
+      ]
+    },
+    {
+      "sample_id": "public_0112",
+      "target": "B086ZNJY8K",
+      "first_hit_turn": 4,
+      "best_rank": 1,
+      "reciprocal_rank": 1.0,
+      "turns": [
+        {
+          "turn": 1,
+          "said_to_agent": "I'm looking for Athletic Walking, but I'm still exploring.",
+          "asked": "feature",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": 7,
+          "shown_rank": null,
+          "slots": 0,
+          "lost_to": "width"
+        },
+        {
+          "turn": 2,
+          "said_to_agent": "I don't have a preference for feature; please use your judgment.",
+          "asked": "style",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": 5,
+          "shown_rank": null,
+          "slots": 0,
+          "lost_to": "width"
+        },
+        {
+          "turn": 3,
+          "said_to_agent": "I don't have an additional preference for style.",
+          "asked": "use_case",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": 3,
+          "shown_rank": null,
+          "slots": 0,
+          "lost_to": "width"
+        },
+        {
+          "turn": 4,
+          "said_to_agent": "For that, what matters is: A Lightweight Sneaker, Which Is Suitable For Running, Sports, Hiking, Walking, Tourism And Climbing.",
+          "asked": "size",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": 1,
+          "shown_rank": 1,
+          "slots": 1,
+          "lost_to": "hit"
+        }
+      ]
+    },
+    {
+      "sample_id": "public_0131",
+      "target": "B07PQQQ8ZL",
+      "first_hit_turn": 1,
+      "best_rank": 1,
+      "reciprocal_rank": 1.0,
+      "turns": [
+        {
+          "turn": 1,
+          "said_to_agent": "I'm looking for Socks & Hosiery Leg Warmers, but I'm still exploring.",
+          "asked": "material",
+          "width": 6,
+          "in_pool": true,
+          "internal_rank": 1,
+          "shown_rank": 1,
+          "slots": 0,
+          "lost_to": "hit"
+        }
+      ]
+    },
+    {
+      "sample_id": "public_0169",
+      "target": "B0829R9M5G",
+      "first_hit_turn": 1,
+      "best_rank": 4,
+      "reciprocal_rank": 0.25,
+      "turns": [
+        {
+          "turn": 1,
+          "said_to_agent": "I'm looking for Women Jeans, but I'm still exploring.",
+          "asked": "feature",
+          "width": 6,
+          "in_pool": true,
+          "internal_rank": 4,
+          "shown_rank": 4,
+          "slots": 0,
+          "lost_to": "hit"
+        }
+      ]
+    },
+    {
+      "sample_id": "public_0180",
+      "target": "B01HSMYV8E",
+      "first_hit_turn": 2,
+      "best_rank": 2,
+      "reciprocal_rank": 0.5,
+      "turns": [
+        {
+          "turn": 1,
+          "said_to_agent": "I'm looking for Shoes Fashion Sneakers, but I'm still exploring.",
+          "asked": "feature",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": 4,
+          "shown_rank": null,
+          "slots": 0,
+          "lost_to": "width"
+        },
+        {
+          "turn": 2,
+          "said_to_agent": "I don't have a preference for feature; please use your judgment.",
+          "asked": "material",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": 2,
+          "shown_rank": 2,
+          "slots": 0,
+          "lost_to": "hit"
+        }
+      ]
+    },
+    {
+      "sample_id": "public_0187",
+      "target": "B000GQ1F3O",
+      "first_hit_turn": 4,
+      "best_rank": 8,
+      "reciprocal_rank": 0.125,
+      "turns": [
+        {
+          "turn": 1,
+          "said_to_agent": "I'm looking for Shoes Loafers & Slip-Ons, but I'm still exploring.",
+          "asked": "feature",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": null,
+          "shown_rank": null,
+          "slots": 0,
+          "lost_to": "ordering"
+        },
+        {
+          "turn": 2,
+          "said_to_agent": "I don't have a preference for feature; please use your judgment.",
+          "asked": "use_case",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": null,
+          "shown_rank": null,
+          "slots": 0,
+          "lost_to": "ordering"
+        },
+        {
+          "turn": 3,
+          "said_to_agent": "I don't have an additional preference for use_case.",
+          "asked": "material",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": null,
+          "shown_rank": null,
+          "slots": 0,
+          "lost_to": "ordering"
+        },
+        {
+          "turn": 4,
+          "said_to_agent": "For that, what matters is: leather; 100% Leather.",
+          "asked": "size",
+          "width": 8,
+          "in_pool": true,
+          "internal_rank": 8,
+          "shown_rank": 8,
+          "slots": 2,
+          "lost_to": "hit"
+        }
+      ]
+    },
+    {
+      "sample_id": "public_0192",
+      "target": "B0C62MF2HV",
+      "first_hit_turn": 7,
+      "best_rank": 1,
+      "reciprocal_rank": 1.0,
+      "turns": [
+        {
+          "turn": 1,
+          "said_to_agent": "I'm looking for Athletic Sport Sandals & Slides, but I'm still exploring.",
+          "asked": "feature",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": null,
+          "shown_rank": null,
+          "slots": 0,
+          "lost_to": "ordering"
+        },
+        {
+          "turn": 2,
+          "said_to_agent": "I don't have a preference for feature; please use your judgment.",
+          "asked": "material",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": null,
+          "shown_rank": null,
+          "slots": 0,
+          "lost_to": "ordering"
+        },
+        {
+          "turn": 3,
+          "said_to_agent": "I don't have an additional preference for material.",
+          "asked": "use_case",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": null,
+          "shown_rank": null,
+          "slots": 0,
+          "lost_to": "ordering"
+        },
+        {
+          "turn": 4,
+          "said_to_agent": "I don't have an additional preference for use_case.",
+          "asked": "size",
+          "width": 2,
+          "in_pool": true,
+          "internal_rank": null,
+          "shown_rank": null,
+          "slots": 0,
+          "lost_to": "ordering"
+        },
+        {
+          "turn": 5,
+          "said_to_agent": "I don't have an additional preference for size.",
+          "asked": "brand",
+          "width": 10,
+          "in_pool": true,
+          "internal_rank": null,
+          "shown_rank": null,
+          "slots": 0,
+          "lost_to": "ordering"
+        },
+        {
+          "turn": 6,
+          "said_to_agent": "I don't have an additional preference for brand.",
+          "asked": "color",
+          "width": 10,
+          "in_pool": true,
+          "internal_rank": null,
+          "shown_rank": null,
+          "slots": 0,
+          "lost_to": "ordering"
+        },
+        {
+          "turn": 7,
+          "said_to_agent": "For that, what matters is: color: pink.",
+          "asked": "style",
+          "width": 5,
+          "in_pool": true,
+          "internal_rank": 1,
+          "shown_rank": 1,
+          "slots": 1,
+          "lost_to": "hit"
+        }
+      ]
+    }
+  ]
+}

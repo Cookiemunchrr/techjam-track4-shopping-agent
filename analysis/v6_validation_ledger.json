@@ -1,0 +1,5 @@
+{
+  "schema": "techjam-v6-validation-ledger-v1",
+  "rule": "append-only; keyed by validation-set hash plus the complete frozen candidate hash; a consumed set refuses a second read; a harness bug invalidates the batch and blocks V6 rather than granting a rerun",
+  "consumed": []
+}

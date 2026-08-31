@@ -1,0 +1,80 @@
+{
+  "schema": "techjam-v6-current-baseline-v1",
+  "scope": "V6 Phase 1 frozen baseline; development sessions 1-100; category paraphrase axis",
+  "command": "python3 -m tools.recall --v6-baseline",
+  "seed": 0,
+  "split": "dev",
+  "axis": "category",
+  "hashes": {
+    "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+    "dev_split_sha256": "294f1d51fa2bddaca5155568ace2325405b1ed2418b1d52c0dae767ec2c03e8d",
+    "evaluator_sha256": "84ea899707452de249ca62abee77c4b40ab7a3139b5cc798ac30c9f521f91b30",
+    "recall_sha256": "2ef2b6f18e7c91e90d8c03075890c54ad5e5b705ed4d97d7de2f1a4628ad128e",
+    "agent_sha256": "3e2a1ace898fb3b1ea17d0ccb210819c87bdbcd1bfc03963a757d9506b54ed31"
+  },
+  "recall": {
+    "sessions": 100,
+    "pool_recall_turn1": 0.87,
+    "pool_recall_ever": 0.94,
+    "first_pool_turn_mean": 1.74,
+    "hit_rate_at_10": 0.93,
+    "hr_at_10_given_pool": 0.9894,
+    "conditional_mrr_given_pool": 0.6854,
+    "lost_to_recall": 0.06,
+    "lost_to_ranking": 0.01,
+    "median_turn1_pool": 1508,
+    "turn1_pool_p95": 3503,
+    "turn1_fallback_rate": 0.01
+  },
+  "category_technical_score": {
+    "normal_width": {
+      "technical_score": 0.82313,
+      "hit_rate_at_10": 0.9,
+      "mrr": 0.71376,
+      "mttc": 3.05
+    },
+    "fixed_width_10": {
+      "technical_score": 0.78727,
+      "hit_rate_at_10": 0.89,
+      "mrr": 0.59758,
+      "mttc": 2.85
+    }
+  },
+  "miss_taxonomy": {
+    "base_misses": 6,
+    "counts": {
+      "wrong_or_missing_shelf_resolution": 6,
+      "no_usable_category_language": 0,
+      "later_state_failure": 0,
+      "other": 0
+    },
+    "by_scenario": {
+      "wrong_or_missing_shelf_resolution": {
+        "intent_override": 1,
+        "buying": 3,
+        "browsing": 2
+      }
+    },
+    "by_component": {
+      "wrong_or_missing_shelf_resolution": {
+        "both": 5,
+        "modifier_only": 1
+      }
+    },
+    "stop3": {
+      "shelf_resolution_misses": 6,
+      "head_attributable": 5,
+      "threshold": 3,
+      "proportion_wilson95": [
+        0.4365,
+        0.9699
+      ],
+      "decision": "proceed",
+      "limitation": "the base is six misses; the check cannot distinguish a mechanism that addresses half the loss from one that addresses a quarter (addendum B4)"
+    }
+  },
+  "limitations": [
+    "Sessions 101-200 are a previously exposed confirmation split, not a pristine holdout; nothing here reads them.",
+    "Per-session rows are analysis/_v6_baseline_rows.json, an ignored sidecar; the committed report is aggregate only."
+  ]
+}

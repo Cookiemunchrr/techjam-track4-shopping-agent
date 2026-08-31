@@ -1,0 +1,46 @@
+{
+  "question": "How often does the agent show a product that contradicts something the shopper said?",
+  "measure": "Per shown item, over every turn of every session in which a material or colour has been stated. A product contradicts when it CLAIMS values for that attribute -- strict facet set, title/features/details, never description prose -- and none of them is one the shopper asked for. A product that claims nothing is unknown, not contradicting; that distinction is the whole of src/catalog.facet_values.",
+  "tool": "python3 -m tools.violations --axis constraint",
+  "measurements": [
+    {
+      "axis": "control",
+      "model": "analysis/reranker.json (shipped)",
+      "contradicting": 3,
+      "shown_under_a_stated_facet": 678,
+      "rate": 0.0044,
+      "technical_score": 0.91612
+    },
+    {
+      "axis": "constraint",
+      "model": "analysis/reranker.json (shipped)",
+      "contradicting": 81,
+      "shown_under_a_stated_facet": 623,
+      "rate": 0.13,
+      "technical_score": 0.8733
+    },
+    {
+      "axis": "constraint",
+      "model": "declined candidate, + constraint_coverage",
+      "contradicting": 81,
+      "shown_under_a_stated_facet": 614,
+      "rate": 0.1319,
+      "technical_score": 0.87106
+    },
+    {
+      "axis": "constraint",
+      "model": "declined candidate, + constraint_coverage + both facet_disagreement features",
+      "contradicting": 79,
+      "shown_under_a_stated_facet": 614,
+      "rate": 0.1287,
+      "technical_score": 0.87131
+    }
+  ],
+  "findings": [
+    "On the clean public set the agent contradicts a stated constraint in 3 of 678 shown items -- 0.44%. There is essentially no failure here to fix.",
+    "Under the constraint paraphrase axis the rate is 13.0%, thirty times higher. Paraphrasing what the shopper said breaks the parse, the facet is read wrongly or not at all, and products that state the opposite of the real constraint reach the slate.",
+    "That gap is why the facet_disagreement features could not be learned. They were trained on dev, where the behaviour they target occurs in under half a percent of shown items, and a pairwise objective cannot fit a weight to a case it almost never sees. The fitted weight came out at -0.555, which at blend 0.05 moves a score by 0.028 against a weighted-sum spread near 1.0, and the measured effect on the violation rate was two items in six hundred.",
+    "Training on the adversarial axes instead would supply the missing examples, and was not done on purpose: tools/adversarial.py is OUR paraphraser, not the organizer's, and a model fitted to it would be fitted to a guess about the private set rather than to the shopper. That is the same class of error as pre-training the answerability table."
+  ],
+  "kept_because": "The 0.44% / 13.0% pair is a standing statement about where this agent is fragile, and the tool measures a product property -- do not recommend what the customer ruled out -- that no leaderboard metric reports."
+}

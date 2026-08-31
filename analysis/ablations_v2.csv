@@ -1,0 +1,17 @@
+key,label,full_score,full_hr,full_mrr,full_mttc,dev_score,holdout_score
+full,Honest v2 — everything on,0.8943,0.935,0.911714,3.335,0.9034,0.8852
+no_phrase,No phrase containment,0.8901,,,,,0.8846
+with_profile,Profile signals re-enabled (tags + rating level),0.8892,,,,,0.8845
+prune_soft,"Soft penalty, no correction-triggered reset",0.8869,,,,,0.8773
+ask_feature,Fixed question: always ask 'feature',0.8864,,,,,0.8716
+no_bm25,No BM25 lexical signal,0.8863,,,,,0.8732
+ask_material,Fixed question: always ask 'material',0.8719,,,,,0.8593
+commit2,Commit width 2,0.8719,,,,,0.8619
+commit10,Show 10 every turn instead of committing narrow,0.8297,,,,,0.82
+ask_none,No elicitation at all,0.8208,,,,,0.8017
+no_pop,No popularity prior,0.8202,,,,,0.8054
+prune_hard,Hard-delete shown items instead of soft penalty,0.7932,,,,,0.7961
+pop_only,Popularity + category only (no NLP at all),0.7912,,,,,0.7925
+v1_exploit,"Exploit version (wildcard ask, template regex, dead-zone muting)",0.883,0.93,0.905595,3.685,,
+v1_exploit_stripped,Exploit version with its two clearest tricks removed,0.6977,0.785,0.672,5.82,,
+baseline_bm25,Provided weak BM25 starter,0.10671,0.125,0.068034,9.81,,

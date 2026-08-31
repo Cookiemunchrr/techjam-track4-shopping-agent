@@ -1,0 +1,1372 @@
+{
+  "build_config": {
+    "max_aliases_per_head": 4,
+    "max_shelf_spread": 0.25,
+    "min_cosine": 0.8,
+    "min_document_frequency": 5,
+    "min_shelf_size": 10,
+    "token_fields": [
+      "title",
+      "features",
+      "details",
+      "categories"
+    ],
+    "top_heads_per_term": 2,
+    "top_terms_per_head": 8
+  },
+  "builder_source_sha256": "ed18c971b2322cb6eef7f902a508263b4e14441036ec330a65ad4b79c51b48f2",
+  "candidate_name": "mnn",
+  "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+  "generator": null,
+  "input_sha256": "f88f10223686ab83da1d1558f7383569dca4e31ca9d8b65cf2ca092ce46e48b0",
+  "mapping": {
+    "00g": [
+      "tunnels",
+      "plugs"
+    ],
+    "01a": [
+      "shearling"
+    ],
+    "0g": [
+      "plugs",
+      "tunnels"
+    ],
+    "114cm": [
+      "shoelaces"
+    ],
+    "12g": [
+      "tapers"
+    ],
+    "138": [
+      "tapers"
+    ],
+    "145cm": [
+      "neckties"
+    ],
+    "14mm": [
+      "tunnels"
+    ],
+    "1962": [
+      "flops"
+    ],
+    "1969": [
+      "windbreakers"
+    ],
+    "22g": [
+      "studs"
+    ],
+    "231": [
+      "tags"
+    ],
+    "233": [
+      "henleys"
+    ],
+    "28cm": [
+      "berets"
+    ],
+    "2g": [
+      "plugs"
+    ],
+    "2p": [
+      "trays"
+    ],
+    "38mm": [
+      "barbells"
+    ],
+    "49mm": [
+      "frames"
+    ],
+    "4inches": [
+      "fedoras"
+    ],
+    "515": [
+      "clearance"
+    ],
+    "51cm": [
+      "parkas"
+    ],
+    "524": [
+      "towers"
+    ],
+    "688": [
+      "links"
+    ],
+    "70th": [
+      "link"
+    ],
+    "882": [
+      "kits"
+    ],
+    "91cm": [
+      "shoelaces"
+    ],
+    "aaaa": [
+      "snake"
+    ],
+    "abroad": [
+      "suitcases"
+    ],
+    "acceleration": [
+      "soccer"
+    ],
+    "acronym": [
+      "tapers"
+    ],
+    "address": [
+      "tags"
+    ],
+    "adizero": [
+      "wrestling"
+    ],
+    "agency": [
+      "patches"
+    ],
+    "aglets": [
+      "shoelaces"
+    ],
+    "airmesh": [
+      "footwear"
+    ],
+    "alert": [
+      "identification"
+    ],
+    "alex": [
+      "snake"
+    ],
+    "alexandrite": [
+      "gemstones"
+    ],
+    "alina": [
+      "sweatsuits"
+    ],
+    "alive": [
+      "hangers"
+    ],
+    "ani": [
+      "snake"
+    ],
+    "anonymous": [
+      "masks"
+    ],
+    "arena": [
+      "jammers"
+    ],
+    "ariat": [
+      "western"
+    ],
+    "armoire": [
+      "armoires"
+    ],
+    "aromatherapy": [
+      "lockets"
+    ],
+    "arrangement": [
+      "chemises"
+    ],
+    "artful": [
+      "collars"
+    ],
+    "ashley": [
+      "studs"
+    ],
+    "australia": [
+      "shearling"
+    ],
+    "auto": [
+      "umbrellas"
+    ],
+    "automotive": [
+      "belts"
+    ],
+    "ballet": [
+      "dance"
+    ],
+    "bangs": [
+      "wigs"
+    ],
+    "batch": [
+      "sweatsuits"
+    ],
+    "bathing": [
+      "swimwear"
+    ],
+    "bbq": [
+      "aprons"
+    ],
+    "bday": [
+      "trays"
+    ],
+    "beanie": [
+      "beanies"
+    ],
+    "beefy": [
+      "undershirts"
+    ],
+    "beltiscool": [
+      "buckles"
+    ],
+    "berkshire": [
+      "sheers"
+    ],
+    "bh": [
+      "cardigans"
+    ],
+    "biagi": [
+      "bead"
+    ],
+    "bicycle": [
+      "cycling"
+    ],
+    "bifocal": [
+      "frames"
+    ],
+    "bike": [
+      "cycling"
+    ],
+    "biomechanically": [
+      "flops"
+    ],
+    "blanket": [
+      "sleepers"
+    ],
+    "blonde": [
+      "wigs"
+    ],
+    "bolero": [
+      "shrugs"
+    ],
+    "boned": [
+      "corsets"
+    ],
+    "bostonian": [
+      "oxfords"
+    ],
+    "breakaway": [
+      "coveralls"
+    ],
+    "brogue": [
+      "oxfords"
+    ],
+    "brow": [
+      "visors"
+    ],
+    "brunswick": [
+      "bowling"
+    ],
+    "brutini": [
+      "oxfords"
+    ],
+    "bslingerie": [
+      "cinchers"
+    ],
+    "buds": [
+      "pouches"
+    ],
+    "bulging": [
+      "undershirts"
+    ],
+    "bulliant": [
+      "belts"
+    ],
+    "bum": [
+      "packs"
+    ],
+    "bunion": [
+      "trees"
+    ],
+    "burberry": [
+      "frames"
+    ],
+    "burt": [
+      "sleepers"
+    ],
+    "bustier": [
+      "corsets"
+    ],
+    "bustiers": [
+      "corsets"
+    ],
+    "calendered": [
+      "footwear"
+    ],
+    "canopy": [
+      "umbrellas"
+    ],
+    "caters": [
+      "bibs"
+    ],
+    "cbr": [
+      "sleepers"
+    ],
+    "cedar": [
+      "trees"
+    ],
+    "ceramic": [
+      "trays"
+    ],
+    "char": [
+      "blends"
+    ],
+    "che": [
+      "shearling"
+    ],
+    "circumferences": [
+      "capris"
+    ],
+    "cleated": [
+      "footwear"
+    ],
+    "clinging": [
+      "slips"
+    ],
+    "clog": [
+      "mules"
+    ],
+    "coaster": [
+      "armoires"
+    ],
+    "cocoship": [
+      "bikinis"
+    ],
+    "comical": [
+      "boxers"
+    ],
+    "commercial": [
+      "aprons"
+    ],
+    "compactly": [
+      "parkas"
+    ],
+    "compartments": [
+      "boxes"
+    ],
+    "complies": [
+      "wrestling"
+    ],
+    "compression": [
+      "layers"
+    ],
+    "comprised": [
+      "sweatsuits"
+    ],
+    "configuration": [
+      "softball"
+    ],
+    "cooking": [
+      "aprons"
+    ],
+    "copa": [
+      "soccer"
+    ],
+    "corn": [
+      "trees"
+    ],
+    "cottagecore": [
+      "finds"
+    ],
+    "creepy": [
+      "masks"
+    ],
+    "crinoline": [
+      "slips"
+    ],
+    "crisscrossing": [
+      "chemises"
+    ],
+    "croslite": [
+      "mules",
+      "clogs"
+    ],
+    "cts": [
+      "gemstones"
+    ],
+    "cufflink": [
+      "links"
+    ],
+    "cummerbunds": [
+      "ties"
+    ],
+    "curled": [
+      "fedoras"
+    ],
+    "curly": [
+      "wigs"
+    ],
+    "cursive": [
+      "snake"
+    ],
+    "damara": [
+      "clutches"
+    ],
+    "daypack": [
+      "backpacks"
+    ],
+    "decors": [
+      "minimizers"
+    ],
+    "demo": [
+      "frames"
+    ],
+    "demonstrate": [
+      "handkerchiefs"
+    ],
+    "den": [
+      "sheers"
+    ],
+    "deodorization": [
+      "masks"
+    ],
+    "depths": [
+      "strand"
+    ],
+    "derby": [
+      "fascinators"
+    ],
+    "dermal": [
+      "screws"
+    ],
+    "dexter": [
+      "bowling"
+    ],
+    "diabetes": [
+      "identification"
+    ],
+    "dial": [
+      "watches"
+    ],
+    "distinguish": [
+      "tags"
+    ],
+    "dj": [
+      "links"
+    ],
+    "dm": [
+      "raincoats"
+    ],
+    "document": [
+      "covers"
+    ],
+    "dolls": [
+      "chemises"
+    ],
+    "doors": [
+      "armoires"
+    ],
+    "draft": [
+      "shells"
+    ],
+    "drug": [
+      "identification"
+    ],
+    "duffle": [
+      "duffels"
+    ],
+    "durango": [
+      "western"
+    ],
+    "duratread": [
+      "western"
+    ],
+    "dvs": [
+      "skateboarding"
+    ],
+    "e01": [
+      "dangle"
+    ],
+    "ea": [
+      "blends"
+    ],
+    "earlier": [
+      "pouches"
+    ],
+    "earn": [
+      "pashminas"
+    ],
+    "eastland": [
+      "chukka"
+    ],
+    "eclectic": [
+      "stacking"
+    ],
+    "ed": [
+      "coveralls"
+    ],
+    "election": [
+      "coveralls"
+    ],
+    "elegantpark": [
+      "pumps"
+    ],
+    "embraces": [
+      "visors"
+    ],
+    "emu": [
+      "shearling"
+    ],
+    "enamel": [
+      "pins"
+    ],
+    "endura": [
+      "jammers"
+    ],
+    "epoxy": [
+      "hangers"
+    ],
+    "espadrille": [
+      "wedges"
+    ],
+    "ethical": [
+      "strands"
+    ],
+    "evogues": [
+      "shrugs"
+    ],
+    "evolve": [
+      "packs"
+    ],
+    "excels": [
+      "bibs"
+    ],
+    "exploration": [
+      "discounts"
+    ],
+    "externally": [
+      "barbells"
+    ],
+    "eyewear": [
+      "sunglasses"
+    ],
+    "eytino": [
+      "capris"
+    ],
+    "facilitates": [
+      "suspenders"
+    ],
+    "fanny": [
+      "packs"
+    ],
+    "fasthion": [
+      "windbreakers"
+    ],
+    "fayaleq": [
+      "camis"
+    ],
+    "fda": [
+      "lenses"
+    ],
+    "felina": [
+      "hipsters"
+    ],
+    "fg": [
+      "soccer"
+    ],
+    "fiberglass": [
+      "umbrellas"
+    ],
+    "filters": [
+      "balaclavas"
+    ],
+    "fingers": [
+      "gloves"
+    ],
+    "fired": [
+      "towers"
+    ],
+    "firefighter": [
+      "buckles"
+    ],
+    "fishhook": [
+      "dangle"
+    ],
+    "flip": [
+      "flops"
+    ],
+    "fluevog": [
+      "bootie"
+    ],
+    "fogging": [
+      "masks"
+    ],
+    "folder": [
+      "covers"
+    ],
+    "foral": [
+      "minimizers"
+    ],
+    "format": [
+      "briefcases"
+    ],
+    "forward": [
+      "finds"
+    ],
+    "foxing": [
+      "skateboarding"
+    ],
+    "franchise": [
+      "softball"
+    ],
+    "fs": [
+      "earmuffs"
+    ],
+    "futsal": [
+      "jerseys"
+    ],
+    "garage": [
+      "wrestling"
+    ],
+    "gauges": [
+      "plugs",
+      "tunnels"
+    ],
+    "gd": [
+      "chemises"
+    ],
+    "ge": [
+      "pins"
+    ],
+    "gesture": [
+      "enhancers"
+    ],
+    "ghana": [
+      "strand"
+    ],
+    "girlish": [
+      "shrugs"
+    ],
+    "glare": [
+      "lenses"
+    ],
+    "glove": [
+      "gloves"
+    ],
+    "goldsmiths": [
+      "gemstones"
+    ],
+    "gorgeously": [
+      "pouches"
+    ],
+    "grease": [
+      "kits"
+    ],
+    "greekgear": [
+      "briefcases"
+    ],
+    "greens": [
+      "chokers"
+    ],
+    "grill": [
+      "aprons"
+    ],
+    "grosgrain": [
+      "fedoras"
+    ],
+    "hankie": [
+      "handkerchiefs"
+    ],
+    "harming": [
+      "bandanas"
+    ],
+    "hasp": [
+      "pouches"
+    ],
+    "hat": [
+      "caps"
+    ],
+    "heelys": [
+      "skateboarding"
+    ],
+    "hex": [
+      "visors"
+    ],
+    "hgry": [
+      "henleys"
+    ],
+    "hiker": [
+      "trekking"
+    ],
+    "hl": [
+      "tapers"
+    ],
+    "holdall": [
+      "duffels"
+    ],
+    "hoodie": [
+      "hoodies"
+    ],
+    "hount": [
+      "tunics"
+    ],
+    "huggie": [
+      "hoop"
+    ],
+    "hw": [
+      "bandanas"
+    ],
+    "hygroscopicity": [
+      "bandanas"
+    ],
+    "iliad": [
+      "cardigans"
+    ],
+    "inappropriate": [
+      "satchels"
+    ],
+    "inche": [
+      "pashminas"
+    ],
+    "incorporated": [
+      "softball"
+    ],
+    "indie": [
+      "strand"
+    ],
+    "infitty": [
+      "pullovers"
+    ],
+    "infringe": [
+      "cinchers"
+    ],
+    "integrating": [
+      "undershirts"
+    ],
+    "intuition": [
+      "anklets"
+    ],
+    "inv": [
+      "stacking"
+    ],
+    "janes": [
+      "jane"
+    ],
+    "jazzed": [
+      "tunics"
+    ],
+    "jd": [
+      "lockets"
+    ],
+    "jogger": [
+      "sweatpants"
+    ],
+    "joggers": [
+      "sweatpants"
+    ],
+    "jostar": [
+      "tunics"
+    ],
+    "jwey": [
+      "collars"
+    ],
+    "kangaroo": [
+      "hoodies"
+    ],
+    "kentucky": [
+      "fascinators"
+    ],
+    "keyring": [
+      "keychains"
+    ],
+    "keyrings": [
+      "keychains"
+    ],
+    "kint": [
+      "pullovers"
+    ],
+    "kirundo": [
+      "discounts"
+    ],
+    "kk": [
+      "satchels"
+    ],
+    "knited": [
+      "raincoats"
+    ],
+    "kurti": [
+      "tunics"
+    ],
+    "labels": [
+      "tags"
+    ],
+    "lad": [
+      "playwear"
+    ],
+    "lakiolins": [
+      "jane"
+    ],
+    "languages": [
+      "packs"
+    ],
+    "larp": [
+      "armor"
+    ],
+    "lavish": [
+      "thongs"
+    ],
+    "lei": [
+      "earmuffs"
+    ],
+    "lens": [
+      "sunglasses"
+    ],
+    "licence": [
+      "satchels"
+    ],
+    "lilly": [
+      "hipsters"
+    ],
+    "linda": [
+      "chokers"
+    ],
+    "lis": [
+      "enhancers"
+    ],
+    "logoing": [
+      "henleys"
+    ],
+    "lomon": [
+      "raincoats"
+    ],
+    "m4": [
+      "hipsters"
+    ],
+    "makers": [
+      "gemstones"
+    ],
+    "mans": [
+      "henleys"
+    ],
+    "marry": [
+      "links"
+    ],
+    "mary": [
+      "jane"
+    ],
+    "mcclintock": [
+      "clutches"
+    ],
+    "mdf": [
+      "armoires"
+    ],
+    "merokeety": [
+      "discounts"
+    ],
+    "microwobbleboard": [
+      "flops"
+    ],
+    "millimeters": [
+      "sunglasses"
+    ],
+    "mils": [
+      "link"
+    ],
+    "misuse": [
+      "enhancers"
+    ],
+    "mizuno": [
+      "softball"
+    ],
+    "monroe": [
+      "studs"
+    ],
+    "morale": [
+      "patches"
+    ],
+    "morgan": [
+      "boxers"
+    ],
+    "moyabo": [
+      "westlake"
+    ],
+    "muffs": [
+      "earmuffs"
+    ],
+    "multicolour": [
+      "patches"
+    ],
+    "muumuu": [
+      "sleepshirts"
+    ],
+    "mystical": [
+      "headwear"
+    ],
+    "necklace": [
+      "necklaces"
+    ],
+    "necktie": [
+      "neckties"
+    ],
+    "neko": [
+      "headwear"
+    ],
+    "nemeziz": [
+      "soccer"
+    ],
+    "nightshirt": [
+      "sleepshirts"
+    ],
+    "nightshirts": [
+      "sleepshirts"
+    ],
+    "nipple": [
+      "barbells"
+    ],
+    "nj": [
+      "sweatsuits"
+    ],
+    "nostril": [
+      "screws"
+    ],
+    "nylons": [
+      "sheers"
+    ],
+    "opener": [
+      "kits"
+    ],
+    "optics": [
+      "lenses"
+    ],
+    "osiris": [
+      "skateboarding"
+    ],
+    "overbust": [
+      "corsets"
+    ],
+    "overnight": [
+      "duffels"
+    ],
+    "paintings": [
+      "wristlets"
+    ],
+    "partners": [
+      "berets"
+    ],
+    "peaked": [
+      "visors"
+    ],
+    "peg": [
+      "towers"
+    ],
+    "petticoat": [
+      "slips"
+    ],
+    "pillbox": [
+      "fascinators"
+    ],
+    "pinback": [
+      "pins"
+    ],
+    "pique": [
+      "polos"
+    ],
+    "pivoting": [
+      "mules",
+      "clogs"
+    ],
+    "platforms": [
+      "wedges"
+    ],
+    "playsuits": [
+      "jumpsuits"
+    ],
+    "polarized": [
+      "sunglasses"
+    ],
+    "polymers": [
+      "lockets"
+    ],
+    "posting": [
+      "headwear"
+    ],
+    "presidents": [
+      "camis"
+    ],
+    "prettier": [
+      "anklets"
+    ],
+    "pricing": [
+      "discounts"
+    ],
+    "primal": [
+      "jerseys"
+    ],
+    "psycho": [
+      "boxers"
+    ],
+    "puncher": [
+      "belts"
+    ],
+    "pyramid": [
+      "clearance"
+    ],
+    "query": [
+      "hipsters"
+    ],
+    "quilting": [
+      "insulated"
+    ],
+    "rack": [
+      "towers"
+    ],
+    "rafaelian": [
+      "bangle"
+    ],
+    "rampage": [
+      "clearance"
+    ],
+    "raquel": [
+      "bowling"
+    ],
+    "ratchet": [
+      "belts"
+    ],
+    "reader": [
+      "briefcases"
+    ],
+    "readjusting": [
+      "suspenders"
+    ],
+    "readysalted": [
+      "finds"
+    ],
+    "recover": [
+      "cinchers"
+    ],
+    "recovered": [
+      "berets"
+    ],
+    "reggae": [
+      "slides"
+    ],
+    "reinforces": [
+      "undershirts"
+    ],
+    "relic": [
+      "wristlets"
+    ],
+    "repair": [
+      "kits"
+    ],
+    "required": [
+      "boxes"
+    ],
+    "responders": [
+      "identification"
+    ],
+    "retailers": [
+      "handkerchiefs"
+    ],
+    "rg": [
+      "coveralls"
+    ],
+    "rhode": [
+      "headwear"
+    ],
+    "ribs": [
+      "umbrellas"
+    ],
+    "riley": [
+      "briefcases"
+    ],
+    "ripped": [
+      "denim"
+    ],
+    "rockers": [
+      "collars"
+    ],
+    "rollaboard": [
+      "suitcases"
+    ],
+    "ruff": [
+      "parkas"
+    ],
+    "rules": [
+      "wrestling"
+    ],
+    "sakroots": [
+      "wristlets"
+    ],
+    "samurai": [
+      "armor"
+    ],
+    "scarf": [
+      "scarves"
+    ],
+    "seersucker": [
+      "playwear"
+    ],
+    "seniors": [
+      "shoelaces"
+    ],
+    "sentry": [
+      "suitcases"
+    ],
+    "shaken": [
+      "parkas"
+    ],
+    "shi": [
+      "pashminas"
+    ],
+    "si1": [
+      "screws"
+    ],
+    "silberdream": [
+      "enhancers"
+    ],
+    "silvery": [
+      "hangers"
+    ],
+    "sim": [
+      "covers"
+    ],
+    "singer": [
+      "windbreakers"
+    ],
+    "skiers": [
+      "bibs"
+    ],
+    "skully": [
+      "beanies"
+    ],
+    "sleepdress": [
+      "sleepshirts"
+    ],
+    "smoked": [
+      "balaclavas"
+    ],
+    "softshell": [
+      "shells"
+    ],
+    "solves": [
+      "footwear"
+    ],
+    "sping": [
+      "playwear"
+    ],
+    "spoke": [
+      "handkerchiefs"
+    ],
+    "spreading": [
+      "berets"
+    ],
+    "sprinkle": [
+      "raincoats"
+    ],
+    "squares": [
+      "ties"
+    ],
+    "squeaky": [
+      "jane"
+    ],
+    "sst": [
+      "bowling"
+    ],
+    "stackable": [
+      "stacking"
+    ],
+    "starfish": [
+      "anklets"
+    ],
+    "stellar": [
+      "lockets"
+    ],
+    "stelle": [
+      "dance"
+    ],
+    "stole": [
+      "pashminas"
+    ],
+    "stretchie": [
+      "sleepers"
+    ],
+    "strings": [
+      "thongs"
+    ],
+    "struck": [
+      "pins"
+    ],
+    "struggling": [
+      "suspenders"
+    ],
+    "suffocating": [
+      "suspenders"
+    ],
+    "suiter": [
+      "suitcases"
+    ],
+    "suiting": [
+      "blazers"
+    ],
+    "surfers": [
+      "windbreakers"
+    ],
+    "sweatpant": [
+      "capris"
+    ],
+    "swimsuit": [
+      "swimwear"
+    ],
+    "swimsuits": [
+      "ups"
+    ],
+    "tacvasen": [
+      "bibs"
+    ],
+    "templar": [
+      "armor"
+    ],
+    "tempt": [
+      "thongs"
+    ],
+    "tiedye": [
+      "bandanas"
+    ],
+    "tigers": [
+      "patches"
+    ],
+    "toddle": [
+      "playwear"
+    ],
+    "toebox": [
+      "trees"
+    ],
+    "toning": [
+      "sheers"
+    ],
+    "towering": [
+      "wedges"
+    ],
+    "tqd": [
+      "capris"
+    ],
+    "tragus": [
+      "studs"
+    ],
+    "trendiest": [
+      "chokers"
+    ],
+    "trilby": [
+      "fedoras"
+    ],
+    "trimmer": [
+      "cinchers"
+    ],
+    "troll": [
+      "bead"
+    ],
+    "tuscany": [
+      "covers"
+    ],
+    "twinkle": [
+      "barbells"
+    ],
+    "underskirt": [
+      "slips"
+    ],
+    "underwires": [
+      "minimizers"
+    ],
+    "uniforms": [
+      "safety"
+    ],
+    "uninterrupted": [
+      "thongs"
+    ],
+    "unity": [
+      "stacking"
+    ],
+    "unltd": [
+      "clearance"
+    ],
+    "unobtrusive": [
+      "earmuffs"
+    ],
+    "uvc": [
+      "lenses"
+    ],
+    "veil": [
+      "fascinators"
+    ],
+    "vepose": [
+      "pumps"
+    ],
+    "vermeil": [
+      "collars"
+    ],
+    "vibram": [
+      "trekking"
+    ],
+    "volunteer": [
+      "keychains"
+    ],
+    "weapons": [
+      "armor"
+    ],
+    "wedge": [
+      "wedges"
+    ],
+    "weekender": [
+      "duffels"
+    ],
+    "weird": [
+      "jammers"
+    ],
+    "wifey": [
+      "trays"
+    ],
+    "wingtip": [
+      "oxfords"
+    ],
+    "wired": [
+      "finds"
+    ],
+    "wordmark": [
+      "minimizers"
+    ],
+    "wp": [
+      "trekking"
+    ],
+    "wxhxd": [
+      "satchels"
+    ],
+    "ya": [
+      "anklets"
+    ],
+    "yaluxe": [
+      "wristlets"
+    ],
+    "ybenlow": [
+      "pullovers"
+    ],
+    "ysk": [
+      "hangers"
+    ],
+    "zj": [
+      "shrugs"
+    ],
+    "zoot": [
+      "jammers"
+    ],
+    "zs": [
+      "screws"
+    ]
+  },
+  "payload_sha256": "e0905c5bdfb44d876c2648de2134681ac1b21abb237051b6cb7ebe45146e3c7c",
+  "schema_version": "techjam-v6-shelf-transform-v1",
+  "support": {
+    "candidate_terms": 13539,
+    "canonical_head_terms": 211,
+    "drop_alias_cap": 280,
+    "drop_cosine": 12392,
+    "drop_document_frequency": 69117,
+    "drop_multi_head": 0,
+    "drop_no_head_neighbour": 0,
+    "drop_reciprocity": 428,
+    "drop_shelf_spread": 1062,
+    "emitted_pairs": 446,
+    "multi_head_terms": 5,
+    "shelves_excluded_min_size": 588,
+    "shelves_retained": 527,
+    "shelves_total": 1115,
+    "terms_considered": 83929,
+    "terms_retained": 441
+  }
+}

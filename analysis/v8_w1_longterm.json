@@ -1,0 +1,26 @@
+{
+  "schema": "techjam-v8-w1-longterm-v1",
+  "plan": "IMPROVEMENT_PLAN_V8.txt W1",
+  "what_changed": [
+    "W1a ranking: ProfilePrior accepts LongTermMemory.recall()'s buckets; a candidate whose shelf this profile shape has converged on gets BUCKET_BONUS (0.05), inside the existing CAP (0.30), exercised only through break_ties (ties within 0.02 only). Wired in Agent.reset.",
+    "W1b elicitation: AnswerModel.set_prior seeds the recalled asked/answered counts as a bounded prior (PRIOR_STRENGTH 4.0 pseudo-observations at full weight, reached at PRIOR_FULL_SESSIONS 10 recalled sessions; both declared structure, nothing fitted). The prior is consulted ONLY to settle exact-value ties between questions whose values were MEASURED (elicitation.ASK_TIE_EPSILON = 0.0, measured contenders only), with loop order preserved when it has no opinion."
+  ],
+  "why_the_tie_break_form": "The additive form the plan sketched was built first and measured: at PRIOR_STRENGTH 4.0 it moved the public transcript from session 11 onward (profiles repeat far more than the plan's '~{} per session' premise anticipated) and scored 0.916925 (+0.0008). An exact-tie-only variant still moved it once (session 191, turns 5-7): the tie it settled was between two assumed-impurity placeholders, not two measurements. The shipped form settles exact ties between MEASURED question values only. That is the reduction the plan's own gate demanded ('if it moves the transcript, W1 is over-weighted; reduce it'), taken to the point where the transcript is byte-identical again.",
+  "official_scores": {
+    "before": {"dev": 0.9234, "holdout": 0.90555, "full": 0.916125},
+    "after": {"dev": 0.9234, "holdout": 0.90555, "full": 0.916125},
+    "delta": "exactly zero on all three splits"
+  },
+  "transcript_disposition": {
+    "sha256": "7c30023e3b8f951d35f8a449a066cfff45f8995d8d9994142e0e5929f8958d04",
+    "moved": false,
+    "note": "Re-derived under PYTHONHASHSEED=1 with the shipped W1 code: byte-identical to the frozen baseline. W1a never fires on the public set (no repeated-profile tie lands within tie-break reach); W1b fires only on exact ties between measured values, and none arise there."
+  },
+  "loop_closure_evidence": {
+    "two_session_test": "tests/test_pillar3_evolution.py::LongTermConsumptionTest: session A for a profile teaches the store; session B for the same profile shows recalled buckets in its ProfilePrior and a prior-bearing AnswerModel, while a fresh-memory control shows neither; OTHER_PROFILE sees nothing (cross-profile isolation).",
+    "first_session_invariance": "a first-ever session has empty recall, no prior, and behaviour identical to the pre-W1 code path",
+    "tie_break_tests": "the prior settles an exact tie between two measured question values, cannot overrule a decisive gap, and leaves assumed-value placeholder ties to loop order",
+    "harness_limit": "The official harness cannot exercise the payoff: sessions are isolated single-user interactions by construction (4.3), so a profile's history can only ever settle coin flips between equally-scored questions -- and on the public set even those arise only among placeholder values, which the prior deliberately does not touch. The mechanism is real and runs; its measured effect on this harness is exactly zero, and that is the honest statement."
+  },
+  "verdict": "shipped: recall() is consumed at two production sites; score and public transcript bit-identical"
+}

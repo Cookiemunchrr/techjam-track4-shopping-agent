@@ -1,0 +1,44 @@
+{
+  "schema": "techjam-v6-blind-mapping-audits-v1",
+  "scope": "Outcome-blind cross-review of the two provisional V6 candidates, before any score evaluation. Reviewers are independent model reviews, not human validation.",
+  "aliases_reviewed_by_mnn_engineer": {
+    "reviewer": "mnn engineer (independent model review, not human)",
+    "sampled": 407,
+    "supported": 402,
+    "precision": 0.9877149877149877,
+    "wilson95": [
+      0.9715680163565626,
+      0.9947414721770783
+    ],
+    "v6d8_gate": "observed >= 0.98 and lower bound >= 0.95",
+    "v6d8_outcome": "pass",
+    "removals_applied": 5,
+    "detail_sidecar": "analysis/_v6_review_aliases_by_mnn.json",
+    "asset_payload_after_dispositions": "6cb55ba92cfe2631fecc029689796f4e4863ab2ee1e329b1ea0722f3ad838f99"
+  },
+  "mnn_reviewed_by_alias_engineer": {
+    "reviewer": "alias engineer (independent model review, not human)",
+    "sampled": 441,
+    "supported": 145,
+    "precision": 0.328798,
+    "wilson95": [
+      0.286596,
+      0.373957
+    ],
+    "v6d8_gate": "observed >= 0.98 and lower bound >= 0.95",
+    "v6d8_outcome": "fail",
+    "verdict": "reject",
+    "failure_themes": [
+      "opaque codes/SKU/year fragments",
+      "bare measurements generic across product types",
+      "coincidental marketing-copy words",
+      "obscure private-label brand coinages",
+      "bare attributes",
+      "wrong-family mappings",
+      "promo-banner residue"
+    ],
+    "detail_sidecar": "analysis/_v6_review_mnn_by_aliases.json",
+    "asset_payload": "0735262f53f48bc87cb4043baae6e84fcde665148a82e138e63e28422c9d2c64"
+  },
+  "consequence": "Candidate B (mnn) is disqualified at V6-D8 before any score evaluation; its asset and audit are retained as build-only evidence of a measured negative. The development comparison runs baseline vs Candidate A only, and the registered Holm family contains a single comparison."
+}

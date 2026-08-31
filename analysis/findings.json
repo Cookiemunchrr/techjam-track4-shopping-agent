@@ -1,0 +1,113 @@
+{
+  "catalog": {
+    "products": 50000,
+    "distinct_coarse_category_buckets": 1115,
+    "bucket_size": {
+      "max": 1354,
+      "median": 8,
+      "mean": 44.8
+    },
+    "largest_buckets": [
+      [
+        "Shirts T-Shirts",
+        1354
+      ],
+      [
+        "Shoes & Jewelry Westlake",
+        1136
+      ],
+      [
+        "Watches Wrist Watches",
+        1034
+      ],
+      [
+        "Shoes Fashion Sneakers",
+        1017
+      ],
+      [
+        "Dresses Casual",
+        769
+      ],
+      [
+        "Women Shoes",
+        765
+      ],
+      [
+        "Tees & Blouses Blouses & Button-Down Shirts",
+        681
+      ],
+      [
+        "Tees & Blouses T-Shirts",
+        680
+      ],
+      [
+        "Shoes Loafers & Slip-Ons",
+        665
+      ],
+      [
+        "Tops & Tees T-Shirts",
+        649
+      ]
+    ]
+  },
+  "public_set": {
+    "sessions": 200,
+    "scenario_mix": {
+      "buying": 80,
+      "intent_override": 30,
+      "browsing": 80,
+      "boundary": 10
+    },
+    "difficulty_mix": {
+      "easy": 80,
+      "hard": 30,
+      "medium": 90
+    }
+  },
+  "turn1_category_filter": {
+    "note": "size of the exact coarse_category bucket that contains the target",
+    "min": 2,
+    "p25": 49,
+    "median": 184,
+    "p75": 379,
+    "p90": 680,
+    "max": 1354,
+    "mean": 275,
+    "frac_le_10": 0.03,
+    "frac_le_50": 0.26,
+    "frac_le_200": 0.535
+  },
+  "constraints": {
+    "per_session": {
+      "4": 200
+    },
+    "attribute_label_distribution": {
+      "feature": 404,
+      "material": 302,
+      "color": 60,
+      "style": 19,
+      "size": 11,
+      "use_case": 4
+    },
+    "exact_match_within_category_bucket": {
+      "target_survives_strict_AND": "159/200",
+      "sessions_reduced_to_1": 0.625,
+      "sessions_reduced_to_le_10": 0.965,
+      "median_survivors": 1,
+      "p90": 4,
+      "max": 60
+    },
+    "exact_match_over_full_catalog": {
+      "sessions_reduced_to_1": 0.515,
+      "sessions_reduced_to_le_10": 0.82,
+      "median_survivors": 1,
+      "max": 1365
+    }
+  },
+  "scoring_arithmetic": {
+    "formula": "0.50*HitRate@10 + 0.30*MRR + 0.20*clip((11-MTTC)/10, 0, 1)",
+    "cost_of_one_extra_turn": 0.02,
+    "gain_rank5_to_rank1": 0.24,
+    "turns_of_delay_worth_paying_for_rank1_over_rank5": 12.0
+  }
+}

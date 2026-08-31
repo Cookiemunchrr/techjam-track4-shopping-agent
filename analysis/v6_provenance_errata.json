@@ -1,0 +1,53 @@
+{
+  "schema": "techjam-v6-provenance-errata-v1",
+  "scope": "Three self-referential hash pins recorded inside the V6 artifacts do not match the objects they name. Raised by an independent verification pass over the terminated V6 cycle; E1's explanation was corrected on 2026-08-30 (the pin is a line-ending artifact, not a draft hash -- see E1). None of them changes the DECLINE verdict or any gate outcome.",
+  "why_the_frozen_artifacts_were_not_edited": "analysis/v6_cycle_protocol.json is a preregistration artifact; the V6 rules make changing it after results a new experiment rather than a continuation, and it was provably byte-unchanged from its freeze commit until the editorial rename recorded under editorial_changes below (2026-08-30, V7 P2: gates D1-D9 -> V6-D1..V6-D9, semantics unchanged, hash pins untouched). Silently rewriting a stale hash inside it would destroy exactly the provenance the artifact exists to carry. The corrections are therefore recorded here and pinned by tests/test_v6_provenance.py instead. Separately observed on 2026-08-30: the protocol authority block's skill_sha256 and plans_index_sha256 no longer match the committed SKILL.md and PLANS.md -- both were legitimately edited after registration (test-count correction, V6 termination, V7 registration) without refreshing the pins; recorded here rather than rewritten.",
+  "errata": [
+    {
+      "id": "E1",
+      "artifact": "analysis/v6_cycle_protocol.json",
+      "field": "sealed_validation.status",
+      "recorded": "4dd1c865b875e1bc8a9ab844634d69931f59394dc127ecd76879172363c1669f",
+      "actual": "05dc809a2f6e1d5fd33659b2334e79fbabfceff9365a6bfc0c60dc23d1b7709e",
+      "object": "sha256 of the committed analysis/v6_validation_manifest.json",
+      "evidence": "The committed blob is byte-identical at its freeze commit 62e9d0d, at the decline commit b6ac66a, and at HEAD (all 05dc809a...; git log shows exactly one touch). The recorded value 4dd1c865... is the sha256 of the same manifest after LF -> CRLF conversion -- reproducible byte-for-byte by converting the committed file -- i.e. the pin was recorded from a Windows working-tree reading under core.autocrlf=true, not from the blob and not from a draft.",
+      "verdict": "platform-contaminated pin (line-ending conversion); the manifest itself is intact. tests/test_v6_provenance.py pins both readings and asserts each is exactly the conversion of the other"
+    },
+    {
+      "id": "E2",
+      "artifact": "analysis/v6_blind_mapping_audits.json",
+      "field": "aliases_reviewed_by_mnn_engineer.asset_payload_after_dispositions",
+      "recorded": "6cb55ba92cfe2631fecc029689796f4e4863ab2ee1e329b1ea0722f3ad838f99",
+      "actual": "be16b78f7c9a057ed0969e0ca0062b2b5a34135d0554cd028f9c21eba92e4bf6",
+      "object": "payload_hash(mapping) of the committed assets/v6_shelf_aliases.json, per src/shelf_transform.payload_hash",
+      "evidence": "be16b78f... is carried identically by the asset's own payload_sha256 field, by assets/v6_shelf_aliases.manifest.json, and by analysis/v6_selection.json, and recomputes from the committed mapping. The audit's value reconciles under none of: canonical mapping, indented mapping, the support block, the whole asset object, or the raw file bytes.",
+      "verdict": "stale or differently-scoped pin in the audit artifact; the asset identity is otherwise corroborated three ways"
+    },
+    {
+      "id": "E3",
+      "artifact": "analysis/v6_blind_mapping_audits.json",
+      "field": "mnn_reviewed_by_alias_engineer.asset_payload",
+      "recorded": "0735262f53f48bc87cb4043baae6e84fcde665148a82e138e63e28422c9d2c64",
+      "actual": "e0905c5bdfb44d876c2648de2134681ac1b21abb237051b6cb7ebe45146e3c7c",
+      "object": "payload_hash(mapping) of the committed assets/v6_shelf_mnn.json",
+      "evidence": "Same as E2: e0905c5b... is corroborated by the asset, its manifest, and analysis/v6_selection.json, and recomputes from the committed mapping.",
+      "verdict": "stale or differently-scoped pin; Candidate B's V6-D8 rejection is unaffected"
+    }
+  ],
+  "editorial_changes": [
+    {
+      "date": "2026-08-30",
+      "authority": "IMPROVEMENT_PLAN_V7.txt P2",
+      "change": "V6 development gates renamed D1-D9 -> V6-D1..V6-D9 in analysis/v6_cycle_protocol.json and every referencing artifact (v6_selection.json, v6_dev_comparison.json, v6_blind_mapping_audits.json, improvement_plan_v6_results.json, declined_experiments.json, this file, PLANS.md, README.md, tools/v6_compare.py). Reason: the bare D-numbers collided with the declined-experiment ledger, where D1 is the GloVe-50 vector route. No gate semantics, thresholds, or outcomes changed. The pinned plan documents (IMPROVEMENT_PLAN_V6.txt, IMPROVEMENT_PLAN_V6_ADDENDUM.txt) keep the original names because their authority-block hashes still verify; read D<n> there as V6-D<n>."
+    }
+  ],
+  "what_was_independently_reverified": {
+    "public_transcript_parity": "tools.audit --hash-only reproduces 7c30023e3b8f951d35f8a449a066cfff45f8995d8d9994142e0e5929f8958d04 under P_SHELF_TRANSFORM=off, aliases and mnn alike, matching analysis/v6_dev_comparison.json.",
+    "audit_statistics": "Wilson intervals for 402/407 and 145/441, both precisions, and the exact McNemar p=1.0 recompute to the recorded decimals.",
+    "mapping_counts": "419 pre-removal (alias, head) pairs minus 5 removals equals the committed 414 pairs over 402 alias keys, 12 of them two-head hedges.",
+    "scenario_strata": "Reconcile to the aggregate exactly (87 and 88 turn-1 hits of 100); the single recovered session is in the browsing stratum.",
+    "suite": "494 tests, 1 documented skip, 0 failures."
+  },
+  "unrecoverable": "The per-mapping review sidecars (analysis/_v6_review_aliases_by_mnn.json, analysis/_v6_review_mnn_by_aliases.json), the sealed S1/S2 bodies, and the per-run comparison sidecars are gitignored under analysis/_* and are absent from the working tree. The aggregate artifacts are committed by design, and assets/v6_shelf_aliases.manifest.json still carries all five alias removals with reasons, but the 296 unsupported MNN judgements behind Candidate B's rejection cannot be re-read. The S1/S2 ledger is empty, so nothing was consumed; their bodies no longer exist to consume.",
+  "consequence": "None for the V6 terminal state. DECLINE stands on the recall, score, and audit evidence, all of which reverified."
+}

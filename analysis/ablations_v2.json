@@ -1,0 +1,194 @@
+[
+  {
+    "key": "full",
+    "label": "Honest v2 \u2014 everything on",
+    "full": {
+      "technical_score": 0.8943,
+      "hit_rate_at_10": 0.935,
+      "mrr": 0.911714,
+      "mttc": 3.335
+    },
+    "dev_score": 0.9034,
+    "holdout_score": 0.8852
+  },
+  {
+    "key": "no_phrase",
+    "label": "No phrase containment",
+    "full": {
+      "technical_score": 0.8901,
+      "hit_rate_at_10": null,
+      "mrr": null,
+      "mttc": null
+    },
+    "dev_score": null,
+    "holdout_score": 0.8846
+  },
+  {
+    "key": "with_profile",
+    "label": "Profile signals re-enabled (tags + rating level)",
+    "full": {
+      "technical_score": 0.8892,
+      "hit_rate_at_10": null,
+      "mrr": null,
+      "mttc": null
+    },
+    "dev_score": null,
+    "holdout_score": 0.8845
+  },
+  {
+    "key": "prune_soft",
+    "label": "Soft penalty, no correction-triggered reset",
+    "full": {
+      "technical_score": 0.8869,
+      "hit_rate_at_10": null,
+      "mrr": null,
+      "mttc": null
+    },
+    "dev_score": null,
+    "holdout_score": 0.8773
+  },
+  {
+    "key": "ask_feature",
+    "label": "Fixed question: always ask 'feature'",
+    "full": {
+      "technical_score": 0.8864,
+      "hit_rate_at_10": null,
+      "mrr": null,
+      "mttc": null
+    },
+    "dev_score": null,
+    "holdout_score": 0.8716
+  },
+  {
+    "key": "no_bm25",
+    "label": "No BM25 lexical signal",
+    "full": {
+      "technical_score": 0.8863,
+      "hit_rate_at_10": null,
+      "mrr": null,
+      "mttc": null
+    },
+    "dev_score": null,
+    "holdout_score": 0.8732
+  },
+  {
+    "key": "ask_material",
+    "label": "Fixed question: always ask 'material'",
+    "full": {
+      "technical_score": 0.8719,
+      "hit_rate_at_10": null,
+      "mrr": null,
+      "mttc": null
+    },
+    "dev_score": null,
+    "holdout_score": 0.8593
+  },
+  {
+    "key": "commit2",
+    "label": "Commit width 2",
+    "full": {
+      "technical_score": 0.8719,
+      "hit_rate_at_10": null,
+      "mrr": null,
+      "mttc": null
+    },
+    "dev_score": null,
+    "holdout_score": 0.8619
+  },
+  {
+    "key": "commit10",
+    "label": "Show 10 every turn instead of committing narrow",
+    "full": {
+      "technical_score": 0.8297,
+      "hit_rate_at_10": null,
+      "mrr": null,
+      "mttc": null
+    },
+    "dev_score": null,
+    "holdout_score": 0.82
+  },
+  {
+    "key": "ask_none",
+    "label": "No elicitation at all",
+    "full": {
+      "technical_score": 0.8208,
+      "hit_rate_at_10": null,
+      "mrr": null,
+      "mttc": null
+    },
+    "dev_score": null,
+    "holdout_score": 0.8017
+  },
+  {
+    "key": "no_pop",
+    "label": "No popularity prior",
+    "full": {
+      "technical_score": 0.8202,
+      "hit_rate_at_10": null,
+      "mrr": null,
+      "mttc": null
+    },
+    "dev_score": null,
+    "holdout_score": 0.8054
+  },
+  {
+    "key": "prune_hard",
+    "label": "Hard-delete shown items instead of soft penalty",
+    "full": {
+      "technical_score": 0.7932,
+      "hit_rate_at_10": null,
+      "mrr": null,
+      "mttc": null
+    },
+    "dev_score": null,
+    "holdout_score": 0.7961
+  },
+  {
+    "key": "pop_only",
+    "label": "Popularity + category only (no NLP at all)",
+    "full": {
+      "technical_score": 0.7912,
+      "hit_rate_at_10": null,
+      "mrr": null,
+      "mttc": null
+    },
+    "dev_score": null,
+    "holdout_score": 0.7925
+  },
+  {
+    "key": "v1_exploit",
+    "label": "Exploit version (wildcard ask, template regex, dead-zone muting)",
+    "full": {
+      "technical_score": 0.883,
+      "hit_rate_at_10": 0.93,
+      "mrr": 0.905595,
+      "mttc": 3.685
+    },
+    "dev_score": null,
+    "holdout_score": null
+  },
+  {
+    "key": "v1_exploit_stripped",
+    "label": "Exploit version with its two clearest tricks removed",
+    "full": {
+      "technical_score": 0.6977,
+      "hit_rate_at_10": 0.785,
+      "mrr": 0.672,
+      "mttc": 5.82
+    },
+    "dev_score": null,
+    "holdout_score": null
+  },
+  {
+    "key": "baseline_bm25",
+    "label": "Provided weak BM25 starter",
+    "full": {
+      "technical_score": 0.10671,
+      "hit_rate_at_10": 0.125,
+      "mrr": 0.068034,
+      "mttc": 9.81
+    },
+    "dev_score": null,
+    "holdout_score": null
+  }
+]

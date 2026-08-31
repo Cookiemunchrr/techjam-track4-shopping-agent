@@ -1,0 +1,40 @@
+{
+  "schema": "techjam-v8-w3-erasure-v1",
+  "plan": "IMPROVEMENT_PLAN_V8.txt W3",
+  "what_changed": "DialogState gained a supersede mode (P_SUPERSEDE=decay|erase, fail-closed to decay). All four retirement sites (_add attribute-scoped and global, restart, product_reset, supersede) route through one _retire helper: decay marks, erase removes the slot from the structure -- active(), weighted_phrases(), budget() and facets() cannot see it and its text cannot reach BM25 or the phrase channel.",
+  "measurement_on_the_shipped_agent": {
+    "official": {
+      "full": {"decay": 0.916125, "erase": 0.913375, "delta": -0.00275},
+      "dev": {"decay": 0.9234, "erase": 0.9179, "delta": -0.0055},
+      "holdout": {"decay": 0.90555, "erase": 0.90555, "delta": 0.0},
+      "hr_at_10": {"decay": 1.0, "erase": 0.995},
+      "mrr": {"decay": 0.773417, "erase": 0.772917},
+      "mttc": {"decay": 1.795, "erase": 1.8}
+    },
+    "intent_override_slice": {
+      "decay": {"hr_at_10": 1.0, "mrr": 0.864444, "mttc": 4.0},
+      "erase": {"hr_at_10": 0.966667, "mrr": 0.861111, "mttc": 4.033333}
+    },
+    "shadow": {"decay": 0.89854, "erase": 0.89854, "note": "identical; the shadow instrument strips the dialog dynamics this mode changes"},
+    "adversarial": {
+      "control": {"decay": 0.91612, "erase": 0.91338},
+      "category": {"decay": 0.84066, "erase": 0.84121},
+      "natural": {"decay": 0.91154, "erase": 0.91002},
+      "scaffold": {"decay": 0.85641, "erase": 0.85574},
+      "constraint": {"decay": 0.88575, "erase": 0.88615},
+      "all paraphrase axes": {"decay": 0.72979, "erase": 0.72988},
+      "granularity=1": {"decay": 0.89039, "erase": 0.89014},
+      "granularity=3": {"decay": 0.91548, "erase": 0.91273},
+      "note": "every axis within +/-0.0028; the only material movement is the clean control"
+    },
+    "transcript": {
+      "decay_sha256": "7c30023e3b8f951d35f8a449a066cfff45f8995d8d9994142e0e5929f8958d04",
+      "erase_sha256": "d729f15069aadf311eb060f9d46ca13a80a2332a11eee49bd1f675cd4bbf9707",
+      "diverging_sessions": "two of 200: session 33 (turns 5-10 question tail only; outcome identical) and session 196 (intent_override; loses its hit -- the one HR@10 session)"
+    }
+  },
+  "decision": "KEEP decay as the default; erase ships as a reachable, tested, documented mode",
+  "justification": "Erase is worse on the shipped agent: -0.00275 official, one intent_override hit lost (HR@10 1.000 -> 0.995), nothing gained on any adversarial axis. The stop rule's 0.005 threshold is not crossed, so the mode ships and the deviation is quantified rather than asserted. The mechanism Pillar II names now demonstrably exists: P_SUPERSEDE=erase removes the slot, tested at the state and agent level.",
+  "stale_numbers_replaced": "The earlier erasure-cost figures (-0.101 score, intent-override HR@10 0.900 -> 0.233) were measured on the 211-line reference agent (analysis/ablations_v2.csv row prune_hard; analysis/TECHJAM-TRACK4-BRIEF.md section 4), not this one. On the shipped agent the cost is -0.00275 and 0.9667 on the slice: the current state machine carries more redundancy (standing slots, rejection memory, category held separately), so the decayed trace is worth less here. The old numbers remain as historical reference-agent measurements, relabelled where quoted.",
+  "why_erasure_loses": "behavior_for derives the old and new value from the same target product, so the retracted preference still describes the answer. Erasing it is the truer model of a person and the worse model of this interlocutor; the trace is worth exactly one session in 200."
+}

@@ -1,0 +1,48 @@
+{
+  "features": [
+    "popularity",
+    "shelf_popularity",
+    "stars",
+    "bm25",
+    "phrase",
+    "facet",
+    "budget",
+    "primary",
+    "exact_shelf",
+    "refused",
+    "shown",
+    "has_price",
+    "blob",
+    "bm25_x_constraints",
+    "phrase_x_constraints"
+  ],
+  "weights": [
+    8.302496,
+    -2.541061,
+    2.132022,
+    0.385927,
+    1.086742,
+    0.707536,
+    -0.127984,
+    2.929546,
+    2.929546,
+    -3.158828,
+    -4.018695,
+    2.380333,
+    0.691389,
+    0.294706,
+    0.780139
+  ],
+  "bias": 0.0,
+  "blend": 1.0,
+  "meta": {
+    "objective": "pairwise logistic on feature differences",
+    "lambda": 0.003,
+    "trained_on": "analysis/rerank_dev.jsonl",
+    "snapshots": 148,
+    "pairs": 5558,
+    "cv_pairwise_accuracy": 0.92225,
+    "dev_pairwise_accuracy": 0.92893,
+    "holdout_pairwise_accuracy": 0.90325
+  }
+}

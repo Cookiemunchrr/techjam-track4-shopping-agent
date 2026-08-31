@@ -1,0 +1,159 @@
+{
+  "question": "The elicitation criterion ranks attributes by how much of the pool an answer removes. The V1 specification's P8 objected that this is the wrong quantity -- a question that splits the bottom of the pool scores well on it and cannot move the head -- and asked for expected improvement in where the target lands instead. Is the objection right, and is it worth anything?",
+  "verdict": "The objection is right and it is worth nothing here. The counterfactual criterion is a better description of what a question is for, it independently rediscovers the failure that motivated src/answerability.py, and switching to it costs score on both doors. Declined, and left reachable under P_ASK=counterfactual so the finding can be re-run.",
+  "what_was_built": "src/elicitation.expected_gain. Read a belief over which candidate is the target from the scores already computed (softmax over the head -- no temperature to choose, because the scoring weights already set the scale and the reranker is fitted under exactly this model). For each likely answer, apply the facet term the scorer would apply if the shopper gave it, re-sort, update the belief by the same rule, and read the change in expected reciprocal rank. Average over answers weighted by belief mass. A product whose facet is unknown keeps its mass under every answer -- missing metadata is uncertainty, the repository's standing invariant, and it is what stops a question being made to look valuable by the thin half of the catalog.",
+  "the_threshold_is_not_fitted": "TURN_COST_IN_MRR = 0.02/0.30 = 0.0667, read off the published scoring formula: one turn is 0.20/10 = 0.02 of TechnicalScore, one unit of MRR is 0.30. Fitting a threshold to simulator-generated answers is the trap the working rules name, so the number comes from the brief instead.",
+  "measured_on_real_sessions": {
+    "regenerate": "python3 analysis/question_value.py -> analysis/question_value.json",
+    "summary": [
+      {
+        "split": "dev",
+        "turn_cost_in_mrr": 0.0667,
+        "attributes": [
+          {
+            "attribute": "brand",
+            "observations": 190,
+            "gain_median": 0.00265,
+            "gain_p90": 0.02598,
+            "gain_max": 0.06245,
+            "reduction_median": 0.9782,
+            "answerability_at_the_end": 0.167,
+            "share_paying_for_the_turn": 0.0
+          },
+          {
+            "attribute": "budget",
+            "observations": 94,
+            "gain_median": 0.00613,
+            "gain_p90": 0.02702,
+            "gain_max": 0.05112,
+            "reduction_median": 0.185,
+            "answerability_at_the_end": 0.5,
+            "share_paying_for_the_turn": 0.0
+          },
+          {
+            "attribute": "color",
+            "observations": 114,
+            "gain_median": 0.00071,
+            "gain_p90": 0.00625,
+            "gain_max": 0.03172,
+            "reduction_median": 0.2724,
+            "answerability_at_the_end": 0.333,
+            "share_paying_for_the_turn": 0.0
+          },
+          {
+            "attribute": "material",
+            "observations": 167,
+            "gain_median": 0.00566,
+            "gain_p90": 0.01671,
+            "gain_max": 0.0426,
+            "reduction_median": 0.3889,
+            "answerability_at_the_end": 0.833,
+            "share_paying_for_the_turn": 0.0
+          }
+        ]
+      },
+      {
+        "split": "holdout",
+        "turn_cost_in_mrr": 0.0667,
+        "attributes": [
+          {
+            "attribute": "brand",
+            "observations": 171,
+            "gain_median": 0.00199,
+            "gain_p90": 0.02182,
+            "gain_max": 0.05075,
+            "reduction_median": 0.9749,
+            "answerability_at_the_end": 0.143,
+            "share_paying_for_the_turn": 0.0
+          },
+          {
+            "attribute": "budget",
+            "observations": 93,
+            "gain_median": 0.00527,
+            "gain_p90": 0.02451,
+            "gain_max": 0.04605,
+            "reduction_median": 0.1939,
+            "answerability_at_the_end": 0.333,
+            "share_paying_for_the_turn": 0.0
+          },
+          {
+            "attribute": "color",
+            "observations": 115,
+            "gain_median": 0.00097,
+            "gain_p90": 0.00773,
+            "gain_max": 0.04573,
+            "reduction_median": 0.2943,
+            "answerability_at_the_end": 0.571,
+            "share_paying_for_the_turn": 0.0
+          },
+          {
+            "attribute": "material",
+            "observations": 143,
+            "gain_median": 0.00592,
+            "gain_p90": 0.01585,
+            "gain_max": 0.04505,
+            "reduction_median": 0.4229,
+            "answerability_at_the_end": 0.8,
+            "share_paying_for_the_turn": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  "the_headline_finding": "Not one attribute question, on any turn of either split, is expected to buy enough rank to pay for the turn it spends. The largest single expected gain observed is 0.0624 against a cost of 0.0667; the medians are 0.0007 to 0.0061. That is not a bug in the criterion -- it is what a harness looks like when HR@10 is already 1.000 and the median session hits on turn one. It also carries its own caveat: the belief is read from the agent's own scores, so a ranking that is confidently wrong will report that no question can help it.",
+  "it_rediscovers_the_answerability_finding": "Pool reduction puts `brand` first (median 0.978, the highest of any attribute) because store is high-cardinality. The counterfactual puts it near last (median 0.0027) because knowing the brand barely moves the head. That is exactly the failure that motivated src/answerability.py -- 130 brand questions for a yield of zero -- found from the other side, without a rule saying 'do not ask about brand'. But the learned answerability term already fixes it (P(answer|brand) settles at 0.14-0.17), so there is nothing left for the counterfactual to repair.",
+  "door_a_official": {
+    "paired_vs_shipped": {
+      "dev": {
+        "score": 0.91995,
+        "hit_rate_at_10": 1.0,
+        "median": -0.00315,
+        "ci95": [
+          -0.0114,
+          0.0039
+        ],
+        "sessions": 100,
+        "verdict": "within noise"
+      },
+      "holdout": {
+        "score": 0.90207,
+        "hit_rate_at_10": 0.99,
+        "median": -0.00292,
+        "ci95": [
+          -0.01995,
+          0.0103
+        ],
+        "sessions": 100,
+        "verdict": "within noise"
+      },
+      "full": {
+        "score": 0.91031,
+        "hit_rate_at_10": 0.995,
+        "median": -0.00551,
+        "ci95": [
+          -0.01594,
+          0.00167
+        ],
+        "sessions": 200,
+        "verdict": "within noise"
+      }
+    },
+    "reading": "Negative on all three splits, and HR@10 falls off 1.000 -- 0.995 on the full set, 0.990 on holdout. A different question order is a different conversation, and one session stops reaching its target at all. Losing coverage to buy nothing is the clearest decline on this table."
+  },
+  "door_b_a_customer_who_can_answer": {
+    "benchmark": "tools/shelfbench.py --realistic, 240 sessions over 170 near-duplicate shelf pairs",
+    "shipped": {
+      "hit_rate": 0.796,
+      "mrr": 0.4416,
+      "mttc": 4.61
+    },
+    "counterfactual": {
+      "hit_rate": 0.796,
+      "mrr": 0.4316,
+      "mttc": 4.61
+    },
+    "reading": "Identical hit rate and time-to-contact, slightly worse MRR. The category clarification still fires -- its value is computed outside the catalog and is rescaled rather than recomputed, precisely so a change of units could not switch off the question worth +0.167 hit rate here. Nothing gained with a customer who can answer either."
+  },
+  "the_width_consequence_the_plan_expected": "The improvement plan argued that declining a worthless question is a free second-order win, because a fired question holds commit width below top_k and declining it widens the slate a turn earlier. analysis/boundary_diagnosis.py measured that directly on the slice with the most to gain from widening: pinning the slate at ten would have scored boundary MRR 0.538 against the actual 0.671. Widening earlier costs rank on this harness; it does not buy it.",
+  "decision": "Declined. Left in src/elicitation.py behind P_ASK=counterfactual, alongside the existing P_ASK=none and P_ASK=fixed:<attribute> ablation controls -- it runs on no default path, costs nothing at runtime, and it is the only way this finding stays re-runnable. P8, the last open item from the V1 roadmap, is now answered rather than open."
+}

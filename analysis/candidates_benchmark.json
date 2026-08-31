@@ -1,0 +1,65 @@
+{
+  "date": "2026-08-30",
+  "question": "Do candidates/approach_a or candidates/approach_b beat the shipped agent's 0.916125, judged under the repo's own rules (official score is reported, artifacts are not gains, adversarial axes are the private-set risk)?",
+  "protocol": {
+    "evaluator": "evaluator.local_evaluator.evaluate, unmodified, full 200-session public set",
+    "catalog": "data/catalog.jsonl",
+    "splits": "dev/holdout computed by sample_id against analysis/dev.jsonl within the single 200-session run; the agent's online elicitation adaptation therefore carries from dev into holdout, which is why baseline holdout reads 0.90885 here against the recorded fresh-agent 0.90555",
+    "adversarial": "tools.adversarial.Adversarial and drifted_categories, seed 0, mirroring tools/bench.run_adversarial; baseline comparison rows are the recorded values in SKILL.md / analysis/v4_end_to_end_controls.json",
+    "baseline_reproduction": "src.agent.Agent reproduced 0.916125 exactly (HR 1.000, MRR 0.773417, MTTC 1.795) before either candidate was measured"
+  },
+  "baseline": {
+    "full": {"score": 0.916125, "hit_rate_at_10": 1.0, "mrr": 0.773417, "mttc": 1.795},
+    "dev": {"score": 0.9234},
+    "holdout_within_run": {"score": 0.90885},
+    "fixed_width_10_recorded": {"score": 0.90073, "mrr": 0.70978, "mttc": 1.61}
+  },
+  "approach_a": {
+    "name": "recency- and correction-aware evidence (width-1 probe commit)",
+    "official": {
+      "full": {"score": 0.934239, "hit_rate_at_10": 0.99, "mrr": 0.930131, "mttc": 2.99},
+      "dev": {"score": 0.9259, "hit_rate_at_10": 0.98},
+      "holdout": {"score": 0.942578, "hit_rate_at_10": 1.0}
+    },
+    "commit_artifact_control": {
+      "what": "Approach A's own env knobs forced to fixed width 10 (P_PROBE=10 P_UNSURE=10 P_WIDEN=1), removing the base_width=1 probe that makes every hit rank 1 by construction",
+      "full": {"score": 0.875011, "hit_rate_at_10": 0.99, "mrr": 0.656704, "mttc": 1.85},
+      "reading": "At equal width its retrieval is worse than the shipped agent's recorded 0.90073 / MRR 0.710. The entire +0.018 official gain, and more, is the commit-width simulator artifact the shadow evaluator exists to remove."
+    },
+    "adversarial": {
+      "category":            {"candidate": 0.68580, "candidate_hr": 0.725, "baseline": 0.84066},
+      "natural":             {"candidate": 0.93273, "candidate_hr": 0.990, "baseline": 0.91154},
+      "scaffold":            {"candidate": 0.88838, "candidate_hr": 0.945, "baseline": 0.85641},
+      "constraint":          {"candidate": 0.91017, "candidate_hr": 0.985, "baseline": 0.88575},
+      "all_paraphrase_axes": {"candidate": 0.62500, "candidate_hr": 0.665, "baseline": 0.72979},
+      "granularity_1":       {"candidate": 0.71504, "candidate_hr": 0.755, "baseline": 0.89039},
+      "granularity_3":       {"candidate": 0.66179, "candidate_hr": 0.705, "baseline": 0.91548}
+    },
+    "expected_private_under_v4_prior": {"candidate": 0.857, "baseline": 0.896,
+      "prior": "0.50 clean, 0.20 natural, 0.15 granularity, 0.10 one heavy axis, 0.05 multi-axis (V4_SCORE_AND_HEADROOM_ANALYSIS.txt section 2.2)"},
+    "verdict": "declined",
+    "why": "The official gain is bought entirely by the width-1 probe commit, a documented simulator artifact; the mechanism it claims to contribute (evidence recency/epochs) sits on retrieval that is 0.026 weaker than shipped at equal width, breaks HR@10 1.000 on the clean public set, and collapses on every axis the private set is likely to move: -0.155 on category, -0.175 on granularity=1, -0.254 on granularity=3. Its routing is unstemmed token overlap with no semantic route, which is what the granularity rows are measuring.",
+    "kept": "Nothing. The correction-epoch idea is already shipped in src as question epochs and explicit restarts (V3), measured there at official parity."
+  },
+  "approach_b": {
+    "name": "structured-evidence reranking (field BM25 + coverage + soft facets)",
+    "as_shipped": {
+      "full": {"score": 0.0, "hit_rate_at_10": 0.0, "mrr": 0.0, "mttc": 11.0},
+      "why": "Written against an older src.routing interface: its Catalog lacks bucket_stems and bucket_by_key, so src.routing.candidates raises AttributeError on every turn and the agent's own except clause converts every response to zero recommendations. The candidate had never successfully executed a single turn before this benchmark."
+    },
+    "shim": {
+      "what": "bucket_by_key and bucket_stems added to approach_b's Catalog instance post-construction, computed exactly as src/catalog.py lines 119-154 compute them (normalise(name), sorted-token alias, stemmed bucket tokens, max_bucket_words). Nothing else changed.",
+      "full": {"score": 0.887484, "hit_rate_at_10": 1.0, "mrr": 0.669946, "mttc": 1.675},
+      "dev": {"score": 0.896779},
+      "holdout": {"score": 0.878189}
+    },
+    "adversarial_shimmed": {
+      "category": {"candidate": 0.705884, "candidate_hr": 0.81, "baseline": 0.84066},
+      "scaffold": {"candidate": 0.871354, "candidate_hr": 0.995, "baseline": 0.85641}
+    },
+    "verdict": "declined at both readings",
+    "why": "As shipped it scores zero; interface-repaired it is -0.029 under control (MRR 0.670 vs 0.773), worse on both splits, and -0.135 on the category axis. Its findings.json-derived question prior never becomes load-bearing because the ranking underneath it loses before elicitation matters. The +0.015 scaffold reading is a single unpaired point inside the noise band.",
+    "kept": "Nothing."
+  },
+  "conclusion": "Neither candidate ships. The shipped agent remains 0.916125. Approach A is a live demonstration of the commit-width artifact: +0.018 official, worse retrieval, and an expected private-set cost of roughly -0.04 under the recorded paraphrase prior."
+}

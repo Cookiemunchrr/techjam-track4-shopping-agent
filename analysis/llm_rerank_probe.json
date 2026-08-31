@@ -1,0 +1,208 @@
+{
+  "schema": "techjam-llm-rerank-probe-v1",
+  "plan": "IMPROVEMENT_PLAN_V7.txt P1",
+  "model": "moonshotai/kimi-k3",
+  "endpoint": "https://api.aiand.com/v1",
+  "protocol": {
+    "instrument": "tools/snapshot_mrr.py snapshots, base order, grouping and bootstrap reused; the reordering signal is an LLM position credit over the top-20 head rows",
+    "top_n": 20,
+    "blends_swept": [
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1.0,
+      "raw"
+    ],
+    "blend_discipline": "sweep on dev, choose on dev, read holdout once",
+    "temperature": 0,
+    "credit": "linear position credit over the top-N: best 1.0, Nth 0.0; rows beyond top-N keep their base score",
+    "cache": "analysis\\_llm_rerank_cache.jsonl (gitignored; whole request/response per call)",
+    "dialogue_state": "the session's visible user messages up to the snapshot's turn"
+  },
+  "self_checks": {
+    "arithmetic_equivalence_max_abs_diff": 0.0,
+    "bootstrap_parity": true,
+    "harness": "tools/snapshot_mrr.py",
+    "reference_reranker_recorded": {
+      "dev": 0.02067,
+      "holdout": 0.03544
+    },
+    "reference_reranker_here": {
+      "dev": 0.02067,
+      "holdout": 0.03544
+    }
+  },
+  "splits": {
+    "dev": {
+      "snapshots": 148,
+      "sessions": 100,
+      "target_outside_top_n": 14,
+      "usage": {
+        "prompt_tokens": 105160,
+        "completion_tokens": 220402,
+        "calls": 134,
+        "cached_calls": 134,
+        "empty_content": 0
+      },
+      "results": {
+        "blend_0.05": {
+          "before": 0.66502,
+          "after": 0.66751,
+          "delta": 0.00249,
+          "bootstrap_median_delta": 0.00253,
+          "ci95": [
+            -0.0044,
+            0.01004
+          ],
+          "sessions": 100
+        },
+        "blend_0.1": {
+          "before": 0.66502,
+          "after": 0.66469,
+          "delta": -0.00033,
+          "bootstrap_median_delta": 9e-05,
+          "ci95": [
+            -0.01564,
+            0.01252
+          ],
+          "sessions": 100
+        },
+        "blend_0.25": {
+          "before": 0.66502,
+          "after": 0.65017,
+          "delta": -0.01485,
+          "bootstrap_median_delta": -0.01347,
+          "ci95": [
+            -0.04919,
+            0.01542
+          ],
+          "sessions": 100
+        },
+        "blend_0.5": {
+          "before": 0.66502,
+          "after": 0.63657,
+          "delta": -0.02845,
+          "bootstrap_median_delta": -0.02798,
+          "ci95": [
+            -0.06798,
+            0.00529
+          ],
+          "sessions": 100
+        },
+        "blend_1.0": {
+          "before": 0.66502,
+          "after": 0.61475,
+          "delta": -0.05027,
+          "bootstrap_median_delta": -0.04947,
+          "ci95": [
+            -0.1041,
+            -0.00025
+          ],
+          "sessions": 100
+        },
+        "raw_llm_order": {
+          "before": 0.66502,
+          "after": 0.4927,
+          "delta": -0.17232,
+          "bootstrap_median_delta": -0.17246,
+          "ci95": [
+            -0.24863,
+            -0.09802
+          ],
+          "sessions": 100
+        }
+      }
+    },
+    "holdout": {
+      "snapshots": 144,
+      "sessions": 100,
+      "target_outside_top_n": 24,
+      "usage": {
+        "prompt_tokens": 94527,
+        "completion_tokens": 210343,
+        "calls": 120,
+        "cached_calls": 92,
+        "empty_content": 0
+      },
+      "results": {
+        "blend_0.05": {
+          "before": 0.64461,
+          "after": 0.63848,
+          "delta": -0.00614,
+          "bootstrap_median_delta": -0.00531,
+          "ci95": [
+            -0.02569,
+            0.00976
+          ],
+          "sessions": 100
+        },
+        "blend_0.1": {
+          "before": 0.64461,
+          "after": 0.6281,
+          "delta": -0.01651,
+          "bootstrap_median_delta": -0.01575,
+          "ci95": [
+            -0.04306,
+            0.00539
+          ],
+          "sessions": 100
+        },
+        "blend_0.25": {
+          "before": 0.64461,
+          "after": 0.61199,
+          "delta": -0.03262,
+          "bootstrap_median_delta": -0.03279,
+          "ci95": [
+            -0.07279,
+            0.00573
+          ],
+          "sessions": 100
+        },
+        "blend_0.5": {
+          "before": 0.64461,
+          "after": 0.58216,
+          "delta": -0.06246,
+          "bootstrap_median_delta": -0.06291,
+          "ci95": [
+            -0.11172,
+            -0.01335
+          ],
+          "sessions": 100
+        },
+        "blend_1.0": {
+          "before": 0.64461,
+          "after": 0.52673,
+          "delta": -0.11788,
+          "bootstrap_median_delta": -0.11799,
+          "ci95": [
+            -0.17683,
+            -0.06162
+          ],
+          "sessions": 100
+        },
+        "raw_llm_order": {
+          "before": 0.64461,
+          "after": 0.39518,
+          "delta": -0.24944,
+          "bootstrap_median_delta": -0.24964,
+          "ci95": [
+            -0.32611,
+            -0.17504
+          ],
+          "sessions": 100
+        }
+      }
+    }
+  },
+  "build_time_tokens": {
+    "prompt_tokens": 199687,
+    "completion_tokens": 430745,
+    "calls": 254,
+    "cached_calls": 226,
+    "note": "build-time measurement tokens; the scored path remains 0 prompt / 0 completion"
+  },
+  "cost_usd": "not exposed by provider",
+  "cost_note": "AI& does not expose per-call pricing to this probe; report from the AI& billing console against the token counts above.",
+  "verdict": "declined at Door 1. Best LLM blend (0.05): dev +0.00249 [-0.00440, +0.01004] within noise, holdout -0.00614 [-0.02569, +0.00976]; every stronger blend degrades monotonically (raw order: dev -0.172, holdout -0.249, both significant). Against the standing bar -- the shipped linear reranker's +0.02067 dev / +0.03544 holdout, reproduced bit-exactly by this probe's own self-check -- the LLM ordering is not close. The plan's registered prediction held: the public simulator quotes constraint strings verbatim from target metadata, so the ranking signal is lexical containment plus a popularity prior, both already exploited; semantic judgement has nothing left to work on. The compliance value is the measurement itself: Pillar I's 'LLM Semantic Ranking' is now tested-and-declined with evidence, not absent."
+}

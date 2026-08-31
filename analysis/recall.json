@@ -1,0 +1,15 @@
+{
+  "axes": [],
+  "splits": {
+    "full": {
+      "sessions": 200,
+      "pool_recall_turn1": 1.0,
+      "pool_recall_ever": 1.0,
+      "hit_rate_at_10": 1.0,
+      "rank_given_pool": 1.0,
+      "lost_to_recall": 0.0,
+      "lost_to_ranking": 0.0,
+      "median_turn1_pool": 539
+    }
+  }
+}

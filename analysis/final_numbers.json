@@ -1,0 +1,41 @@
+{
+  "date": "2026-08-31",
+  "source": "results.json plus final V3 mechanism-specific reruns",
+  "full": {
+    "sample_count": 200,
+    "hit_rate_at_10": 1.0,
+    "mrr": 0.773417,
+    "mttc": 1.795,
+    "efficiency": 0.9205,
+    "recommended_technical_score": 0.916125
+  },
+  "scenarios": {
+    "boundary": {"sample_count": 10, "hit_rate_at_10": 1.0, "mrr": 0.670833, "mttc": 2.4},
+    "browsing": {"sample_count": 80, "hit_rate_at_10": 1.0, "mrr": 0.776458, "mttc": 1.525},
+    "buying": {"sample_count": 80, "hit_rate_at_10": 1.0, "mrr": 0.749062, "mttc": 1.1625},
+    "intent_override": {"sample_count": 30, "hit_rate_at_10": 1.0, "mrr": 0.864444, "mttc": 4.0}
+  },
+  "shadow": {"score": 0.89854, "hit_rate_at_10": 1.0, "retrieval_mrr": 0.6768, "mttc": 1.23},
+  "snapshot_mrr": {
+    "dev": {"base": 0.665, "reranked": 0.6857, "delta": 0.0202, "ci95": [0.0024, 0.042]},
+    "holdout": {"base": 0.6446, "reranked": 0.6801, "delta": 0.0347, "ci95": [0.0144, 0.0609]}
+  },
+  "adversarial": {
+    "control": 0.91612,
+    "category": 0.84141,
+    "natural": 0.91154,
+    "scaffold": 0.85641,
+    "constraint": 0.88575,
+    "all_paraphrase_axes": 0.72979,
+    "granularity_1": 0.89039,
+    "granularity_3": 0.91548
+  },
+  "shelfbench_realistic": {"sample_count": 240, "hit_rate_at_10": 0.812, "mrr": 0.4463, "mttc": 4.49},
+  "shelfbench_no_clarify": {"sample_count": 240, "hit_rate_at_10": 0.658, "mrr": 0.3935, "mttc": 5.51},
+  "tests": 540,
+  "test_skips": 1,
+  "failures": 0,
+  "tests_verified": "2026-08-31, bash run_tests.sh all on arm64 macOS with Python 3.9.6, 588.2s, 541 tests OK with no skips after tools.setup_check --splits; green with 4 setup-dependent skips and no errors from a bare clone",
+  "tokens": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
+  "operational_report": "analysis/operational_audit.json"
+}

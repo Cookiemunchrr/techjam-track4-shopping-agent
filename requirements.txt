@@ -1,0 +1,15 @@
+# No third-party dependencies.
+#
+# This agent runs on the Python standard library alone: no pip install step, no
+# model weights, no API key, no network access at any point. That is a deliberate
+# choice, not a gap. The organizer's 2026-08-31 final evaluation FAQ allows network
+# access and external API calls and does not require an offline fallback; we keep the
+# default path offline anyway, for determinism, zero credentials, $0 runtime cost and
+# no vendor availability risk. An optional LLM ranking stage exists behind
+# TECHJAM_LLM_RERANK=1 (see README); it is off by default and needs no dependency.
+#
+# Python 3.9 or newer. Verified on 3.9.6 and 3.13.
+#
+# An LLM was used at development time only, to write and review code. No model is
+# called at runtime, at build time, or during scoring; reported token usage is
+# zero on every turn of every session.

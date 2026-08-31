@@ -1,0 +1,22 @@
+{
+  "question": "Is the score lost to retrieval or to ordering?",
+  "method": "tools/recall.py replays the official session loop with Agent.trace_pool on, recording per turn whether the target was in the candidate pool the scorer ranked over, and where the untruncated internal ranking put it.",
+  "official_sessions": {
+    "dev":     {"pool_recall_turn1": 1.0, "hit_rate_at_10": 1.0, "lost_to_recall": 0.0, "lost_to_ranking": 0.0, "median_turn1_pool": 680},
+    "holdout": {"pool_recall_turn1": 1.0, "hit_rate_at_10": 1.0, "lost_to_recall": 0.0, "lost_to_ranking": 0.0, "median_turn1_pool": 538},
+    "full":    {"pool_recall_turn1": 1.0, "hit_rate_at_10": 1.0, "lost_to_recall": 0.0, "lost_to_ranking": 0.0, "median_turn1_pool": 539}
+  },
+  "adversarial_axes_full_set": {
+    "category":   {"pool_recall_turn1": 0.885, "hit_rate_at_10": 0.895, "lost_to_recall": 0.090, "lost_to_ranking": 0.015},
+    "scaffold":   {"pool_recall_turn1": 1.000, "hit_rate_at_10": 0.985, "lost_to_recall": 0.000, "lost_to_ranking": 0.015},
+    "natural":    {"pool_recall_turn1": 1.000, "hit_rate_at_10": 1.000, "lost_to_recall": 0.000, "lost_to_ranking": 0.000},
+    "constraint": {"pool_recall_turn1": 1.000, "hit_rate_at_10": 0.980, "lost_to_recall": 0.000, "lost_to_ranking": 0.020},
+    "all_four":   {"pool_recall_turn1": 0.850, "hit_rate_at_10": 0.755, "lost_to_recall": 0.145, "lost_to_ranking": 0.100}
+  },
+  "findings": [
+    "On every official session the target is in the pool from turn one. There is no retrieval headroom on the public harness at all; 100% of the remaining official score is ordering and turn count.",
+    "Category-head-noun synonym is the only axis where retrieval genuinely breaks, and there it is 6x the ranking loss (0.090 vs 0.015). Any recall work is justified by this axis alone.",
+    "The scaffold axis loses nothing to recall. Its loss was entirely shelf resolution feeding a weaker primary boost, which is why fixing exact_bucket moved it and a recall route would not have.",
+    "Consequence for the roadmap: 'recall under paraphrase' was the wrong headline. The shelf-resolution bug was cheaper and larger, and product-level recall fusion is worth at most 0.09 hit rate on one synthetic axis."
+  ]
+}

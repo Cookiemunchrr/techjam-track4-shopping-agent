@@ -1,0 +1,29 @@
+{
+  "schema": "techjam-v6-results-v1",
+  "plan": "IMPROVEMENT_PLAN_V6.txt + IMPROVEMENT_PLAN_V6_ADDENDUM.txt",
+  "terminal_state": "DECLINE",
+  "branch": "phase/v6-shelf-resolution",
+  "summary": "Both registered candidates declined with frozen evidence. Candidate A (blind aliases) passed every safety guard - public transcript byte-identical, all noninferiority axes clean - but recovered 1 of 13 baseline turn-1 misses and 0 of 6 ever-misses on the dev category axis, against a primary gate of +0.030 turn-1 pool recall with a positive lower bound. Candidate B (catalog-only sparse MNN) was disqualified at the V6-D8 outcome-blind audit before any score run: 32.9% supported precision against a 98% bar; the map is dominated by catalog-text exhaust (SKU fragments, bare measurements, marketing coincidences), not shopper shelf vocabulary.",
+  "what_the_cycle_established": [
+    "The dev category-axis loss is real shelf-resolution loss: all 6 ever-misses are wrong/missing shelf resolution, 5/6 with the head token implicated (analysis/v6_miss_taxonomy.json).",
+    "General-language aliases over canonical shelf heads fire often (36/100 sessions) but almost never on the vocabulary the harness actually substitutes: the transform had no alias match on 6 of 13 turn-1 misses and added non-target shelves on the rest but one.",
+    "Catalog-only mutual nearest neighbours at the registered formula do not produce shopper-vocabulary mappings: the co-occurrence signal at 0.80 cosine is dominated by listing noise (audit: 145/441 supported).",
+    "The exact-route parity machinery works: the candidate's public transcript and score are byte-identical to baseline (7c30023e..., 0.916125) with zero transform lookups on exact sessions, and every prefix digest matched (V6-D1/V6-D2).",
+    "The addendum's A1 prediction did not hold on dev: misses split buying 3 / browsing 2 / intent_override 1, not override-concentrated."
+  ],
+  "artifacts": {
+    "protocol": "analysis/v6_cycle_protocol.json",
+    "baseline": "analysis/v6_current_baseline.json",
+    "miss_taxonomy": "analysis/v6_miss_taxonomy.json",
+    "blind_audits": "analysis/v6_blind_mapping_audits.json",
+    "dev_comparison": "analysis/v6_dev_comparison.json",
+    "selection": "analysis/v6_selection.json",
+    "validation_manifest": "analysis/v6_validation_manifest.json",
+    "s2_review": "analysis/v6_s2_review.json",
+    "resource_baseline": "analysis/resource_probe_v6_baseline.json"
+  },
+  "sealed_sets": "S1/S2 never consumed; ledger empty (analysis/v6_validation_ledger.json). They remain sealed and may not be repurposed for a retuned variant.",
+  "serving": "default remains P_SHELF_TRANSFORM=off; the dormant hook, shared contract, and both frozen assets are retained as build-only evidence so the negative is exactly reproducible",
+  "closed_routes": "shelf aliases and catalog-only sparse MNN for non-exact shelf resolution are closed and enter the declined ledger; no retuning, no ensemble, no third candidate",
+  "suite": "467 + candidate tests green at the decline commit"
+}

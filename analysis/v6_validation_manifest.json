@@ -1,0 +1,44 @@
+{
+  "schema": "techjam-v6-validation-manifest-v1",
+  "s1": {
+    "kind": "sealed lexical-shift confirmation instrument",
+    "body": "analysis\\_v6_s1_shifts.json",
+    "body_sha256": "fa39951eeea0e7ec1150dfab73d564687892931703179b50ded1ac69c07d815d",
+    "seed_base": 913000,
+    "label_count": 1115,
+    "empty_shift_labels": 0
+  },
+  "s2": {
+    "kind": "target-free shelf-language audit",
+    "worksheet": "analysis/_v6_s2_worksheet.json",
+    "worksheet_sha256": "8d42d99a7d96c7ac3537965d69534633786a3217c4ca73296cffe050d8b13114",
+    "seed": 41203,
+    "family_count": 60,
+    "strata": "frequency tercile x ambiguity (unique/few/many)",
+    "phrases": "analysis/_v6_s2_phrases.json",
+    "phrases_sha256": "3834dcf3381157b40394349fcd3de3a41cde90f0cd7c91fbc451ed3313f74d6c",
+    "phrase_count": 120,
+    "no_mapping_families": 11,
+    "semantic_review": "analysis/v6_s2_review.json",
+    "review_summary": {
+      "reviewer_type": "independent model review (process-disjoint subagent; not human review)",
+      "phrases_reviewed": 120,
+      "phrases_rejected": 1,
+      "rejection_rate": 0.0083,
+      "fit_to_freeze": true
+    }
+  },
+  "generator": {
+    "identity": "opencode agent (aiand/zai-org/glm-5.2)",
+    "separation": "process-disjoint, not family-disjoint: the validation author and the candidate-A alias generator are the same model family (STOP-10 limitation; no family-disjoint claim is made)",
+    "never_read": [
+      "tools/adversarial.py and HEAD_NOUNS",
+      "evaluator transcripts",
+      "per-session misses",
+      "candidate outcome tables",
+      "target labels"
+    ]
+  },
+  "consumption": "each sealed body may be consumed exactly once, by the selected winner, through analysis/v6_validation_ledger.json",
+  "ledger": "analysis/v6_validation_ledger.json"
+}

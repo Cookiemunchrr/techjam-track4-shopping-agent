@@ -1,0 +1,655 @@
+[
+  {
+    "margin": 0.01,
+    "unsure": 2,
+    "widen": 9,
+    "score": 0.9368,
+    "hr": 0.98,
+    "mrr": 0.953333,
+    "mttc": 2.96,
+    "holdout": 0.950633
+  },
+  {
+    "margin": 0.01,
+    "unsure": 2,
+    "widen": 8,
+    "score": 0.9362,
+    "hr": 0.98,
+    "mrr": 0.95,
+    "mttc": 2.94,
+    "holdout": 0.9511
+  },
+  {
+    "margin": 0.01,
+    "unsure": 2,
+    "widen": 7,
+    "score": 0.9345,
+    "hr": 0.98,
+    "mrr": 0.942333,
+    "mttc": 2.91,
+    "holdout": 0.947954
+  },
+  {
+    "margin": 0.02,
+    "unsure": 2,
+    "widen": 9,
+    "score": 0.9292,
+    "hr": 0.98,
+    "mrr": 0.923333,
+    "mttc": 2.89,
+    "holdout": 0.95005
+  },
+  {
+    "margin": 0.02,
+    "unsure": 2,
+    "widen": 8,
+    "score": 0.92885,
+    "hr": 0.98,
+    "mrr": 0.920833,
+    "mttc": 2.87,
+    "holdout": 0.948025
+  },
+  {
+    "margin": 0.01,
+    "unsure": 4,
+    "widen": 7,
+    "score": 0.92765,
+    "hr": 0.98,
+    "mrr": 0.9095,
+    "mttc": 2.76
+  },
+  {
+    "margin": 0.01,
+    "unsure": 4,
+    "widen": 9,
+    "score": 0.92765,
+    "hr": 0.98,
+    "mrr": 0.910833,
+    "mttc": 2.78
+  },
+  {
+    "margin": 0.01,
+    "unsure": 3,
+    "widen": 7,
+    "score": 0.9276,
+    "hr": 0.98,
+    "mrr": 0.912,
+    "mttc": 2.8
+  },
+  {
+    "margin": 0.01,
+    "unsure": 3,
+    "widen": 9,
+    "score": 0.9276,
+    "hr": 0.98,
+    "mrr": 0.913333,
+    "mttc": 2.82
+  },
+  {
+    "margin": 0.01,
+    "unsure": 4,
+    "widen": 8,
+    "score": 0.9276,
+    "hr": 0.98,
+    "mrr": 0.91,
+    "mttc": 2.77
+  },
+  {
+    "margin": 0.01,
+    "unsure": 3,
+    "widen": 8,
+    "score": 0.92755,
+    "hr": 0.98,
+    "mrr": 0.9125,
+    "mttc": 2.81
+  },
+  {
+    "margin": 0.02,
+    "unsure": 2,
+    "widen": 7,
+    "score": 0.9269,
+    "hr": 0.98,
+    "mrr": 0.912333,
+    "mttc": 2.84
+  },
+  {
+    "margin": 0.04,
+    "unsure": 2,
+    "widen": 9,
+    "score": 0.925,
+    "hr": 0.98,
+    "mrr": 0.903333,
+    "mttc": 2.8
+  },
+  {
+    "margin": 0.01,
+    "unsure": 6,
+    "widen": 7,
+    "score": 0.9238,
+    "hr": 0.98,
+    "mrr": 0.892667,
+    "mttc": 2.7
+  },
+  {
+    "margin": 0.01,
+    "unsure": 6,
+    "widen": 9,
+    "score": 0.9238,
+    "hr": 0.98,
+    "mrr": 0.894,
+    "mttc": 2.72
+  },
+  {
+    "margin": 0.01,
+    "unsure": 6,
+    "widen": 8,
+    "score": 0.92375,
+    "hr": 0.98,
+    "mrr": 0.893167,
+    "mttc": 2.71
+  },
+  {
+    "margin": 0.15,
+    "unsure": 2,
+    "widen": 8,
+    "score": 0.9235,
+    "hr": 0.98,
+    "mrr": 0.885,
+    "mttc": 2.6
+  },
+  {
+    "margin": 0.15,
+    "unsure": 2,
+    "widen": 9,
+    "score": 0.9235,
+    "hr": 0.98,
+    "mrr": 0.885,
+    "mttc": 2.6
+  },
+  {
+    "margin": 0.04,
+    "unsure": 2,
+    "widen": 8,
+    "score": 0.92315,
+    "hr": 0.98,
+    "mrr": 0.895833,
+    "mttc": 2.78
+  },
+  {
+    "margin": 0.04,
+    "unsure": 2,
+    "widen": 7,
+    "score": 0.923,
+    "hr": 0.98,
+    "mrr": 0.894,
+    "mttc": 2.76
+  },
+  {
+    "margin": 0.08,
+    "unsure": 2,
+    "widen": 9,
+    "score": 0.9221,
+    "hr": 0.98,
+    "mrr": 0.885,
+    "mttc": 2.67
+  },
+  {
+    "margin": 0.3,
+    "unsure": 2,
+    "widen": 7,
+    "score": 0.9215,
+    "hr": 0.98,
+    "mrr": 0.875,
+    "mttc": 2.55
+  },
+  {
+    "margin": 0.3,
+    "unsure": 2,
+    "widen": 8,
+    "score": 0.9215,
+    "hr": 0.98,
+    "mrr": 0.875,
+    "mttc": 2.55
+  },
+  {
+    "margin": 0.3,
+    "unsure": 2,
+    "widen": 9,
+    "score": 0.9215,
+    "hr": 0.98,
+    "mrr": 0.875,
+    "mttc": 2.55
+  },
+  {
+    "margin": 0.08,
+    "unsure": 2,
+    "widen": 8,
+    "score": 0.9208,
+    "hr": 0.98,
+    "mrr": 0.88,
+    "mttc": 2.66
+  },
+  {
+    "margin": 0.15,
+    "unsure": 2,
+    "widen": 7,
+    "score": 0.9204,
+    "hr": 0.98,
+    "mrr": 0.873333,
+    "mttc": 2.58
+  },
+  {
+    "margin": 0.02,
+    "unsure": 3,
+    "widen": 7,
+    "score": 0.9197,
+    "hr": 0.98,
+    "mrr": 0.880333,
+    "mttc": 2.72
+  },
+  {
+    "margin": 0.02,
+    "unsure": 3,
+    "widen": 9,
+    "score": 0.9197,
+    "hr": 0.98,
+    "mrr": 0.881667,
+    "mttc": 2.74
+  },
+  {
+    "margin": 0.02,
+    "unsure": 3,
+    "widen": 8,
+    "score": 0.91965,
+    "hr": 0.98,
+    "mrr": 0.880833,
+    "mttc": 2.73
+  },
+  {
+    "margin": 0.08,
+    "unsure": 2,
+    "widen": 7,
+    "score": 0.91845,
+    "hr": 0.98,
+    "mrr": 0.870833,
+    "mttc": 2.64
+  },
+  {
+    "margin": 0.02,
+    "unsure": 4,
+    "widen": 7,
+    "score": 0.9161,
+    "hr": 0.98,
+    "mrr": 0.863667,
+    "mttc": 2.65
+  },
+  {
+    "margin": 0.02,
+    "unsure": 4,
+    "widen": 9,
+    "score": 0.9161,
+    "hr": 0.98,
+    "mrr": 0.865,
+    "mttc": 2.67
+  },
+  {
+    "margin": 0.02,
+    "unsure": 4,
+    "widen": 8,
+    "score": 0.91605,
+    "hr": 0.98,
+    "mrr": 0.864167,
+    "mttc": 2.66
+  },
+  {
+    "margin": 0.02,
+    "unsure": 6,
+    "widen": 7,
+    "score": 0.91445,
+    "hr": 0.98,
+    "mrr": 0.8535,
+    "mttc": 2.58
+  },
+  {
+    "margin": 0.02,
+    "unsure": 6,
+    "widen": 9,
+    "score": 0.91445,
+    "hr": 0.98,
+    "mrr": 0.854833,
+    "mttc": 2.6
+  },
+  {
+    "margin": 0.02,
+    "unsure": 6,
+    "widen": 8,
+    "score": 0.9144,
+    "hr": 0.98,
+    "mrr": 0.854,
+    "mttc": 2.59
+  },
+  {
+    "margin": 0.04,
+    "unsure": 4,
+    "widen": 7,
+    "score": 0.9084,
+    "hr": 0.98,
+    "mrr": 0.828667,
+    "mttc": 2.51
+  },
+  {
+    "margin": 0.04,
+    "unsure": 4,
+    "widen": 9,
+    "score": 0.9084,
+    "hr": 0.98,
+    "mrr": 0.83,
+    "mttc": 2.53
+  },
+  {
+    "margin": 0.04,
+    "unsure": 4,
+    "widen": 8,
+    "score": 0.90835,
+    "hr": 0.98,
+    "mrr": 0.829167,
+    "mttc": 2.52
+  },
+  {
+    "margin": 0.04,
+    "unsure": 3,
+    "widen": 7,
+    "score": 0.9067,
+    "hr": 0.98,
+    "mrr": 0.827,
+    "mttc": 2.57
+  },
+  {
+    "margin": 0.04,
+    "unsure": 3,
+    "widen": 9,
+    "score": 0.9067,
+    "hr": 0.98,
+    "mrr": 0.828333,
+    "mttc": 2.59
+  },
+  {
+    "margin": 0.04,
+    "unsure": 3,
+    "widen": 8,
+    "score": 0.90665,
+    "hr": 0.98,
+    "mrr": 0.8275,
+    "mttc": 2.58
+  },
+  {
+    "margin": 0.04,
+    "unsure": 6,
+    "widen": 7,
+    "score": 0.90215,
+    "hr": 0.98,
+    "mrr": 0.803833,
+    "mttc": 2.45
+  },
+  {
+    "margin": 0.04,
+    "unsure": 6,
+    "widen": 9,
+    "score": 0.90215,
+    "hr": 0.98,
+    "mrr": 0.805167,
+    "mttc": 2.47
+  },
+  {
+    "margin": 0.04,
+    "unsure": 6,
+    "widen": 8,
+    "score": 0.9021,
+    "hr": 0.98,
+    "mrr": 0.804333,
+    "mttc": 2.46
+  },
+  {
+    "margin": 0.08,
+    "unsure": 3,
+    "widen": 7,
+    "score": 0.8969,
+    "hr": 0.98,
+    "mrr": 0.785,
+    "mttc": 2.43
+  },
+  {
+    "margin": 0.08,
+    "unsure": 3,
+    "widen": 8,
+    "score": 0.8969,
+    "hr": 0.98,
+    "mrr": 0.785,
+    "mttc": 2.43
+  },
+  {
+    "margin": 0.08,
+    "unsure": 3,
+    "widen": 9,
+    "score": 0.8969,
+    "hr": 0.98,
+    "mrr": 0.785,
+    "mttc": 2.43
+  },
+  {
+    "margin": 0.15,
+    "unsure": 3,
+    "widen": 7,
+    "score": 0.8951,
+    "hr": 0.98,
+    "mrr": 0.771667,
+    "mttc": 2.32
+  },
+  {
+    "margin": 0.15,
+    "unsure": 3,
+    "widen": 8,
+    "score": 0.8951,
+    "hr": 0.98,
+    "mrr": 0.771667,
+    "mttc": 2.32
+  },
+  {
+    "margin": 0.15,
+    "unsure": 3,
+    "widen": 9,
+    "score": 0.8951,
+    "hr": 0.98,
+    "mrr": 0.771667,
+    "mttc": 2.32
+  },
+  {
+    "margin": 0.08,
+    "unsure": 4,
+    "widen": 8,
+    "score": 0.89375,
+    "hr": 0.98,
+    "mrr": 0.769167,
+    "mttc": 2.35
+  },
+  {
+    "margin": 0.08,
+    "unsure": 4,
+    "widen": 9,
+    "score": 0.89375,
+    "hr": 0.98,
+    "mrr": 0.769167,
+    "mttc": 2.35
+  },
+  {
+    "margin": 0.15,
+    "unsure": 4,
+    "widen": 7,
+    "score": 0.89285,
+    "hr": 0.98,
+    "mrr": 0.7575,
+    "mttc": 2.22
+  },
+  {
+    "margin": 0.15,
+    "unsure": 4,
+    "widen": 8,
+    "score": 0.89285,
+    "hr": 0.98,
+    "mrr": 0.7575,
+    "mttc": 2.22
+  },
+  {
+    "margin": 0.15,
+    "unsure": 4,
+    "widen": 9,
+    "score": 0.89285,
+    "hr": 0.98,
+    "mrr": 0.7575,
+    "mttc": 2.22
+  },
+  {
+    "margin": 0.08,
+    "unsure": 4,
+    "widen": 7,
+    "score": 0.89245,
+    "hr": 0.98,
+    "mrr": 0.764167,
+    "mttc": 2.34
+  },
+  {
+    "margin": 0.3,
+    "unsure": 3,
+    "widen": 7,
+    "score": 0.8918,
+    "hr": 0.98,
+    "mrr": 0.756667,
+    "mttc": 2.26
+  },
+  {
+    "margin": 0.3,
+    "unsure": 3,
+    "widen": 8,
+    "score": 0.8918,
+    "hr": 0.98,
+    "mrr": 0.756667,
+    "mttc": 2.26
+  },
+  {
+    "margin": 0.3,
+    "unsure": 3,
+    "widen": 9,
+    "score": 0.8918,
+    "hr": 0.98,
+    "mrr": 0.756667,
+    "mttc": 2.26
+  },
+  {
+    "margin": 0.3,
+    "unsure": 4,
+    "widen": 7,
+    "score": 0.88985,
+    "hr": 0.98,
+    "mrr": 0.744167,
+    "mttc": 2.17
+  },
+  {
+    "margin": 0.3,
+    "unsure": 4,
+    "widen": 8,
+    "score": 0.88985,
+    "hr": 0.98,
+    "mrr": 0.744167,
+    "mttc": 2.17
+  },
+  {
+    "margin": 0.3,
+    "unsure": 4,
+    "widen": 9,
+    "score": 0.88985,
+    "hr": 0.98,
+    "mrr": 0.744167,
+    "mttc": 2.17
+  },
+  {
+    "margin": 0.08,
+    "unsure": 6,
+    "widen": 7,
+    "score": 0.8836,
+    "hr": 0.98,
+    "mrr": 0.729333,
+    "mttc": 2.26
+  },
+  {
+    "margin": 0.08,
+    "unsure": 6,
+    "widen": 8,
+    "score": 0.8836,
+    "hr": 0.98,
+    "mrr": 0.729333,
+    "mttc": 2.26
+  },
+  {
+    "margin": 0.08,
+    "unsure": 6,
+    "widen": 9,
+    "score": 0.8836,
+    "hr": 0.98,
+    "mrr": 0.729333,
+    "mttc": 2.26
+  },
+  {
+    "margin": 0.15,
+    "unsure": 6,
+    "widen": 7,
+    "score": 0.87975,
+    "hr": 0.98,
+    "mrr": 0.707167,
+    "mttc": 2.12
+  },
+  {
+    "margin": 0.15,
+    "unsure": 6,
+    "widen": 8,
+    "score": 0.87975,
+    "hr": 0.98,
+    "mrr": 0.707167,
+    "mttc": 2.12
+  },
+  {
+    "margin": 0.15,
+    "unsure": 6,
+    "widen": 9,
+    "score": 0.87975,
+    "hr": 0.98,
+    "mrr": 0.707167,
+    "mttc": 2.12
+  },
+  {
+    "margin": 0.3,
+    "unsure": 6,
+    "widen": 7,
+    "score": 0.87355,
+    "hr": 0.98,
+    "mrr": 0.681833,
+    "mttc": 2.05
+  },
+  {
+    "margin": 0.3,
+    "unsure": 6,
+    "widen": 8,
+    "score": 0.87355,
+    "hr": 0.98,
+    "mrr": 0.681833,
+    "mttc": 2.05
+  },
+  {
+    "margin": 0.3,
+    "unsure": 6,
+    "widen": 9,
+    "score": 0.87355,
+    "hr": 0.98,
+    "mrr": 0.681833,
+    "mttc": 2.05
+  }
+]

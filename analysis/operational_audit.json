@@ -1,0 +1,26 @@
+{
+  "python_hash_seed": "random",
+  "public_transcript_sha256": "7c30023e3b8f951d35f8a449a066cfff45f8995d8d9994142e0e5929f8958d04",
+  "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+  "forbidden_src_imports": [],
+  "swallowed_turn_failures": 0,
+  "public_score": {
+    "sample_count": 200,
+    "hit_rate_at_10": 1.0,
+    "mrr": 0.773417,
+    "mttc": 1.795,
+    "efficiency": 0.9205,
+    "recommended_technical_score": 0.916125,
+    "reported_token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    }
+  },
+  "resources": {
+    "full_public_audit_seconds": 18.905,
+    "audit_process_peak_rss_mb": 993.1,
+    "warm_turn_p95_ms": 6.436,
+    "warm_turn_max_ms": 24.399
+  }
+}

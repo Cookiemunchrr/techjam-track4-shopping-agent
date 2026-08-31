@@ -1,0 +1,28 @@
+{
+  "schema": "techjam-v6-selection-v1",
+  "scope": "V6 Phase 3 selection per the registered rule in analysis/v6_cycle_protocol.json",
+  "candidates": {
+    "aliases": {
+      "payload_sha256": "be16b78f7c9a057ed0969e0ca0062b2b5a34135d0554cd028f9c21eba92e4bf6",
+      "dev_gates": {
+        "V6-D1": "pass", "V6-D2": "pass",
+        "V6-D3": "fail (turn-1 recall delta +0.010, one-sided LB95 0.0; needed >= +0.030 with LB > 0)",
+        "V6-D4": "fail (ever recall 0.940 unchanged; needed >= 0.970)",
+        "V6-D5": "pass", "V6-D6": "fail (fixed-width delta 0.0)", "V6-D7": "fail (normal-width delta 0.0)",
+        "V6-D8": "pass (audit precision 0.9877, Wilson [0.9716, 0.9947])"
+      },
+      "noninferiority": "all pass (N1 public byte-identical; N2/N3/N4/N5/N6 clean)"
+    },
+    "mnn": {
+      "payload_sha256": "e0905c5bdfb44d876c2648de2134681ac1b21abb237051b6cb7ebe45146e3c7c",
+      "dev_gates": {
+        "V6-D8": "fail (audit precision 0.3288, Wilson [0.2866, 0.3740], verdict REJECT) - disqualified before any score run"
+      }
+    }
+  },
+  "selection": "no qualifier",
+  "decision": "DECLINE",
+  "decision_basis": "Selection rule: disqualify every candidate failing any V6-D/N/R gate; none qualified. Candidate A is safe but recovers almost nothing (1 of 13 turn-1 misses; 0 of 6 ever-misses; score deltas exactly 0). Candidate B never reached scoring.",
+  "confirmation": "not run; the sealed S1/S2 sets remain unconsumed in analysis/v6_validation_ledger.json",
+  "root_independent_recompute": "confirmed from analysis/v6_dev_comparison.json: turn-1 recall 0.870 -> 0.880 (observed +0.010 < +0.030), ever recall 0.940 -> 0.940, fixed-width and normal-width paired deltas exactly 0.0"
+}

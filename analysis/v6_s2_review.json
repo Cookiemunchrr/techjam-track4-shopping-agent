@@ -1,0 +1,17 @@
+{
+  "schema": "techjam-v6-s2-review-v1",
+  "reviewer_type": "independent model review (process-disjoint subagent; not human review)",
+  "reviewed_body_sha256": "3834dcf3381157b40394349fcd3de3a41cde90f0cd7c91fbc451ed3313f74d6c",
+  "families_reviewed": 60,
+  "phrases_reviewed": 120,
+  "phrases_rejected": 1,
+  "rejection_rate": 0.0083,
+  "families_with_wrong_acceptable_heads": 0,
+  "notes": [
+    "single rejection: one phrase in a merchandising-banner family parroted the banner text verbatim instead of expressing a natural shopper need (contrived, non-shopper language)",
+    "price-banner, size-banner, occasion-banner, and brand-fragment families correctly use natural budget/demographic/occasion language that stays unmappable at the canonical-head level; product-word mentions in these families were accepted per the price-banner precedent",
+    "head-token usage in expect_mapping=true families is pervasive by design and was not treated as verbatim label naming, since no phrase copies a full multi-word catalog shelf label",
+    "two near-label phrases (item-type wording matching a two-word sub-shelf) were accepted with notes because the family head still requires resolution and the pattern is consistent dataset-wide",
+    "acceptable_heads match the worksheet canonical heads for all 60 families; empty lists exactly coincide with the banner/price/brand-fragment families"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "clean": {
+    "sample_count": 200,
+    "retrieval_hit_rate_at_10": 1.0,
+    "retrieval_mrr": 0.676796,
+    "retrieval_mttc": 1.225,
+    "efficiency": 0.9775,
+    "shadow_score": 0.898539
+  },
+  "fresh_agent": {
+    "sample_count": 200,
+    "retrieval_hit_rate_at_10": 1.0,
+    "retrieval_mrr": 0.666865,
+    "retrieval_mttc": 1.285,
+    "efficiency": 0.9715,
+    "shadow_score": 0.89436
+  },
+  "shuffle_seed1": {
+    "sample_count": 200,
+    "retrieval_hit_rate_at_10": 1.0,
+    "retrieval_mrr": 0.668343,
+    "retrieval_mttc": 1.21,
+    "efficiency": 0.979,
+    "shadow_score": 0.896303
+  },
+  "shuffle_seed2": {
+    "sample_count": 200,
+    "retrieval_hit_rate_at_10": 1.0,
+    "retrieval_mrr": 0.669796,
+    "retrieval_mttc": 1.22,
+    "efficiency": 0.978,
+    "shadow_score": 0.896539
+  }
+}

@@ -1,0 +1,803 @@
+{
+  "controls": {
+    "adversarial": [
+      {
+        "axis": "control",
+        "hit_rate_at_10": 1.0,
+        "mrr": 0.77342,
+        "mttc": 1.795,
+        "sample_count": 200,
+        "scenario_metrics": {
+          "boundary": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.670833,
+            "mttc": 2.4,
+            "sample_count": 10
+          },
+          "browsing": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.776458,
+            "mttc": 1.525,
+            "sample_count": 80
+          },
+          "buying": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.749062,
+            "mttc": 1.1625,
+            "sample_count": 80
+          },
+          "intent_override": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.864444,
+            "mttc": 4.0,
+            "sample_count": 30
+          }
+        },
+        "technical_score": 0.91612
+      },
+      {
+        "axis": "category",
+        "hit_rate_at_10": 0.93,
+        "mrr": 0.70587,
+        "mttc": 2.805,
+        "sample_count": 200,
+        "scenario_metrics": {
+          "boundary": {
+            "hit_rate_at_10": 0.9,
+            "mrr": 0.6325,
+            "mttc": 3.6,
+            "sample_count": 10
+          },
+          "browsing": {
+            "hit_rate_at_10": 0.9625,
+            "mrr": 0.780833,
+            "mttc": 2.45,
+            "sample_count": 80
+          },
+          "buying": {
+            "hit_rate_at_10": 0.9375,
+            "mrr": 0.686319,
+            "mttc": 2.15,
+            "sample_count": 80
+          },
+          "intent_override": {
+            "hit_rate_at_10": 0.833333,
+            "mrr": 0.58254,
+            "mttc": 5.233333,
+            "sample_count": 30
+          }
+        },
+        "technical_score": 0.84066
+      },
+      {
+        "axis": "natural",
+        "hit_rate_at_10": 1.0,
+        "mrr": 0.75748,
+        "mttc": 1.79,
+        "sample_count": 200,
+        "scenario_metrics": {
+          "boundary": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.6875,
+            "mttc": 2.7,
+            "sample_count": 10
+          },
+          "browsing": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.782708,
+            "mttc": 1.55,
+            "sample_count": 80
+          },
+          "buying": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.749062,
+            "mttc": 1.1625,
+            "sample_count": 80
+          },
+          "intent_override": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.735952,
+            "mttc": 3.8,
+            "sample_count": 30
+          }
+        },
+        "technical_score": 0.91144
+      },
+      {
+        "axis": "scaffold",
+        "hit_rate_at_10": 0.96,
+        "mrr": 0.65636,
+        "mttc": 2.025,
+        "sample_count": 200,
+        "scenario_metrics": {
+          "boundary": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.589286,
+            "mttc": 2.1,
+            "sample_count": 10
+          },
+          "browsing": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.630134,
+            "mttc": 1.2875,
+            "sample_count": 80
+          },
+          "buying": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.714063,
+            "mttc": 1.1875,
+            "sample_count": 80
+          },
+          "intent_override": {
+            "hit_rate_at_10": 0.733333,
+            "mrr": 0.594762,
+            "mttc": 6.2,
+            "sample_count": 30
+          }
+        },
+        "technical_score": 0.85641
+      },
+      {
+        "axis": "constraint",
+        "hit_rate_at_10": 0.99,
+        "mrr": 0.70285,
+        "mttc": 2.005,
+        "sample_count": 200,
+        "scenario_metrics": {
+          "boundary": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.695,
+            "mttc": 3.2,
+            "sample_count": 10
+          },
+          "browsing": {
+            "hit_rate_at_10": 0.9875,
+            "mrr": 0.730938,
+            "mttc": 1.7625,
+            "sample_count": 80
+          },
+          "buying": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.711682,
+            "mttc": 1.3125,
+            "sample_count": 80
+          },
+          "intent_override": {
+            "hit_rate_at_10": 0.966667,
+            "mrr": 0.606984,
+            "mttc": 4.1,
+            "sample_count": 30
+          }
+        },
+        "technical_score": 0.88575
+      },
+      {
+        "axis": "all paraphrase axes",
+        "hit_rate_at_10": 0.82,
+        "mrr": 0.59264,
+        "mttc": 3.9,
+        "sample_count": 200,
+        "scenario_metrics": {
+          "boundary": {
+            "hit_rate_at_10": 0.9,
+            "mrr": 0.727778,
+            "mttc": 4.6,
+            "sample_count": 10
+          },
+          "browsing": {
+            "hit_rate_at_10": 0.85,
+            "mrr": 0.561369,
+            "mttc": 3.35,
+            "sample_count": 80
+          },
+          "buying": {
+            "hit_rate_at_10": 0.8625,
+            "mrr": 0.668854,
+            "mttc": 3.1375,
+            "sample_count": 80
+          },
+          "intent_override": {
+            "hit_rate_at_10": 0.6,
+            "mrr": 0.427778,
+            "mttc": 7.166667,
+            "sample_count": 30
+          }
+        },
+        "technical_score": 0.72979
+      },
+      {
+        "axis": "granularity=1",
+        "hit_rate_at_10": 0.98,
+        "mrr": 0.74765,
+        "mttc": 2.195,
+        "sample_count": 200,
+        "scenario_metrics": {
+          "boundary": {
+            "hit_rate_at_10": 0.9,
+            "mrr": 0.565833,
+            "mttc": 2.8,
+            "sample_count": 10
+          },
+          "browsing": {
+            "hit_rate_at_10": 0.9875,
+            "mrr": 0.793264,
+            "mttc": 2.025,
+            "sample_count": 80
+          },
+          "buying": {
+            "hit_rate_at_10": 0.9875,
+            "mrr": 0.709286,
+            "mttc": 1.5875,
+            "sample_count": 80
+          },
+          "intent_override": {
+            "hit_rate_at_10": 0.966667,
+            "mrr": 0.788889,
+            "mttc": 4.066667,
+            "sample_count": 30
+          }
+        },
+        "technical_score": 0.89039
+      },
+      {
+        "axis": "granularity=3",
+        "hit_rate_at_10": 1.0,
+        "mrr": 0.77358,
+        "mttc": 1.83,
+        "sample_count": 200,
+        "scenario_metrics": {
+          "boundary": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.670833,
+            "mttc": 2.4,
+            "sample_count": 10
+          },
+          "browsing": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.776875,
+            "mttc": 1.6125,
+            "sample_count": 80
+          },
+          "buying": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.749062,
+            "mttc": 1.1625,
+            "sample_count": 80
+          },
+          "intent_override": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.864444,
+            "mttc": 4.0,
+            "sample_count": 30
+          }
+        },
+        "technical_score": 0.91548
+      }
+    ],
+    "fixed_width_10": [
+      {
+        "ci95": [
+          0.89081,
+          0.9296
+        ],
+        "hit_rate_at_10": 1.0,
+        "mrr": 0.74911,
+        "mttc": 1.72,
+        "paraphrase_level": 0,
+        "sample_count": 100,
+        "scenario_metrics": {
+          "boundary": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.537037,
+            "mttc": 1.0,
+            "sample_count": 3
+          },
+          "browsing": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.710227,
+            "mttc": 1.318182,
+            "sample_count": 44
+          },
+          "buying": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.755714,
+            "mttc": 1.2,
+            "sample_count": 35
+          },
+          "intent_override": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.866667,
+            "mttc": 3.833333,
+            "sample_count": 18
+          }
+        },
+        "split": "dev",
+        "technical_score": 0.91033
+      },
+      {
+        "ci95": [
+          0.86705,
+          0.90882
+        ],
+        "hit_rate_at_10": 1.0,
+        "mrr": 0.66119,
+        "mttc": 1.54,
+        "paraphrase_level": 0,
+        "sample_count": 100,
+        "scenario_metrics": {
+          "boundary": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.547619,
+            "mttc": 2.142857,
+            "sample_count": 7
+          },
+          "browsing": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.570602,
+            "mttc": 1.222222,
+            "sample_count": 36
+          },
+          "buying": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.708395,
+            "mttc": 1.088889,
+            "sample_count": 45
+          },
+          "intent_override": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.822222,
+            "mttc": 3.833333,
+            "sample_count": 12
+          }
+        },
+        "split": "holdout",
+        "technical_score": 0.88756
+      },
+      {
+        "ci95": [
+          0.88605,
+          0.91438
+        ],
+        "hit_rate_at_10": 1.0,
+        "mrr": 0.70978,
+        "mttc": 1.61,
+        "paraphrase_level": 0,
+        "sample_count": 200,
+        "scenario_metrics": {
+          "boundary": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.454444,
+            "mttc": 1.8,
+            "sample_count": 10
+          },
+          "browsing": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.659479,
+            "mttc": 1.25,
+            "sample_count": 80
+          },
+          "buying": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.730139,
+            "mttc": 1.1125,
+            "sample_count": 80
+          },
+          "intent_override": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.874762,
+            "mttc": 3.833333,
+            "sample_count": 30
+          }
+        },
+        "split": "full",
+        "technical_score": 0.90073
+      }
+    ],
+    "official": [
+      {
+        "ci95": [
+          0.9049,
+          0.94075
+        ],
+        "hit_rate_at_10": 1.0,
+        "mrr": 0.80467,
+        "mttc": 1.9,
+        "paraphrase_level": 0,
+        "sample_count": 100,
+        "scenario_metrics": {
+          "boundary": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.611111,
+            "mttc": 1.666667,
+            "sample_count": 3
+          },
+          "browsing": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.831439,
+            "mttc": 1.613636,
+            "sample_count": 44
+          },
+          "buying": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.755714,
+            "mttc": 1.257143,
+            "sample_count": 35
+          },
+          "intent_override": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.866667,
+            "mttc": 3.888889,
+            "sample_count": 18
+          }
+        },
+        "split": "dev",
+        "technical_score": 0.9234
+      },
+      {
+        "ci95": [
+          0.88528,
+          0.92505
+        ],
+        "hit_rate_at_10": 1.0,
+        "mrr": 0.7325,
+        "mttc": 1.71,
+        "paraphrase_level": 0,
+        "sample_count": 100,
+        "scenario_metrics": {
+          "boundary": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.696429,
+            "mttc": 3.0,
+            "sample_count": 7
+          },
+          "browsing": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.69537,
+            "mttc": 1.472222,
+            "sample_count": 36
+          },
+          "buying": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.737222,
+            "mttc": 1.133333,
+            "sample_count": 45
+          },
+          "intent_override": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.847222,
+            "mttc": 3.833333,
+            "sample_count": 12
+          }
+        },
+        "split": "holdout",
+        "technical_score": 0.90555
+      },
+      {
+        "ci95": [
+          0.90269,
+          0.92774
+        ],
+        "hit_rate_at_10": 1.0,
+        "mrr": 0.77342,
+        "mttc": 1.795,
+        "paraphrase_level": 0,
+        "sample_count": 200,
+        "scenario_metrics": {
+          "boundary": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.670833,
+            "mttc": 2.4,
+            "sample_count": 10
+          },
+          "browsing": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.776458,
+            "mttc": 1.525,
+            "sample_count": 80
+          },
+          "buying": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.749062,
+            "mttc": 1.1625,
+            "sample_count": 80
+          },
+          "intent_override": {
+            "hit_rate_at_10": 1.0,
+            "mrr": 0.864444,
+            "mttc": 4.0,
+            "sample_count": 30
+          }
+        },
+        "split": "full",
+        "technical_score": 0.91612
+      }
+    ],
+    "shadow": {
+      "dev": {
+        "efficiency": 0.976,
+        "retrieval_hit_rate_at_10": 1.0,
+        "retrieval_mrr": 0.699722,
+        "retrieval_mttc": 1.24,
+        "sample_count": 100,
+        "shadow_score": 0.905117
+      },
+      "full": {
+        "efficiency": 0.9775,
+        "retrieval_hit_rate_at_10": 1.0,
+        "retrieval_mrr": 0.676796,
+        "retrieval_mttc": 1.225,
+        "sample_count": 200,
+        "shadow_score": 0.898539
+      },
+      "full_operational_axes": {
+        "clean": {
+          "efficiency": 0.9775,
+          "retrieval_hit_rate_at_10": 1.0,
+          "retrieval_mrr": 0.676796,
+          "retrieval_mttc": 1.225,
+          "sample_count": 200,
+          "shadow_score": 0.898539
+        },
+        "fresh_agent": {
+          "efficiency": 0.9715,
+          "retrieval_hit_rate_at_10": 1.0,
+          "retrieval_mrr": 0.666865,
+          "retrieval_mttc": 1.285,
+          "sample_count": 200,
+          "shadow_score": 0.89436
+        },
+        "shuffle_seed1": {
+          "efficiency": 0.979,
+          "retrieval_hit_rate_at_10": 1.0,
+          "retrieval_mrr": 0.668343,
+          "retrieval_mttc": 1.21,
+          "sample_count": 200,
+          "shadow_score": 0.896303
+        },
+        "shuffle_seed2": {
+          "efficiency": 0.978,
+          "retrieval_hit_rate_at_10": 1.0,
+          "retrieval_mrr": 0.669796,
+          "retrieval_mttc": 1.22,
+          "sample_count": 200,
+          "shadow_score": 0.896539
+        }
+      },
+      "holdout": {
+        "efficiency": 0.978,
+        "retrieval_hit_rate_at_10": 1.0,
+        "retrieval_mrr": 0.650536,
+        "retrieval_mttc": 1.22,
+        "sample_count": 100,
+        "shadow_score": 0.890761
+      }
+    }
+  },
+  "controls_sha256": "cfe866ef4d8556e5d85f2036672ae218047c0665cf68fdf0e757b011205c7e98",
+  "gates": {
+    "all_v4_0_controls_passed": true,
+    "end_to_end_matrix_complete": true,
+    "protected_behavior_parity": true,
+    "resource_canary_passed": true
+  },
+  "inputs": {
+    "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+    "control_sources": {
+      "evaluator/local_evaluator.py": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+      "tools/audit.py": "33df80781642e97ab9ab43033051e7e1ed05a86898f341532c5ea0da83c50566",
+      "tools/bench.py": "8e278f742431a2c902bd0178aa2c7e3b69b3430fd01326c4ed9367146c4a52d0",
+      "tools/shadow.py": "2decd6989539fd0b83711ab4fec2d00403b95eb1ec082d2542ae322c2ebe90b4",
+      "tools/v4_controls.py": "fb881133026dfb27b3edfb0df2c4d7314533b6119646ca8c60ef387fa5019ba4"
+    },
+    "dev_split_sha256": "857b435be5cdb6fc53c5a7c40ef044a6a766249016953666db25e406bb354723",
+    "holdout_split_sha256": "9eba73617b5fad91ac98b6dcdcdc4cadfc54a1298cdb0ab5762253ffd66a09a6",
+    "public_split_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+    "serving_model_sha256": "e108939c1cf87da8df0be844965a9612ed2b540a74764e76647e361749478ed7"
+  },
+  "limitations": [
+    "Fixed-width and slice results are baseline controls, not candidate deltas.",
+    "The resource canary uses one fixed workload per route and serial turns; it is not an IID route-wide SLA estimate.",
+    "Field-level title/structured/description provenance is unavailable in the current 15-feature snapshots and is not reconstructed post hoc."
+  ],
+  "protected_baseline": {
+    "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+    "expected_public_score": 0.916125,
+    "expected_public_transcript_sha256": "7c30023e3b8f951d35f8a449a066cfff45f8995d8d9994142e0e5929f8958d04",
+    "forbidden_src_imports": [],
+    "public_score": {
+      "efficiency": 0.9205,
+      "hit_rate_at_10": 1.0,
+      "mrr": 0.773417,
+      "mttc": 1.795,
+      "recommended_technical_score": 0.916125,
+      "reported_token_usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      },
+      "sample_count": 200
+    },
+    "public_transcript_sha256": "7c30023e3b8f951d35f8a449a066cfff45f8995d8d9994142e0e5929f8958d04",
+    "python_hash_seed": "0",
+    "score_match": true,
+    "swallowed_turn_failures": 0,
+    "transcript_match": true
+  },
+  "resource": {
+    "protocol": {
+      "budget_gate": "fixed_workload_zero_exceedance_canary",
+      "budget_ms": 50.0,
+      "catalog": "data/catalog.jsonl",
+      "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+      "effective_runtime": {
+        "agent": {
+          "P_ASK": "infogain",
+          "P_FUSE": "hedged",
+          "P_PRUNE": "reset"
+        },
+        "commit_policy": {
+          "base_width": 2,
+          "browse_extra": 4,
+          "high_margin": 0.6,
+          "margin_floor": 0.1,
+          "mid_margin": 0.3,
+          "overload": 2000,
+          "unsure_width": 2,
+          "widen_turn": 8
+        },
+        "scoring_weights": {
+          "budget": 0.6,
+          "facet": 0.5,
+          "lexical": 0.4,
+          "phrase": 1.0,
+          "popularity": 1.4,
+          "shown_penalty": 0.8
+        }
+      },
+      "fallback_policy": "absolute/descriptive only until a non-inferiority margin and independent blocks are predeclared; never subject to the 50 ms route gate",
+      "fresh_process_per_route": true,
+      "gate_confidence": 0.95,
+      "iid_assumption_verified": false,
+      "latency_scope": "Agent.respond after reset; Agent construction excluded",
+      "logical_cpu_count": 12,
+      "machine": "arm64",
+      "minimum_gate_samples": 299,
+      "p99_convention": "nearest-rank",
+      "platform": "darwin",
+      "platform_release": "Darwin 25.3.0",
+      "processor": "arm64",
+      "processor_identity_quality": "architecture_only",
+      "python_hash_seed": "0",
+      "python_version": "3.9.6",
+      "route_execution_order": [
+        "exact",
+        "hedged",
+        "fallback"
+      ],
+      "route_workload_sha256": {
+        "exact": "1b4965fc940259e7ae86980aa6643656608f7996edb3d34cf6f551ef8fef3f40",
+        "fallback": "caa42f6e2aadf7f3507a6f4145e8112450dd0c4ad84fa39e1d05b7ea42ba81af",
+        "hedged": "5447e8ffa5d1386ee4b8cd37173e32ca8820b2853b7b0e2037155ecb34bb270d"
+      },
+      "samples_per_route": 299,
+      "serial_samples_per_fresh_process": true,
+      "target_violation_rate": 0.01,
+      "warmups_per_route": 3,
+      "workload_schema": 2,
+      "workloads_per_route": 1
+    },
+    "routes": {
+      "exact": {
+        "build_seconds": 17.265,
+        "gate": {
+          "enforced": true,
+          "iid_assumption_verified": false,
+          "iid_sensitivity_confidence": 0.95,
+          "iid_zero_violation_u95_sensitivity": 0.009969,
+          "kind": "fixed_workload_zero_exceedance_canary",
+          "limit_ms": 50.0,
+          "minimum_samples": 299,
+          "observed_violation_rate": 0.0,
+          "passed": true,
+          "statistical_claim": "none; fixed-message serial engineering canary",
+          "target_violation_rate": 0.01,
+          "violations": 0
+        },
+        "latency_ms": {
+          "max": 3.967,
+          "median": 3.587,
+          "p95": 3.647,
+          "p99": 3.788
+        },
+        "measurement_trace": "integer_pool_size_only",
+        "peak_rss_mb": 765.5,
+        "response_deterministic": true,
+        "response_sha256": "1634a4a46e3ff05e901cdb99dbdcc6e5afe1d9f70b70089da317813efa8c15aa",
+        "route": "exact",
+        "route_shape": {
+          "actual_scored_pool_size": 649,
+          "catalog_size": 50000,
+          "exact": true,
+          "hedged": false,
+          "pool_size": 649,
+          "primary_size": 649
+        },
+        "samples": 299,
+        "warmups": 3
+      },
+      "fallback": {
+        "build_seconds": 17.119,
+        "gate": {
+          "enforced": false,
+          "kind": "absolute_descriptive_baseline",
+          "limit_ms": null,
+          "minimum_samples": 299,
+          "note": "absolute baseline only; a same-protocol point delta is descriptive until a margin and independent blocks are predeclared; never apply the 50 ms exact/hedged gate",
+          "passed": null
+        },
+        "latency_ms": {
+          "max": 53.772,
+          "median": 45.486,
+          "p95": 48.543,
+          "p99": 52.355
+        },
+        "measurement_trace": "integer_pool_size_only",
+        "peak_rss_mb": 766.5,
+        "response_deterministic": true,
+        "response_sha256": "13e7cdb2ba7d7cba78158f02059d410a1e7dae186081b7cffbf0773519ea60e6",
+        "route": "fallback",
+        "route_shape": {
+          "actual_scored_pool_size": 50000,
+          "catalog_size": 50000,
+          "exact": false,
+          "hedged": false,
+          "pool_size": 50000,
+          "primary_size": 0
+        },
+        "samples": 299,
+        "warmups": 3
+      },
+      "hedged": {
+        "build_seconds": 17.117,
+        "gate": {
+          "enforced": true,
+          "iid_assumption_verified": false,
+          "iid_sensitivity_confidence": 0.95,
+          "iid_zero_violation_u95_sensitivity": 0.009969,
+          "kind": "fixed_workload_zero_exceedance_canary",
+          "limit_ms": 50.0,
+          "minimum_samples": 299,
+          "observed_violation_rate": 0.0,
+          "passed": true,
+          "statistical_claim": "none; fixed-message serial engineering canary",
+          "target_violation_rate": 0.01,
+          "violations": 0
+        },
+        "latency_ms": {
+          "max": 30.326,
+          "median": 25.72,
+          "p95": 27.59,
+          "p99": 29.291
+        },
+        "measurement_trace": "integer_pool_size_only",
+        "peak_rss_mb": 768.2,
+        "response_deterministic": true,
+        "response_sha256": "88bea8a33b224a0dea23d0f28156694d03c170aabc6ae5821b759619295b1b50",
+        "route": "hedged",
+        "route_shape": {
+          "actual_scored_pool_size": 4744,
+          "catalog_size": 50000,
+          "exact": false,
+          "hedged": true,
+          "pool_size": 4644,
+          "primary_size": 23
+        },
+        "samples": 299,
+        "warmups": 3
+      }
+    },
+    "schema": 2
+  },
+  "schema": "techjam-v4-end-to-end-controls-v1",
+  "scope": "V4-0 controls; shipped asset only; no candidate model"
+}

@@ -1,0 +1,97 @@
+{
+  "audit": {
+    "counts": {
+      "post_removal": 414,
+      "pre_removal": 419,
+      "removed": 5
+    },
+    "file": "analysis/_v6_review_aliases_by_mnn.json",
+    "precision": 0.9877149877149877,
+    "removed": [
+      {
+        "alias": "extras",
+        "heads": [
+          "accessories"
+        ],
+        "reason": "\"Extras\" is a generic catch-all for anything additional and does not specifically denote the accessories family."
+      },
+      {
+        "alias": "finery",
+        "heads": [
+          "jewelry"
+        ],
+        "reason": "\"Finery\" means showy dress or ornamentation generally rather than jewelry specifically, so it is too generic for the jewelry family."
+      },
+      {
+        "alias": "holders",
+        "heads": [
+          "cases"
+        ],
+        "reason": "\"Holders\" is a generic container word (phone holders, candle holders, card holders) that does not distinguish the small-accessory cases family."
+      },
+      {
+        "alias": "sleeves",
+        "heads": [
+          "cases"
+        ],
+        "reason": "\"Sleeves\" primarily denotes garment sleeves; its case sense is narrow (laptop/card sleeves) and does not distinguish this accessory-cases family."
+      },
+      {
+        "alias": "strings",
+        "heads": [
+          "thongs"
+        ],
+        "reason": "\"Strings\" is too generic (shoestrings, apron strings); the thong sense exists only inside the compound \"G-string\"."
+      }
+    ],
+    "reviewer": "mnn engineer (independent model review, not human)",
+    "sampled": 407,
+    "supported": 402,
+    "wilson95": [
+      0.9715680163565626,
+      0.9947414721770783
+    ]
+  },
+  "b1_exclusion_counts": {
+    "banner_only": 17,
+    "considered": 428,
+    "empty_after_normalization": 0,
+    "junk_token": 16,
+    "product_floor": 118,
+    "retained": 274,
+    "uppercase_fragment": 3
+  },
+  "candidate_name": "aliases",
+  "collisions": {
+    "alias_equals_other_head": 0,
+    "multi_head_dropped": 0,
+    "two_head_hedge_kept": 12
+  },
+  "hashes": {
+    "builder_source_sha256": "f0cfe8b995492dbddf43f7185ce75059cbebb042c2a8bb7fc71e924dca5d2f42",
+    "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+    "input_sha256": "3174e3fcd3014c2ddfe200bcd4e12e786bf99332c23e6aa6e4436403b5cc07c7",
+    "payload_sha256": "be16b78f7c9a057ed0969e0ca0062b2b5a34135d0554cd028f9c21eba92e4bf6",
+    "prompt_sha256": "fda47f50a7839cbd952902601decb1eefce64e1d8ff5a310562fd99dda3725e9",
+    "raw_output_sha256": "5973afd621b3e0344b2972223e7973f754f9f178ad6cc777cfd57f9acedb0ac6"
+  },
+  "heads": {
+    "considered": 428,
+    "retained": 274
+  },
+  "schema_version": "techjam-v6-shelf-transform-v1",
+  "support": {
+    "aliases_in": 419,
+    "dropped": {
+      "audit_removal": 5,
+      "canonical_identical": 0,
+      "cap_per_head": 0,
+      "collision_multi_head": 0,
+      "collision_other_head": 0,
+      "empty_after_normalization": 0,
+      "too_long": 0,
+      "unknown_head": 0
+    },
+    "retained": 414
+  }
+}

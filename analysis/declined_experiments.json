@@ -1,0 +1,277 @@
+[
+  {
+    "id": "D1",
+    "name": "Dense retrieval (GloVe-50 vector route) for shelf resolution",
+    "hypothesis": "A local vector space over the 1,115 shelf names closes the category-axis gap: when the head noun is synonymised, lexical resolution misses and a semantic route should still find the shelf. Pillar I names vector similarity as a pipeline component; this is where it was tested.",
+    "measurement": {
+      "official, baseline": 0.94401,
+      "official, GloVe-50 fused (200k words, 19.5 MB, numpy)": 0.94401,
+      "shadow, baseline": 0.89397,
+      "top-1 shelf resolution, category axis": "-0.04 against baseline, on the very axis the route was built for",
+      "recall failure it targeted": "absent: the lexical and mined routes together go empty in 1 of 200 sessions even with every head noun substituted"
+    },
+    "verdict": "declined",
+    "why": "The category-axis gap is shelf disambiguation, not shelf identification: 25.5% of failures land on a near-duplicate of the right shelf, and 'Jewelry Necklaces' versus 'Necklaces Chains' are semantically identical, which is precisely what a general-language vector space cannot separate. The route moved the official score by 0.00000, cost 0.04 of top-1 resolution, and nothing it did earned a 19.5 MB asset and a numpy dependency against the stdlib-only rule. This is the wall the shelf re-election work (D2) later hit from the other direction. Reconstructed from the README Limitations table under V7 P2; the experiment predates the ledger.",
+    "ledger_note": "Backfilled 2026-08-30 under V7 P2. D7 cites this entry as 'the declined GloVe experiment (D1)'."
+  },
+  {
+    "id": "D2",
+    "name": "Constraint-informed shelf re-election (argmax and posterior variants)",
+    "hypothesis": "The shelf is picked blind at turn 1, but the evidence that separates twin shelves arrives as constraints on turns 2-3 -- so re-electing the shelf from the accumulating conversation should beat the static opening-phrase boost.",
+    "measurement": {
+      "bench": "tools/shelfbench.py: 170 mined near-duplicate shelf pairs, opening message = the words the two shelves share, scored on where the item lands",
+      "static boost on the retrieval leader (incumbent)": {"shelfbench_HR": 0.558, "shelfbench_MRR": 0.343, "shelf_top1": 0.176, "category_axis": 0.74494},
+      "argmax re-election, boost scaled by margin": {"shelfbench_HR": 0.525, "shelfbench_MRR": 0.325, "shelf_top1": 0.205, "category_axis": null},
+      "posterior over shelves, belief spread not committed": {"shelfbench_HR": 0.558, "shelfbench_MRR": 0.341, "shelf_top1": 0.254, "category_axis": 0.73598},
+      "posterior sharpening": "none: across five turns of accumulating constraints, top-1 accuracy stays 0.15-0.23 and maximum probability stays ~0.33",
+      "table_note": "rows measured at the shared-stems revision of shelfbench; the bench now opens with shared surface words and every absolute number rose ~0.07, comparisons unaffected"
+    },
+    "verdict": "declined",
+    "why": "Re-election worked on its own terms -- shelf top-1 rose from 0.176 to 0.205 (argmax) and 0.254 (posterior) -- and the item metric got worse anyway. The true shelf is among the candidates only ~75% of the time and there are about nine of them, so concentrating belief on a leader that is right one time in four loses more than it wins. Near-duplicate shelves stock genuinely similar products; the evidence that would separate them is the same evidence on both sides. The information is worth a great deal and is not the catalog's: with the shelf supplied rather than inferred, hit rate rises by more than a sixth against a pool ceiling of 0.787 -- so the agent asks instead (src/clarify.py). Reconstructed from the README Limitations shelfbench table under V7 P2.",
+    "record": "analysis/shelf_election_finding.json"
+  },
+  {
+    "id": "D3",
+    "name": "Information-weighted phrase scoring",
+    "hypothesis": "Scaling each stated constraint's phrase bonus by its information content should stop common marketing phrasing from scoring like rare, specific language -- and under paraphrase, should discount the noise the paraphraser injects.",
+    "measurement": {
+      "clean set": "nothing to discount: sampled constraints that earn the phrase bonus match a median of 0 catalog products, p90 1.2%, and only 9 of 200 match more than 5%",
+      "under paraphrase": "scaling each slot by its information relative to the session's best cost 0.013 on scaffold and 0.016 on the combined axis"
+    },
+    "verdict": "declined, twice",
+    "why": "On clean data the phrase bonus is already close to perfectly selective, so the weight has nothing to do. Under paraphrase there is something to discount, but scaffolded text has a lower mean IDF throughout, so the information weight discounts real constraints uniformly along with the noise -- the instrument cannot tell the difference. Reconstructed from the declined-ledger prose in SKILL.md and IMPROVEMENT_PLAN.txt under V7 P2."
+  },
+  {
+    "id": "D4",
+    "name": "A shelf posterior instead of a shelf boost",
+    "hypothesis": "Carrying a belief distribution over shelves, rather than committing a boost to one, should be safer than argmax when the opening phrase is ambiguous.",
+    "measurement": {
+      "posterior over shelves (shelfbench)": {"shelfbench_HR": 0.558, "shelfbench_MRR": 0.341, "shelf_top1": 0.254, "category_axis": 0.73598},
+      "incumbent static boost": {"shelfbench_HR": 0.558, "shelfbench_MRR": 0.343, "shelf_top1": 0.176, "category_axis": 0.74494}
+    },
+    "verdict": "declined",
+    "why": "The posterior never sharpens (D2's five-turn measurement), because the information that separates twin shelves is in the user, not the catalog. Replaced by asking: src/clarify.py is the shipped answer to the ambiguity this entry tried to model away. Reconstructed from the README Limitations shelfbench table under V7 P2."
+  },
+  {
+    "id": "D5",
+    "name": "Multi-valued facet sets for positive scoring",
+    "hypothesis": "A product with two materials should match either of them; taking only the first regex hit under-matches, and it lets a canvas bag with leather trim answer 'leather bag'.",
+    "measurement": {
+      "equality on the primary value": {
+        "dev": 0.91517,
+        "holdout": 0.90252
+      },
+      "membership in the stated set": {
+        "dev": 0.91575,
+        "holdout": 0.89597
+      },
+      "membership including description": {
+        "dev": 0.91575,
+        "holdout": 0.89382
+      }
+    },
+    "verdict": "declined for positive scoring",
+    "why": "Membership is the less discriminative test. A listing reading 'polyester, cotton lining' matches a cotton request as strongly as a cotton shirt does, and there are far more of those than there are trims. Widening the credit made it monotonically worse, which is the signature of a term that has stopped separating anything. The trim case is real and rare; the collision case is real and common.",
+    "kept": "The value sets are still built and are used by the refusal logic in src/agent.py, where the asymmetry runs the other way: wrongly demoting a product over a word in its marketing copy is a worse error than missing one."
+  },
+  {
+    "id": "D6",
+    "name": "Wider retrieval routes (ROUTE_WIDTH 6 -> 24)",
+    "hypothesis": "The category axis loses 0.090 to recall; offering each route more bucket candidates should recover some of it, and it is free on the official set because an exact shelf name never consults the hedge.",
+    "measurement": {
+      "pool recall, category axis": {
+        "width_6": 0.885,
+        "width_24": 0.905
+      },
+      "category axis score": {
+        "width_6": 0.78333,
+        "width_24": 0.79605
+      },
+      "all four axes": {
+        "width_6": 0.63919,
+        "width_24": 0.62246
+      },
+      "control": {
+        "width_6": 0.90624,
+        "width_24": 0.90614
+      }
+    },
+    "verdict": "declined",
+    "why": "It is free on control exactly as predicted, and it does buy recall on the isolated category axis. It buys it by pulling in more wrong shelves at the same time, and on the compound axis -- where the constraint text is paraphrased too and the ranking has less to work with -- that costs 0.017, more than the 0.013 it gains. The candidate the pool gained is not a candidate the ranking can find.",
+    "superseded_by": "D7's reopening. Widening the existing shelf routes is still declined -- it costs the compound axis -- but the underlying claim that a wider pool cannot be exploited was specific to a ranking without the reranker. See analysis/global_route.json."
+  },
+  {
+    "id": "D7",
+    "name": "Global product-level BM25 route in the live path",
+    "hypothesis": "Fuse a global lexical route over the constraint text into the pool so a wrong shelf resolution cannot lose the target outright.",
+    "measurement": {
+      "official pool recall without it": 1.0,
+      "global BM25 over 50000 products, one clause": "205 ms",
+      "three clauses": "288 ms",
+      "per-turn latency budget (tests/test_operational.py)": "50 ms"
+    },
+    "verdict": "declined as specified; REOPENED and SHIPPED once its own condition was met -- see analysis/global_route.json",
+    "why": "Two independent reasons. The official sessions have no recall failure for it to fix (pool recall 1.000), and it is 4-6x over the published per-turn latency budget without a postings index that does not exist yet. This is the same shape as the declined GloVe experiment (D1): a retrieval fix aimed at a recall failure the data does not have. It would become worth building if the private set turns out to paraphrase category head nouns, which is the one axis where recall genuinely breaks (0.090).",
+    "reopened": {
+      "when": "after the learned reranker shipped",
+      "condition_it_named": "revisit only with an inverted index",
+      "what_changed": [
+        "Catalog.index_postings makes the query cost O(products containing a query term) instead of O(catalog): +0.3 s of build, +30 MB of RSS, and the 205-288 ms per turn disappears.",
+        "D6's other objection -- 'the candidate the pool gains is not a candidate the ranking can find' -- predates the reranker. Rank-given-pool on the category axis holds at 0.990 with the wider pool, so the gained candidates now convert."
+      ],
+      "as_shipped": "fires only when the shelf did not resolve outright, and appends rather than merges, so it can only add candidates",
+      "result": {
+        "official_all_splits": "+0.00000, zero-width interval (unreachable on the public set)",
+        "category_axis": "+0.04298 [+0.01911, +0.07209], significant",
+        "granularity_1": "+0.02297 [+0.00641, +0.04472], significant",
+        "compound_axis": "+0.02297, no regression -- the gate D6 failed"
+      }
+    }
+  },
+  {
+    "id": "D8",
+    "name": "Six additional reranker features",
+    "hypothesis": "The ceiling probe showed data is not the constraint, so the fifteen features are. Six more -- led by facet disagreement, which expresses evidence AGAINST a candidate and which no reweighting of the fifteen can imitate -- should move the ordering.",
+    "measurement": "add-one and drop-one, snapshot MRR against the shipped model. Best single feature (constraint_coverage): dev +0.0124 [-0.0010, +0.0322], holdout +0.0027 [-0.0141, +0.0230]. Official dev -0.00082, holdout +0.00060, full -0.00065. Five of eight adversarial axes negative, compound worst at -0.00887.",
+    "verdict": "declined in full",
+    "why": "Not one row of the ablation is significant, and three of the six lower cross-validated accuracy below the fifteen-feature control. The instructive one is facet_disagreement: tools/violations.py shows the behaviour it targets occurs in 0.44% of shown items on the clean set against 13.0% under constraint paraphrase, so the objective had almost nothing to fit it on. Training on the paraphrase axes would supply the examples and was refused -- tools/adversarial.py is our paraphraser, so a model fitted to it is fitted to our guess about the private set.",
+    "kept": "tools/rerank_ablate.py, tools/violations.py, tools/snapshot_mrr.py, and --model on tools/bench.py. The next retrain needs all four.",
+    "record": "analysis/reranker_features.json"
+  },
+  {
+    "id": "D9",
+    "name": "Boosted trees over the same features",
+    "hypothesis": "A linear model cannot say 'popularity counts for less once the shopper has named a material'. An interaction-capable class can.",
+    "measurement": "depth-1 (460 rounds by grouped CV) and depth-2 (300 rounds) against the linear model. Pairwise accuracy: linear dev 0.9289 / holdout 0.9032; depth-2 dev 0.9617 / holdout 0.8895. Snapshot MRR at the dev-chosen blend 0.2: dev +0.0339 [+0.0080, +0.0630] significant, holdout +0.0042 [-0.0220, +0.0328].",
+    "verdict": "declined",
+    "why": "Trees fit dev harder and generalise worse -- a dev-to-holdout gap of 0.072 against the linear model's 0.026. The one significant result on the table is the overfit showing up as an apparent win, on the split the blend was chosen on. Depth 1 is not undertrained: offered 1500 rounds, CV picked 460 and the curve plateaued below the linear model.",
+    "kept": "tools/rerank_stumps.py, so the result is reproducible.",
+    "record": "analysis/reranker_stumps.json"
+  },
+  {
+    "id": "D10",
+    "name": "Counterfactual question value (P8)",
+    "hypothesis": "Ranking questions by pool reduction is the wrong quantity: a question that splits the bottom of the pool scores well and cannot move the head. Expected improvement in where the target lands is right.",
+    "measurement": "Official dev -0.0032, holdout -0.0029, full -0.0055, and HR@10 falls off 1.000 to 0.995. shelfbench --realistic: hit rate and MTTC identical, MRR 0.4416 -> 0.4316.",
+    "verdict": "declined; the objection is correct and worth nothing here",
+    "why": "Measured over every turn of both splits, no attribute question is expected to buy enough rank to pay for its turn -- the largest gain anywhere is 0.0624 against a cost of 0.0667 read off the published scoring formula. The criterion does independently rediscover the failure src/answerability.py exists for (pool reduction ranks brand first, the counterfactual ranks it near last), but the learned answerability term already fixed that, so there is nothing left to repair.",
+    "kept": "src/elicitation.expected_gain, reachable under P_ASK=counterfactual beside the other ablation controls. No default path reaches it.",
+    "record": "analysis/question_value_finding.json"
+  },
+  {
+    "id": "D11",
+    "name": "LLM semantic ranking stage (V7 P1; moonshotai/kimi-k3 via AI&, temperature 0)",
+    "hypothesis": "Pillar I names 'Multi-Route Retrieval -> LLM Semantic Ranking'. An LLM ordering the top-20 head of each snapshot should add semantic judgement the linear reranker's fifteen features cannot express.",
+    "measurement": {
+      "instrument": "tools/llm_rerank_probe.py on the frozen snapshot-MRR harness: same snapshots, base order, session grouping and paired bootstrap as the linear reranker's record; arithmetic-equivalence and bootstrap-parity self-checks pass, and the shipped reranker's +0.02067 dev / +0.03544 holdout is reproduced bit-exactly as the probe's reference",
+      "dev": "base 0.66502; best blend 0.05: +0.00249 [-0.00440, +0.01004]; blends 0.1-1.0 monotonically worse; raw LLM order -0.17232 [-0.24863, -0.09802]",
+      "holdout": "base 0.64461; blend 0.05: -0.00614 [-0.02569, +0.00976]; raw LLM order -0.24944 [-0.32611, -0.17504]",
+      "coverage": "254 of 292 snapshots reachable (target inside top-20); 38 unreachable by construction",
+      "build_time_tokens": {"prompt": 199687, "completion": 430745, "note": "build-time measurement tokens; the scored path remains 0 prompt / 0 completion"}
+    },
+    "verdict": "declined at Door 1, matching the plan's registered prediction",
+    "why": "The public simulator quotes constraint strings verbatim from the target's own metadata, so the ranking signal is lexical containment plus a popularity prior, both already exploited; an LLM's semantic judgement has nothing left to work on, and taken raw it actively hurts (the model demotes the popularity prior the targets are drawn from). The value of the entry is the measurement: the LLM ranking stage Pillar I names is now tested-and-declined with frozen evidence rather than absent. The probe lives in tools/ only; src/ is untouched and the public transcript is unchanged by construction.",
+    "record": "analysis/llm_rerank_probe.json"
+  },
+  {
+    "id": "V6-A",
+    "name": "Blind shelf aliases for non-exact shelf resolution (V6 Candidate A)",
+    "hypothesis": "General-language aliases (synonyms, regional variants, one-level hypernyms) over canonical catalog shelf heads recover category-paraphrase sessions whose rewritten opening no longer resolves a shelf exactly.",
+    "measurement": {
+      "dev category turn-1 pool recall": "0.870 -> 0.880 (+0.010, one-sided LB95 0.0; gate >= +0.030)",
+      "dev category ever recall": "0.940 -> 0.940 (gate >= 0.970)",
+      "fixed-width category TechnicalScore delta": "0.0 (paired bootstrap, 20,000 resamples)",
+      "activation": "36/100 sessions; 1 of 13 turn-1 misses recovered; 0 of 6 ever-misses",
+      "mapping audit": "precision 0.9877, Wilson [0.9716, 0.9947] (passed V6-D8)",
+      "safety": "public transcript byte-identical (7c30023e...), all noninferiority guards pass"
+    },
+    "verdict": "declined at V6-D3/V6-D4/V6-D6/V6-D7 in the preregistered dev comparison",
+    "why": "The mechanism is safe but does not cover the harness's substituted vocabulary: 6 of 13 turn-1 misses had no alias match at all, and the rest added shelves that did not contain the target. The dev loss is real shelf-resolution loss (6/6, 5/6 head-implicated), but general-language head aliases are not the vocabulary that was taken away. See analysis/v6_dev_comparison.json and analysis/v6_selection.json."
+  },
+  {
+    "id": "V6-B",
+    "name": "Catalog-only sparse mutual nearest neighbours for shelf resolution (V6 Candidate B)",
+    "hypothesis": "Terms mutually characteristic of canonical shelf heads (reciprocal top-2/top-8 neighbours, cosine >= 0.80 over shelf-normalized document presence) give a catalog-only phrase transformation with no generated language.",
+    "measurement": {
+      "mapping": "441 retained terms from 83,929 considered (filters: df>=5, <=25% of shelves, 10-product shelf floor, mutual top-2/top-8, cosine>=0.80)",
+      "mapping audit": "supported precision 0.3288, Wilson [0.2866, 0.3740], verdict REJECT (gate: observed >= 0.98, lower bound >= 0.95)",
+      "failure themes": "opaque codes/SKU/year fragments, bare measurements, coincidental marketing words, private-label coinages, bare attributes, wrong-family mappings, promo-banner residue"
+    },
+    "verdict": "declined at V6-D8 (outcome-blind mapping audit) before any score evaluation",
+    "why": "At the registered formula the catalog's co-occurrence signal is dominated by listing exhaust, not shopper shelf vocabulary; roughly two in three retained terms fail semantic review. The formula is registered and closed; no constant sweep is authorized. See analysis/v6_blind_mapping_audits.json."
+  },
+  {
+    "id": "CAND-A",
+    "name": "candidates/approach_a: recency- and correction-aware evidence with width-1 probe commit",
+    "hypothesis": "Weighted evidence records (disclosure turn, epoch, decay 0.98 / correction 0.12 / recency premium 0.025 cap 0.25) rank better than flat clause dedup, and the agent beats 0.916125.",
+    "measurement": {
+      "official full/dev/holdout": {
+        "full": 0.934239,
+        "dev": 0.9259,
+        "holdout": 0.942578,
+        "hit_rate_at_10": 0.99
+      },
+      "fixed width 10 (artifact removed, its own env knobs)": {
+        "candidate": 0.875011,
+        "shipped agent": 0.90073
+      },
+      "adversarial vs shipped": {
+        "category": [
+          0.6858,
+          0.84066
+        ],
+        "granularity=1": [
+          0.71504,
+          0.89039
+        ],
+        "granularity=3": [
+          0.66179,
+          0.91548
+        ],
+        "all paraphrase axes": [
+          0.625,
+          0.72979
+        ]
+      },
+      "expected private under the V4 paraphrase prior": {
+        "candidate": 0.857,
+        "shipped agent": 0.896
+      }
+    },
+    "verdict": "declined",
+    "why": "The +0.018 official gain is the commit-width simulator artifact: base_width=1 until turn 8 makes every hit rank 1 by construction. At equal width its retrieval is 0.026 worse than shipped, it breaks HR@10 1.000 on the clean set, and its unstemmed overlap routing collapses on category and both granularity axes. Working rule 2: a change that moves official without moving the artifact-free reading is an artifact found, not a gain made.",
+    "kept": "Nothing. The correction-epoch mechanism is already shipped as V3 question epochs and explicit restarts.",
+    "artifact": "analysis/candidates_benchmark.json"
+  },
+  {
+    "id": "CAND-B",
+    "name": "candidates/approach_b: structured-evidence reranking (field BM25, unique-IDF coverage, soft facets, findings.json question prior)",
+    "hypothesis": "Field-weighted BM25 plus clause coverage plus bounded facet agreement, with question selection weighted by the aggregate answer-rate histogram, beats 0.916125.",
+    "measurement": {
+      "as shipped": {
+        "score": 0.0,
+        "cause": "Catalog lacks bucket_stems/bucket_by_key required by current src.routing; AttributeError every turn, swallowed by its own except clause. Never executed one turn before this benchmark."
+      },
+      "with minimal interface shim (built exactly as src/catalog.py builds them)": {
+        "full": 0.887484,
+        "dev": 0.896779,
+        "holdout": 0.878189,
+        "mrr": 0.669946
+      },
+      "adversarial vs shipped (shimmed)": {
+        "category": [
+          0.705884,
+          0.84066
+        ],
+        "scaffold": [
+          0.871354,
+          0.85641
+        ]
+      }
+    },
+    "verdict": "declined at both readings",
+    "why": "Zero as shipped; interface-repaired it is -0.029 under control with MRR 0.670 vs 0.773, worse on both splits and -0.135 on the category axis. The disclosed findings.json coupling never becomes load-bearing because the ranking loses before elicitation matters.",
+    "kept": "Nothing.",
+    "artifact": "analysis/candidates_benchmark.json"
+  }
+]

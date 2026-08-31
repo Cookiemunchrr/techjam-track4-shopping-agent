@@ -1,0 +1,48 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+results.json
+data/catalog.jsonl
+data/releases/
+# Organizer-only code, private evaluation data, manifests, and build reports.
+organizer/
+secure/
+# Internal provenance and release-audit working documents.
+docs/audits/
+docs/data_selection_audit.md
+docs/participant_release_checklist.md
+# Organizer-only pipeline tests.
+tests/test_5core_builder.py
+tests/test_organizer_pipeline.py
+*.log
+
+# Regenerable in one command from the committed code and the frozen catalog:
+#   python3 -m tools.rerank_data --split dev
+# The derived model, its training report and the experiment's conclusion are
+# committed; the intermediate feature dump (1.6 MB) is not.
+analysis/rerank_*.jsonl
+# Canonical V4 provenance sidecars (for example
+# analysis/rerank_dev.jsonl.manifest.jsonl). The broader rule above already
+# matches them; this exact rule keeps that intent explicit if cache globs change.
+analysis/rerank_*.jsonl.manifest.jsonl
+
+# analysis working files
+analysis/_*
+analysis/results_*
+analysis/dev.jsonl
+analysis/holdout.jsonl
+
+__pycache__/
+*.pyc
+
+# The organizer's frozen catalog archive. Not ours to redistribute, and not needed:
+# every reference in this repo tells you to fetch it from the participant-kit release
+# (sha256 in the README Quick Start), and no code reads the .gz -- src/ reads the
+# decompressed data/catalog.jsonl, which is ignored just below the same reasoning.
+catalog.jsonl.gz
+
+# The snapshot-MRR replay cache. Same reasoning as the feature dump above:
+#   python3 -m tools.snapshot_mrr --rebuild
+# regenerates it from the committed code and the frozen catalog.
+analysis/rerank_snapshots_*.jsonl

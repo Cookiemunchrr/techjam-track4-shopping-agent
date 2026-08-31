@@ -1,0 +1,103 @@
+{
+  "date": "2026-08-29",
+  "baseline": {
+    "official_score": 0.916125,
+    "hit_rate_at_10": 1.0,
+    "mrr": 0.773417,
+    "mttc": 1.795,
+    "tests": 361
+  },
+  "final": {
+    "official_score": 0.916125,
+    "hit_rate_at_10": 1.0,
+    "mrr": 0.773417,
+    "mttc": 1.795,
+    "shadow_score": 0.89854,
+    "shadow_retrieval_mrr": 0.6768,
+    "snapshot_mrr_delta_dev": 0.0202,
+    "snapshot_mrr_delta_holdout": 0.0347,
+    "swallowed_turn_failures": 0,
+    "tests": 378,
+    "runtime_tokens": 0
+  },
+  "shipped": {
+    "operational_audits": {
+      "status": "shipped",
+      "evidence": [
+        "full public response transcript identical under PYTHONHASHSEED 1, 2, 777",
+        "zero socket calls during a multi-session evaluation",
+        "zero file opens after Agent construction during a full session",
+        "AST scan found no socket/subprocess/urllib/requests/evaluator imports in src"
+      ]
+    },
+    "unicode_normalisation": {
+      "status": "shipped",
+      "official_transcript_before_sha256": "607934bf1425a1efd6548cbac708703dbca121c4e373b3ffe39d129ac1859557",
+      "official_transcript_after_sha256": "607934bf1425a1efd6548cbac708703dbca121c4e373b3ffe39d129ac1859557",
+      "official_sessions_differed": 0,
+      "adversarial_unicode_only": {
+        "control": 0.91612,
+        "category": 0.84141,
+        "natural": 0.91154,
+        "scaffold": 0.86491,
+        "constraint": 0.88575,
+        "all_paraphrase_axes": 0.72166,
+        "granularity_1": 0.89039,
+        "granularity_3": 0.91548
+      },
+      "note": "NFKC and punctuation folding were bit-identical on all official response sequences. Original en/em dashes split clauses; ASCII hyphens retain prior semantics."
+    },
+    "question_epoch_and_restart_scope": {
+      "status": "shipped through product-behaviour door",
+      "official_score_before": 0.916125,
+      "official_score_after": 0.916125,
+      "shelfbench_realistic": {
+        "hit_rate_at_10": 0.812,
+        "mrr": 0.4463,
+        "mttc": 4.49
+      },
+      "shelfbench_realistic_no_clarify": {
+        "hit_rate_at_10": 0.658,
+        "mrr": 0.3935,
+        "mttc": 5.51
+      },
+      "final_vs_unicode_only": {
+        "scaffold_delta_median": -0.00835,
+        "scaffold_ci95": [-0.02933, 0.01149],
+        "all_axes_delta_median": 0.00795,
+        "all_axes_ci95": [-0.00209, 0.0221]
+      },
+      "note": "Product switches reopen category and product-bound questions while retaining budget/brand asked history. Explicit global restarts retire the whole brief and reopen all questions; answerability and long-term memory survive."
+    }
+  },
+  "declined": {
+    "category_tokens_in_global_query": {
+      "reason": "required category pool-recall increase did not occur",
+      "category_pool_recall_turn1": 0.885,
+      "category_pool_recall_ever": 0.955,
+      "recorded_global_route_pool_recall_ever": 0.965,
+      "dev": {"turn1": 0.87, "ever": 0.93},
+      "holdout": {"turn1": 0.9, "ever": 0.98}
+    },
+    "hedged_slate_reservation": {
+      "reason": "required category-axis gain did not exceed paired noise",
+      "category_delta_median": 0.00482,
+      "category_ci95": [-0.00109, 0.01376],
+      "all_axes_delta_median": 0.02069,
+      "all_axes_ci95": [0.00348, 0.03987],
+      "granularity_1_delta_median": -0.00229,
+      "granularity_1_ci95": [-0.00779, 0.00339],
+      "note": "The significant compound-axis result is retained for future study, but the predeclared category-specific shipping gate failed."
+    }
+  },
+  "final_adversarial": {
+    "control": 0.91612,
+    "category": 0.84141,
+    "natural": 0.91154,
+    "scaffold": 0.85641,
+    "constraint": 0.88575,
+    "all_paraphrase_axes": 0.72979,
+    "granularity_1": 0.89039,
+    "granularity_3": 0.91548
+  }
+}

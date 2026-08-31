@@ -1,0 +1,169 @@
+{
+  "schema": 3,
+  "protocol": {
+    "fresh_process_per_route": true,
+    "python_hash_seed": "0",
+    "platform": "darwin",
+    "machine": "arm64",
+    "platform_release": "Darwin 25.3.0",
+    "processor": "arm64",
+    "processor_identity_quality": "architecture_only",
+    "logical_cpu_count": 12,
+    "python_version": "3.9.6",
+    "catalog": "data/catalog.jsonl",
+    "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+    "serving_model_sha256": "e108939c1cf87da8df0be844965a9612ed2b540a74764e76647e361749478ed7",
+    "source_sha256": {
+      "tools/resource_probe.py": "3238d081dc8af0b7706df0fc2b1b00ea89c64c740517c00d0a9f88ed94f30434",
+      "tools/rerank_provenance.py": "e229dbc6ad83ec102098f7dd37b75c95010225758617dee8e04bbbaa50ef0c6e",
+      "src/__init__.py": "d18bf107dd39f744ca6a97391b60429f9ba8aed10de65d3b56bfb1057cf88bb3",
+      "src/agent.py": "b8b667261a637524fcce7bc72afa5ca33c62ba5fc3b64ea23d0f0fd2f4ef55fd",
+      "src/answerability.py": "6f2e6a25fe84382b3bf9d34f5402be88c85a0da0d8c78e94dbe3afcd1f4f7733",
+      "src/catalog.py": "9ac612747ae276055be6630c0e7582ff35f34aa76cc2b25ebdd703d1ecd1b7aa",
+      "src/clarify.py": "5de00a078bc3f0cd3a7efdf56223f80a16663661168d3102ebb6714d87c59025",
+      "src/elicitation.py": "094a4999f9e6865e8546dd42007e66c2a7f63cd6c936d644e77fec426af6ac6b",
+      "src/features.py": "1af86a567f0212da2675b90d398228e42daab3815cdf65cfdd34fcf56dfbb660",
+      "src/fusion.py": "9d7b097f3b8a3d5a979bd7a122935ced683679bd2e4b87e33d7e6cfdcba51491",
+      "src/llm_rank.py": "1c29a28d286cbc39ee77f93a0eda709abd20a45c2ebcef4d6d47a61f99038ea0",
+      "src/memory.py": "ead212154f22f506b70584de245cab358b4e3d17f377c3bc913b65ede9ae0a6f",
+      "src/orchestrator.py": "ac6afe464e1cee8f3bcca7555f6e0c53a158a8171d53b6cfcb9dfa9433f817e8",
+      "src/paths.py": "73e958da49dd0e1f4d4ed3d04d0e5c11f3891e988e4934315c63bfa565a67025",
+      "src/policy.py": "8abe81aecad6ab444239c9063a9d6e98b43c49885c43cd819a0c85f105ff8e57",
+      "src/profile.py": "0731487e0ff3ed159141a37404eebb7a8eabea01489bd35d31a4250959c30cba",
+      "src/rerank.py": "2913e83b1f691308d1b56d8e5ba425f1ed57f6be228a4be6630221b015ab8b26",
+      "src/routing.py": "55911f2147290b171bb91fbeacaba999b99c40defefe0a96699435643125f8ef",
+      "src/scoring.py": "8a5585d06efb09d033a06ad06ca194fe13dc6ec5f5dfc7890d07eb97536b92ea",
+      "src/semantic.py": "1284b1365314c5502e397221fa4256cccbf1a523592596d6156976a9ad880e1c",
+      "src/shelf_aliases.py": "7f22725078f2e38626d97581eddee87f48a70be91895b02dcafde553bf47f211",
+      "src/shelf_mnn.py": "00ea92f6ed9975fac8271f2301213bb3e05e4dff9c3e09dde502f369414fb477",
+      "src/shelf_transform.py": "ed39143b9fe5cb09035b4f21a3ccc2004960db710070230c621307f755a3c6a9",
+      "src/state.py": "5972b29330c486c131b5599f4cbabfc9e50ea06ca0b5eaad58fb4eff3c5dbbf6",
+      "src/text.py": "c4d6b6fb69f601f5d85ebf3a186f9f580a4fa622cefc0d916f1795b763c003fd"
+    },
+    "samples_per_route": 299,
+    "warmups_per_route": 3,
+    "latency_scope": "Agent.respond after reset; Agent construction excluded",
+    "p99_convention": "nearest-rank",
+    "workload_schema": 2,
+    "budget_gate": "fixed_workload_zero_exceedance_canary",
+    "budget_ms": 50.0,
+    "gate_confidence": 0.95,
+    "target_violation_rate": 0.01,
+    "minimum_gate_samples": 299,
+    "effective_runtime": {
+      "agent": {
+        "P_ASK": "infogain",
+        "P_FUSE": "hedged",
+        "P_PRUNE": "reset"
+      },
+      "commit_policy": {
+        "base_width": 2,
+        "widen_turn": 8,
+        "margin_floor": 0.1,
+        "unsure_width": 2,
+        "overload": 2000,
+        "high_margin": 0.6,
+        "mid_margin": 0.3,
+        "browse_extra": 4
+      },
+      "scoring_weights": {
+        "popularity": 1.4,
+        "lexical": 0.4,
+        "phrase": 1.0,
+        "shown_penalty": 0.8,
+        "budget": 0.6,
+        "facet": 0.5
+      }
+    },
+    "iid_assumption_verified": false,
+    "serial_samples_per_fresh_process": true,
+    "workloads_per_route": 1,
+    "route_execution_order": [
+      "exact",
+      "hedged"
+    ],
+    "route_workload_sha256": {
+      "exact": "1b4965fc940259e7ae86980aa6643656608f7996edb3d34cf6f551ef8fef3f40",
+      "hedged": "5447e8ffa5d1386ee4b8cd37173e32ca8820b2853b7b0e2037155ecb34bb270d"
+    },
+    "fallback_policy": "absolute/descriptive only until a non-inferiority margin and independent blocks are predeclared; never subject to the 50 ms route gate"
+  },
+  "routes": {
+    "exact": {
+      "build_seconds": 17.069,
+      "gate": {
+        "enforced": true,
+        "iid_assumption_verified": false,
+        "iid_sensitivity_confidence": 0.95,
+        "iid_zero_violation_u95_sensitivity": 0.009969,
+        "kind": "fixed_workload_zero_exceedance_canary",
+        "limit_ms": 50.0,
+        "minimum_samples": 299,
+        "observed_violation_rate": 0.0,
+        "passed": true,
+        "statistical_claim": "none; fixed-message serial engineering canary",
+        "target_violation_rate": 0.01,
+        "violations": 0
+      },
+      "latency_ms": {
+        "max": 5.46,
+        "median": 3.997,
+        "p95": 4.772,
+        "p99": 5.178
+      },
+      "measurement_trace": "integer_pool_size_only",
+      "peak_rss_mb": 781.2,
+      "response_deterministic": true,
+      "response_sha256": "1634a4a46e3ff05e901cdb99dbdcc6e5afe1d9f70b70089da317813efa8c15aa",
+      "route": "exact",
+      "route_shape": {
+        "actual_scored_pool_size": 649,
+        "catalog_size": 50000,
+        "exact": true,
+        "hedged": false,
+        "pool_size": 649,
+        "primary_size": 649
+      },
+      "samples": 299,
+      "warmups": 3
+    },
+    "hedged": {
+      "build_seconds": 17.678,
+      "gate": {
+        "enforced": true,
+        "iid_assumption_verified": false,
+        "iid_sensitivity_confidence": 0.95,
+        "iid_zero_violation_u95_sensitivity": 0.009969,
+        "kind": "fixed_workload_zero_exceedance_canary",
+        "limit_ms": 50.0,
+        "minimum_samples": 299,
+        "observed_violation_rate": 0.0,
+        "passed": true,
+        "statistical_claim": "none; fixed-message serial engineering canary",
+        "target_violation_rate": 0.01,
+        "violations": 0
+      },
+      "latency_ms": {
+        "max": 34.647,
+        "median": 30.914,
+        "p95": 32.55,
+        "p99": 33.566
+      },
+      "measurement_trace": "integer_pool_size_only",
+      "peak_rss_mb": 788.9,
+      "response_deterministic": true,
+      "response_sha256": "88bea8a33b224a0dea23d0f28156694d03c170aabc6ae5821b759619295b1b50",
+      "route": "hedged",
+      "route_shape": {
+        "actual_scored_pool_size": 4744,
+        "catalog_size": 50000,
+        "exact": false,
+        "hedged": true,
+        "pool_size": 4644,
+        "primary_size": 23
+      },
+      "samples": 299,
+      "warmups": 3
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "lambda_curve": [
+    {
+      "lambda": 0.003,
+      "cv_pairwise_accuracy": 0.92225
+    },
+    {
+      "lambda": 0.01,
+      "cv_pairwise_accuracy": 0.91737
+    },
+    {
+      "lambda": 0.03,
+      "cv_pairwise_accuracy": 0.91213
+    },
+    {
+      "lambda": 0.1,
+      "cv_pairwise_accuracy": 0.90361
+    },
+    {
+      "lambda": 0.3,
+      "cv_pairwise_accuracy": 0.89894
+    },
+    {
+      "lambda": 1.0,
+      "cv_pairwise_accuracy": 0.89967
+    },
+    {
+      "lambda": 3.0,
+      "cv_pairwise_accuracy": 0.54446
+    }
+  ],
+  "objective": "pairwise logistic on feature differences",
+  "lambda": 0.003,
+  "trained_on": "analysis/rerank_dev.jsonl",
+  "snapshots": 148,
+  "pairs": 5558,
+  "cv_pairwise_accuracy": 0.92225,
+  "dev_pairwise_accuracy": 0.92893,
+  "holdout_pairwise_accuracy": 0.90325
+}
