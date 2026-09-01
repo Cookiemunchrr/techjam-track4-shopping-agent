@@ -1,7 +1,4 @@
-# Shopping Copilot — Devpost draft
-
-> Submission owner: replace the remaining `[USER ACTION]` video placeholder before
-> publishing, after the final public video is available.
+# Shopping Copilot — Devpost submission
 
 ## One-line pitch
 
@@ -192,7 +189,7 @@ invoked at runtime, at build time, or during scoring; reported token usage is 0 
 and 0 completion on every turn of every session.
 
 **Development tools** — git and GitHub for version control, `unittest` via
-`run_tests.sh` for the 540-test suite, the organizer's `evaluator/local_evaluator.py`
+`run_tests.sh` for the 541-test suite, the organizer's `evaluator/local_evaluator.py`
 for official scoring, and our own harnesses in `tools/` (adversarial paraphrase matrix,
 shadow evaluator, snapshot-MRR replay, near-duplicate shelfbench, resource/latency
 probe, provenance and checksum auditors). Editors: VS Code. OS: macOS (arm64) and

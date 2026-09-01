@@ -71,12 +71,11 @@ runs the submitted agent with no path edits, exactly as the participant kit ship
 
 ## Publication artifacts
 
-- `DEVPOST.md` — ready-to-publish submission copy, pending only the public video URL.
+- `DEVPOST.md` — ready-to-publish submission copy with the public repository and
+  demonstration video URLs filled in.
 - `VIDEO_SCRIPT.md` — three-minute evidence-backed storyboard.
 - `DEMO_TRANSCRIPT.md` — two recorded live sessions: the clarification and
   product-switch showcase, and an unmodified evaluator `intent_override` session
   (`public_0002`) that converts at turn 3, rank 2.
 
-The owner still needs to make the repository public, publish the Devpost entry and
-YouTube video, and replace the remaining video URL placeholder. The repository URL and
-team attribution are already filled.
+The repository URL, demonstration video URL, and team attribution are filled in.
